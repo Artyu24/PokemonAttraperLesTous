@@ -4,10 +4,15 @@ using UnityEngine;
 
 public enum GameState
 {
-    Start,
-    Dialogue,
-    PlayerStartMove,
-    PlayerInMovement,
+    Menu,
+    Adventure,
+    Fight,
     Paused,
     End
+}
+
+public enum PlayerState
+{
+    PlayerStartMove,
+    PlayerInMovement,
 }

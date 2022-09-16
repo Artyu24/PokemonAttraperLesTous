@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckWall();
 
-        if (isMovementFinish && GameManager.Instance.ActualGameState == GameState.PlayerStartMove)
+        if (isMovementFinish && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerStartMove)
         {
             if (Input.GetKey(KeyCode.Z) && !northCollision)
             {
@@ -56,14 +56,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.PlayerInMovement)
+        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
             //anim.SetBool("Walking", false);
             CheckWall();
 
-            GameManager.Instance.ActualGameState = GameState.PlayerStartMove;
+            GameManager.Instance.ActualPlayerState = PlayerState.PlayerStartMove;
             isMovementFinish = true;
         }
         else if (transform.position != endPos)
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void InMovement()
     {
-        GameManager.Instance.ActualGameState = GameState.PlayerInMovement;
+        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
         //anim.SetBool("Walking", true);
     }
 
