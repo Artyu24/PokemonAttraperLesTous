@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     private float moveDistance = 1;
     public float GetMoveDistance => moveDistance;
 
-    private GameState actualGameState = GameState.PlayerStartMove;
+    private GameState actualGameState = GameState.Adventure;
+    private PlayerState actualPlayerState = PlayerState.PlayerStartMove;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
+    public PlayerState ActualPlayerState { get => actualPlayerState; set => actualPlayerState = value; }
 
     void Awake()
     {
