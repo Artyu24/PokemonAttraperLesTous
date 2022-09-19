@@ -9,6 +9,8 @@ public class HerbesHautes : MonoBehaviour
     private BoxCollider2D herbeCollier;
 
     public GameObject combatWindow;
+    public DataPoke[] wildPokes;
+
     void Awake()
     {
         herbeCollier = GetComponent<BoxCollider2D>();
@@ -41,5 +43,6 @@ public class HerbesHautes : MonoBehaviour
         combatWindow.SetActive(true);
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
         GameManager.Instance.ActualGameState = GameState.Fight;
+        //CombatManager.Instance.StartCombat(wildPoke);
     }
 }

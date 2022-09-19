@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager Instance;
+
     public Text playerPokémonName;
     public Slider playerPokémonHP;
     public Text playerPokémonHPText;
@@ -14,9 +16,10 @@ public class CombatManager : MonoBehaviour
     //public Text enemiePokémonLvl;
     
     
-    void Update()
+    void Awake()
     {
-        
+        if (Instance == null)
+            Instance = this;
     }
 
     public void StartCombat(DataPoke wildPoke, DataPoke playerPoke)
