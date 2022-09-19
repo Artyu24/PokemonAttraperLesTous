@@ -22,13 +22,13 @@ public class CombatManager : MonoBehaviour
             Instance = this;
     }
 
-    public void StartCombat(DataPoke wildPoke, DataPoke playerPoke)
+    public void StartCombat(DataPoke wildPoke/*, DataPoke playerPoke*/)
     {
         enemiePokémonName.text = wildPoke.name;
         enemiePokémonHP.value = wildPoke.hp;
 
-        playerPokémonName.text = playerPoke.name;
+        /*playerPokémonName.text = playerPoke.name;
         playerPokémonHPText.text = playerPoke.hp.ToString() + "/" + playerPoke.hpMax;
-        playerPokémonHP.value = playerPoke.hp;
+        playerPokémonHP.value = playerPoke.hp;*/
     }
 }

@@ -542,7 +542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1856151785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +625,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1975123265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3778875153986288526, guid: bf3323137239afd40bc9d68d19d00e74, type: 3}
+  m_PrefabInstance: {fileID: 3778875154184846804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &945098379498183344
 Transform:
   m_ObjectHideFlags: 0
@@ -1673,6 +1678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 3778875153986288526, guid: bf3323137239afd40bc9d68d19d00e74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3778875153986288527, guid: bf3323137239afd40bc9d68d19d00e74, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1826,6 +1835,8 @@ GameObject:
   - component: {fileID: 1738484042481460046}
   - component: {fileID: 3430265443548991278}
   - component: {fileID: 8001796686105322524}
+  - component: {fileID: 8001796686105322526}
+  - component: {fileID: 8001796686105322525}
   m_Layer: 0
   m_Name: HerbeZone1
   m_TagString: Untagged
@@ -1873,7 +1884,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1882,3 +1893,38 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &8001796686105322525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141791164345588766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d8a5abfcc2eb241bb19aa9603464f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRate: 0
+  combatWindow: {fileID: 1975123265}
+  wildPokes:
+  - {fileID: 11400000, guid: 7e10cc59ecba04448a04e1fa6486540b, type: 2}
+  - {fileID: 11400000, guid: 8572df81ea0c8894b9de308288045a37, type: 2}
+  - {fileID: 11400000, guid: 67362a7b3ec20134abeb593ee1f83d92, type: 2}
+  wildPoke: {fileID: 0}
+--- !u!19719996 &8001796686105322526
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141791164345588766}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001

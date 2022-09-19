@@ -10,6 +10,7 @@ public class HerbesHautes : MonoBehaviour
 
     public GameObject combatWindow;
     public DataPoke[] wildPokes;
+    public DataPoke wildPoke;
 
     void Awake()
     {
@@ -29,10 +30,13 @@ public class HerbesHautes : MonoBehaviour
             {
                 SpawnPokemon();
                 spawnRate = Random.Range(0, 100);
+                int temp = Random.Range(0, wildPokes.Length);
+                wildPoke = wildPokes[temp];
             }
             else
             {
                 Debug.Log("Pas de pokémon");
+                spawnRate = Random.Range(0, 100);
             }
         }
     }
@@ -43,6 +47,6 @@ public class HerbesHautes : MonoBehaviour
         combatWindow.SetActive(true);
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
         GameManager.Instance.ActualGameState = GameState.Fight;
-        //CombatManager.Instance.StartCombat(wildPoke);
+        CombatManager.Instance.StartCombat(wildPoke);
     }
 }
