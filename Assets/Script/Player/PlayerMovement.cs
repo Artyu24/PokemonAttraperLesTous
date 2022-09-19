@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private bool northCollision, southCollision, eastCollision, westCollision;
 
     private bool isMovementFinish;
-
+    public bool walkOnWater = false;
     //[SerializeField] private Animator anim;
 
     private void Start()
@@ -30,6 +30,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMovementFinish && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerStartMove)
         {
+            if (Input.GetKey(KeyCode.F))
+            {
+                walkOnWater = true;
+            }
+
             if (Input.GetKey(KeyCode.Z) && !northCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
@@ -102,12 +107,27 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
         if (hit.collider != null)
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Hole"))
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
             {
                 isCollision = true;
+                return;
+            }
+
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Water") && !walkOnWater)
+            {
+                isCollision = true;
+                return;
             }
         }
-        else
-            isCollision = false;
+        
+        isCollision = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            walkOnWater = false;
+        }
     }
 }
