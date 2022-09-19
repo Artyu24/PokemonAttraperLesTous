@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataPoke : MonoBehaviour
+public class DataPoke : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Description")]
+    public string name;
+    public int ID;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Stats")] 
+    public string type;
+    public int dmg;
+    public int hp;
+    public int def;
+    public int speed;
+
+    [Header("Visuel")] 
+    public Sprite sprite;
+    public Animator animator;
+
+    [Header("Attack")] 
+    public DataAttack[] attacklist = new DataAttack[4];
 }
