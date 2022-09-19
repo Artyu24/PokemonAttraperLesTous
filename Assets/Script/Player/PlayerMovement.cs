@@ -130,4 +130,14 @@ public class PlayerMovement : MonoBehaviour
             walkOnWater = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Door"))
+        {
+            transform.position = TP_Manager.Instance.DictHouseDoor[collision].transform.position;
+            endPos = GetComponent<BoxCenter>().CenterObject();
+            transform.position = endPos;
+        }
+    }
 }
