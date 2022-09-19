@@ -12,6 +12,7 @@ public class DataPoke : ScriptableObject
     public string type;
     public int dmg;
     public int hp;
+    public int hpMax;
     public int def;
     public int speed;
 
