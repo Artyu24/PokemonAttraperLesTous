@@ -7,6 +7,8 @@ public class HerbesHautes : MonoBehaviour
     public int spawnRate;
     private Sprite movementSprite;
     private BoxCollider2D herbeCollier;
+
+    public GameObject combatWindow;
     
     void Awake()
     {
@@ -37,5 +39,6 @@ public class HerbesHautes : MonoBehaviour
     private void SpawnPokemon()
     {
         Debug.Log("Ratata dans ta gueule !!!");
+        combatWindow.SetActive(true);
     }
 }
