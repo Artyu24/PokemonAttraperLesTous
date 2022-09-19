@@ -15,4 +15,5 @@ public enum PlayerState
 {
     PlayerStartMove,
     PlayerInMovement,
+    PlayerInFight
 }

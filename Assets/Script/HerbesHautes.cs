@@ -9,7 +9,6 @@ public class HerbesHautes : MonoBehaviour
     private BoxCollider2D herbeCollier;
 
     public GameObject combatWindow;
-    
     void Awake()
     {
         herbeCollier = GetComponent<BoxCollider2D>();
@@ -40,5 +39,7 @@ public class HerbesHautes : MonoBehaviour
     {
         Debug.Log("Ratata dans ta gueule !!!");
         combatWindow.SetActive(true);
+        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
+        GameManager.Instance.ActualGameState = GameState.Fight;
     }
 }
