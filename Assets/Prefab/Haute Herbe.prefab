@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4839570188312262523}
   - component: {fileID: 4839570188312262518}
   - component: {fileID: 4839570188312262521}
+  - component: {fileID: 7545779795338291144}
   m_Layer: 0
   m_Name: Haute Herbe
   m_TagString: Untagged
@@ -210,3 +211,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7545779795338291144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4839570188312262522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e419a258723123489ffc0aa0ddd7c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPos: {x: 0, y: 0, z: 0}
