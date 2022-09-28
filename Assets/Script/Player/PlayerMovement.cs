@@ -13,7 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private bool northCollision, southCollision, eastCollision, westCollision;
 
     private bool isMovementFinish;
-    public bool walkOnWater = false;
+    private bool walkOnWater = false;
+
+    private bool isTP = false;
+    private Vector3 lastDir = Vector3.zero;
+
     //[SerializeField] private Animator anim;
 
     private void Start()
@@ -38,25 +42,25 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Z) && !northCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
-                InMovement();
+                InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Up");
             }
             else if (Input.GetKey(KeyCode.S) && !southCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
-                InMovement();
+                InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Down");
             }
             else if (Input.GetKey(KeyCode.Q) && !westCollision)
             {
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
-                InMovement();
+                InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Left");
             }
             else if (Input.GetKey(KeyCode.D) && !eastCollision)
             {
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
-                InMovement();
+                InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Right");
             }
         }
@@ -70,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
             GameManager.Instance.ActualPlayerState = PlayerState.PlayerStartMove;
             isMovementFinish = true;
+
+            isTP = false;
         }
         else if (transform.position != endPos)
         {
@@ -86,9 +92,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void InMovement()
+    private void InMovement(Vector3 dir)
     {
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+        lastDir = dir;
+
         //anim.SetBool("Walking", true);
     }
 
@@ -133,11 +141,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Door"))
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Door") && !isTP)
         {
             transform.position = TP_Manager.Instance.DictHouseDoor[collision].transform.position;
-            endPos = GetComponent<BoxCenter>().CenterObject();
-            transform.position = endPos;
+            endPos = GetComponent<BoxCenter>().CenterObject() + lastDir;
+            transform.position = GetComponent<BoxCenter>().CenterObject();
+            isTP = true;
         }
     }
 }
