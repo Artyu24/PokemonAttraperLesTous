@@ -28,10 +28,10 @@ public class HerbesHautes : MonoBehaviour
         {
             if (Random.Range(1, 101) <= spawnRate)
             {
-                SpawnPokemon();
                 spawnRate = Random.Range(0, 100);
                 int temp = Random.Range(0, wildPokes.Length);
                 wildPoke = wildPokes[temp];
+                SpawnPokemon();
             }
             else
             {

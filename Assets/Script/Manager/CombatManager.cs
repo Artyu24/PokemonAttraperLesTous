@@ -7,6 +7,8 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
 
+    public TeamPokes playerPokes;
+
     public Text playerPokémonName;
     public Slider playerPokémonHP;
     public Text playerPokémonHPText;
@@ -22,13 +24,22 @@ public class CombatManager : MonoBehaviour
             Instance = this;
     }
 
-    public void StartCombat(DataPoke wildPoke/*, DataPoke playerPoke*/)
+    public void StartCombat(DataPoke wildPoke)
     {
         enemiePokémonName.text = wildPoke.name;
         enemiePokémonHP.value = wildPoke.hp;
+        enemiePokémonHP.maxValue = wildPoke.hp;
 
-        /*playerPokémonName.text = playerPoke.name;
+        DataPoke playerPoke = playerPokes.poke1;
+        playerPokémonName.text = playerPoke.name;
         playerPokémonHPText.text = playerPoke.hp.ToString() + "/" + playerPoke.hpMax;
-        playerPokémonHP.value = playerPoke.hp;*/
+        playerPokémonHP.value = playerPoke.hp;
+        playerPokémonHP.maxValue = playerPoke.hp;
+    }
+
+    public void FlyFight()
+    {
+        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+        GameManager.Instance.ActualGameState = GameState.Adventure;
     }
 }
