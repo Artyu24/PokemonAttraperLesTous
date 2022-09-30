@@ -147,6 +147,8 @@ public class PlayerMovement : MonoBehaviour
             endPos = GetComponent<BoxCenter>().CenterObject() + lastDir;
             transform.position = GetComponent<BoxCenter>().CenterObject();
             isTP = true;
+
+            //GameManager.Instance.ActualPlayerState = PlayerState.PlayerEnterTP;
         }
     }
 }
