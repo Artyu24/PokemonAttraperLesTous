@@ -24,6 +24,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   attacklist:
   - {fileID: 11400000, guid: b25a4dd17d9585947aed344bab395c05, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: f32e11cbdb3695f4d8d25773b6bd53f4, type: 2}
+  - {fileID: 11400000, guid: e3590c8eb717fd0489edf5105e96a7bc, type: 2}
+  - {fileID: 11400000, guid: a17e76925682d804f8e1d6d4138e6cf7, type: 2}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TeamPokes : MonoBehaviour
 {
     public DataPoke poke1;
+    public DataPoke[] pokes;
 
     void Start()
     {

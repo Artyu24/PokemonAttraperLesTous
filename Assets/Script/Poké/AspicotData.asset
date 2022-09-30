@@ -20,10 +20,10 @@ MonoBehaviour:
   hpMax: 10
   def: 2
   speed: 3
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d0e60b3a0c8d47b4ba99640f3acac77c, type: 3}
   animator: {fileID: 0}
   attacklist:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 6f4ce22ba46718c43b06d1934c32edd5, type: 2}
+  - {fileID: 11400000, guid: e3590c8eb717fd0489edf5105e96a7bc, type: 2}
   - {fileID: 0}
   - {fileID: 0}

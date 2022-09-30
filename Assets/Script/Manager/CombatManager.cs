@@ -12,11 +12,25 @@ public class CombatManager : MonoBehaviour
     public Text playerPokémonName;
     public Slider playerPokémonHP;
     public Text playerPokémonHPText;
+    public Image playerPokémonSprite;
     //public Text playerPokémonLvl;
     public Text enemiePokémonName;
     public Slider enemiePokémonHP;
+    public Image enemiePokémonSprite;
     //public Text enemiePokémonLvl;
+
+    public Text chatText;
+    public Text attackButton1;
+    public Text attackButton2;
+    public Text attackButton3;
+    public Text attackButton4;
     
+    public Text pokemonButton1;
+    public Text pokemonButton2;
+    public Text pokemonButton3;
+    public Text pokemonButton4;
+    public Text pokemonButton5;
+    public Text pokemonButton6;
     
     void Awake()
     {
@@ -29,12 +43,26 @@ public class CombatManager : MonoBehaviour
         enemiePokémonName.text = wildPoke.name;
         enemiePokémonHP.value = wildPoke.hp;
         enemiePokémonHP.maxValue = wildPoke.hp;
+        enemiePokémonSprite.sprite = wildPoke.sprite;
 
         DataPoke playerPoke = playerPokes.poke1;
         playerPokémonName.text = playerPoke.name;
         playerPokémonHPText.text = playerPoke.hp.ToString() + "/" + playerPoke.hpMax;
         playerPokémonHP.value = playerPoke.hp;
         playerPokémonHP.maxValue = playerPoke.hp;
+        playerPokémonSprite.sprite = playerPoke.sprite;
+
+        attackButton1.text = playerPoke.attacklist[0].name;
+        attackButton2.text = playerPoke.attacklist[1].name;
+        attackButton3.text = playerPoke.attacklist[2].name;
+        attackButton4.text = playerPoke.attacklist[3].name;
+
+        /*for (int i = 0; i < pokes.length; i++)
+        {
+            pokemonButton1.text = playerPokes[i].name;
+        }*/
+
+        chatText.text = wildPoke.name.ToString() + " est apparu !!!";
     }
 
     public void FlyFight()
