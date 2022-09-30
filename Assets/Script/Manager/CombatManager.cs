@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
     //public Text enemiePokémonLvl;
 
     public Text chatText;
+    public GameObject attackWindow;
     public Text attackButton1;
     public Text attackButton2;
     public Text attackButton3;
@@ -69,5 +70,13 @@ public class CombatManager : MonoBehaviour
     {
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
         GameManager.Instance.ActualGameState = GameState.Adventure;
+    }
+
+    public void Attack(DataAttack attack)
+    {
+        chatText.text = playerPokémonName.text + " utilise " + attack.name + " !";
+        enemiePokémonHP.value -= attack.dmg;
+        attackWindow.SetActive(false);
+
     }
 }
