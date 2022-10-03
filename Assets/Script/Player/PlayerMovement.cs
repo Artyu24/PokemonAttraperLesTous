@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isTP = false;
     private Vector3 lastDir = Vector3.zero;
 
+    public Animator anim;
+
     //[SerializeField] private Animator anim;
 
     private void Start()
@@ -44,25 +46,32 @@ public class PlayerMovement : MonoBehaviour
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
                 InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Up");
+                anim.SetTrigger("up");
             }
             else if (Input.GetKey(KeyCode.S) && !southCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
                 InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Down");
+                anim.SetTrigger("bottom");
+
             }
             else if (Input.GetKey(KeyCode.Q) && !westCollision)
             {
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Left");
+                anim.SetTrigger("left");
+
             }
             else if (Input.GetKey(KeyCode.D) && !eastCollision)
             {
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Right");
+                anim.SetTrigger("right");
             }
+            
         }
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
