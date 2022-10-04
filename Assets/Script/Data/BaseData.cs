@@ -8,7 +8,8 @@ namespace Object.Data
     {
         [Header("Base")] 
         public string name;
-        public string ID;
+        //public string ID;
+        public int ID;
         public string desc;
         public Type TYPE;
 
@@ -32,9 +33,10 @@ namespace Object.Data
             SOL,
             INSECT,
             SPECTRE,
+            OBJET
         }
 
-        public BaseData(string name, string id, string caption, Type type)
+        public BaseData(string name, /*string id*/ int id, string caption, Type type)
         {
             this.name = name;
             ID = id;

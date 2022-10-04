@@ -15,9 +15,4 @@ public class TeamPokes : MonoBehaviour
             {1, PokeData};
         }*/
     }
-    
-    void Update()
-    {
-        
-    }
 }

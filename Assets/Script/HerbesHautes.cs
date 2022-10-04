@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HerbesHautes : MonoBehaviour
 {
-    public int spawnRate;
+    private int spawnRate;
     private Sprite movementSprite;
     private BoxCollider2D herbeCollier;
 

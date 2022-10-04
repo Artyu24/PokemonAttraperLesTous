@@ -12,3 +12,220 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: PokeDatabase
   m_EditorClassIdentifier: Assembly-CSharp::PokeDataBase
+  PokeData:
+  - name: Roucool
+    ID: 0
+    desc: "Piaf \xE0 la con"
+    TYPE: 0
+    dmg: 45
+    hp: 40
+    hpMax: 40
+    def: 40
+    speed: 56
+    sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  - name: Rattata
+    ID: 1
+    desc: Ptite merde
+    TYPE: 0
+    dmg: 56
+    hp: 30
+    hpMax: 30
+    def: 35
+    speed: 72
+    sprite: {fileID: 21300000, guid: e62c77bcd75f47d42ae489d3ef4a04b7, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  - name: Chenipan
+    ID: 2
+    desc: Larve de mort
+    TYPE: 0
+    dmg: 30
+    hp: 45
+    hpMax: 45
+    def: 35
+    speed: 45
+    sprite: {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  - name: Tortank
+    ID: 30
+    desc: Tortue mortel
+    TYPE: 1
+    dmg: 83
+    hp: 79
+    hpMax: 79
+    def: 100
+    speed: 78
+    sprite: {fileID: 21300000, guid: cbf15b7978da00f49aa61cafec553b81, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  - name: Dracolosse
+    ID: 31
+    desc: Dragon kawai
+    TYPE: 12
+    dmg: 134
+    hp: 91
+    hpMax: 91
+    def: 95
+    speed: 80
+    sprite: {fileID: 21300000, guid: 502a9d4ac836c3940a8564f5e2c30a22, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  - name: "M\xE9talosse"
+    ID: 32
+    desc: Meta
+    TYPE: 4
+    dmg: 135
+    hp: 80
+    hpMax: 80
+    def: 130
+    speed: 70
+    sprite: {fileID: 21300000, guid: 85ce40587f8b39244a4fb8b92c93899c, type: 3}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
