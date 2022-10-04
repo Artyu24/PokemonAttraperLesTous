@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71842bfd14a13a94cb6021744c566955, type: 3}
-  m_Name: GriffeData
-  m_EditorClassIdentifier: 
-  name: Griffe
-  desc: 
-  dmg: 3
-  pp: 0
-  type: Normal
-  ID: 0
+  m_Script: {fileID: 0}
+  m_Name: PokeDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::PokeDataBase
