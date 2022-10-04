@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Object.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
 
     public TeamPokes playerPokes;
-    private DataPoke playerPoke;
+    private PokeData _player;
     public GameObject combatWindow;
 
     [Header("PokémonsUI")]
@@ -53,31 +54,31 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void StartCombat(DataPoke wildPoke)
+    public void StartCombat(PokeData wild)
     {
-        playerPoke = playerPokes.poke1;
-        enemiePokémonName.text = wildPoke.name;
-        enemiePokémonHP.value = wildPoke.hp;
-        enemiePokémonHP.maxValue = wildPoke.hp;
-        enemiePokémonSprite.sprite = wildPoke.sprite;
+        _player = playerPokes.poke1;
+        enemiePokémonName.text = wild.name;
+        enemiePokémonHP.value = wild.hp;
+        enemiePokémonHP.maxValue = wild.hp;
+        enemiePokémonSprite.sprite = wild.sprite;
 
-        playerPokémonName.text = playerPoke.name;
-        playerPokémonHPText.text = playerPoke.hp + "/" + playerPoke.hpMax;
-        playerPokémonHP.value = playerPoke.hp;
-        playerPokémonHP.maxValue = playerPoke.hp;
-        playerPokémonSprite.sprite = playerPoke.sprite;
+        playerPokémonName.text = _player.name;
+        playerPokémonHPText.text = _player.hp + "/" + _player.hpMax;
+        playerPokémonHP.value = _player.hp;
+        playerPokémonHP.maxValue = _player.hp;
+        playerPokémonSprite.sprite = _player.sprite;
 
-        attackButton1.text = playerPoke.attacklist[0].name;
-        attackButton2.text = playerPoke.attacklist[1].name;
-        attackButton3.text = playerPoke.attacklist[2].name;
-        attackButton4.text = playerPoke.attacklist[3].name;
+        attackButton1.text = _player.attacklist[0].name;
+        attackButton2.text = _player.attacklist[1].name;
+        attackButton3.text = _player.attacklist[2].name;
+        attackButton4.text = _player.attacklist[3].name;
 
         /*for (int i = 0; i < pokes.length; i++)
         {
             pokemonButton1.text = playerPokes[i].name;
         }*/
 
-        chatText.text = wildPoke.name + " est apparu !!!";
+        chatText.text = wild.name + " est apparu !!!";
     }
 
     public void FlyFight()
@@ -89,8 +90,8 @@ public class CombatManager : MonoBehaviour
 
     public void Attack(int attackNumber)
     {
-        chatText.text = playerPokémonName.text + " utilise " + playerPoke.attacklist[attackNumber].name + " !";
-        enemiePokémonHP.value -= playerPoke.attacklist[attackNumber].dmg;
+        chatText.text = playerPokémonName.text + " utilise " + _player.attacklist[attackNumber].name + " !";
+        enemiePokémonHP.value -= _player.attacklist[attackNumber].dmg;
         attackWindow.SetActive(false);
         if (enemiePokémonHP.value <= 0)
         {

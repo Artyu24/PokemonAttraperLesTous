@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Object.Data;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -22,5 +23,6 @@ public class GameManager : MonoBehaviour
 
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
+
     }
 }
