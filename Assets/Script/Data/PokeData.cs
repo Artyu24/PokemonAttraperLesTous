@@ -21,7 +21,7 @@ namespace Object.Data
         //property drawer/custom atribut pour drop down
         public AttackData[] attacklist = new AttackData[4];
 
-        public PokeData(string name, string id = "", string caption = "", Type type = Type.NORMAL) : base(name, id, caption, type)
+        public PokeData(string name, int id = 0, string caption = "", Type type = Type.NORMAL) : base(name, id, caption, type)
         {
             dmg = 10;
             hp = 50;

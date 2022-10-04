@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea17d0028e33c9d4994198c8b1e37a14, type: 3}
   m_Name: AttackDatabase
   m_EditorClassIdentifier: 
-  AttackData: []
+  AttackData:
+  - name: Charge
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10

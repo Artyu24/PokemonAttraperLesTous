@@ -355,6 +355,10 @@ PrefabInstance:
       propertyPath: ldGrid
       value: 
       objectReference: {fileID: 945098379498183345}
+    - target: {fileID: 696543149898157991, guid: 97b800ff727e9114d964ef4e0c5388a4, type: 3}
+      propertyPath: atkDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 78d3640d6589776438c2da3b80df37d9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97b800ff727e9114d964ef4e0c5388a4, type: 3}
 --- !u!1 &537314578 stripped
@@ -418,9 +422,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100ac43064190cf47b143d2285e164d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poke1: {fileID: 11400000, guid: 2ff23586eccfc524ca70af7b94a4c919, type: 2}
-  pokes:
-  - {fileID: 11400000, guid: 2ff23586eccfc524ca70af7b94a4c919, type: 2}
+  poke1:
+    name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+  pokes: []
 --- !u!4 &871073642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1632774251118092671, guid: bf46a64ed1fac934da00487d71b91787, type: 3}
@@ -2297,13 +2336,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d8a5abfcc2eb241bb19aa9603464f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 0
   combatWindow: {fileID: 1975123265}
   wildPokes:
-  - {fileID: 11400000, guid: 7e10cc59ecba04448a04e1fa6486540b, type: 2}
-  - {fileID: 11400000, guid: 8572df81ea0c8894b9de308288045a37, type: 2}
-  - {fileID: 11400000, guid: 67362a7b3ec20134abeb593ee1f83d92, type: 2}
-  wildPoke: {fileID: 0}
+  - name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    animator: {fileID: 0}
+    attacklist: []
+  Wild:
+    name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    animator: {fileID: 0}
+    attacklist:
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
+    - name: 
+      ID: 0
+      desc: 
+      TYPE: 0
+      dmg: 0
+      pp: 0
 --- !u!19719996 &8001796686105322526
 TilemapCollider2D:
   m_ObjectHideFlags: 0

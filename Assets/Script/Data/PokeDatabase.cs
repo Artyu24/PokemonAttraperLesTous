@@ -14,10 +14,10 @@ public class PokeDataBase : ScriptableObject
     {
         PokeData.Add(new PokeData("Roucool"));
 
-        foreach (var pokeData in PokeData.ToList())
+        /*foreach (var pokeData in PokeData.ToList())
         {
             pokeData.ID = pokeData.name?.Substring(0, 3).ToUpper() + " | " + pokeData.name;
-        }
+        }*/
 
     }
 }
