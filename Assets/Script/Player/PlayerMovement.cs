@@ -20,6 +20,15 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
+    enum Direction
+    {
+        HAUT,
+        BAS,
+        GAUCHE, 
+        DROITE,
+        RIEN    
+    }
+    private Direction lastAnim = Direction.RIEN;
     //[SerializeField] private Animator anim;
 
     private void Start()
@@ -46,14 +55,25 @@ public class PlayerMovement : MonoBehaviour
                 endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
                 InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Up");
-                anim.SetTrigger("up");
+                if (lastAnim != Direction.HAUT)
+                {
+                    anim.SetTrigger("up");
+
+                }
+                lastAnim = Direction.HAUT;
             }
             else if (Input.GetKey(KeyCode.S) && !southCollision)
             {
                 endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
                 InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
                 //Debug.Log("Down");
-                anim.SetTrigger("bottom");
+                if (lastAnim != Direction.BAS)
+                {
+                    anim.SetTrigger("bottom");
+
+                }
+                lastAnim = Direction.BAS;
+
 
             }
             else if (Input.GetKey(KeyCode.Q) && !westCollision)
@@ -61,7 +81,13 @@ public class PlayerMovement : MonoBehaviour
                 endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Left");
-                anim.SetTrigger("left");
+                if (lastAnim != Direction.GAUCHE)
+                {
+                    anim.SetTrigger("left");
+
+                }
+                lastAnim = Direction.GAUCHE;
+
 
             }
             else if (Input.GetKey(KeyCode.D) && !eastCollision)
@@ -69,9 +95,16 @@ public class PlayerMovement : MonoBehaviour
                 endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                 InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
                 //Debug.Log("Right");
-                anim.SetTrigger("right");
+                if(lastAnim != Direction.DROITE)
+                {
+                    anim.SetTrigger("right");
+
+                }
+                lastAnim = Direction.DROITE;
+
             }
-            
+
+
         }
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
@@ -85,6 +118,15 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = true;
 
             isTP = false;
+            
+            
+            if(!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.S))
+            {
+                anim.SetTrigger("Idl");
+                lastAnim = Direction.RIEN;
+
+            }
+
         }
         else if (transform.position != endPos)
         {
