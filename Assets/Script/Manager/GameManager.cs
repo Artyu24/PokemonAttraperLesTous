@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Object.Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Grid ldGrid;
     private float moveDistance = 1;
     public float GetMoveDistance => moveDistance;
+
+    [SerializeField] private Animator fadeAnim; 
 
     private GameState actualGameState = GameState.Adventure;
     private PlayerState actualPlayerState = PlayerState.PlayerStartMove;
@@ -23,6 +26,13 @@ public class GameManager : MonoBehaviour
 
         ldGrid = FindObjectOfType<Grid>();
         moveDistance = ldGrid.cellSize.x;
+    }
 
+    public void ActivateFade(bool trigger)
+    {
+        if (trigger)
+            fadeAnim.SetTrigger("In");
+        else
+            fadeAnim.SetTrigger("Out");
     }
 }

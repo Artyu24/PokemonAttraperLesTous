@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool walkOnWater = false;
 
     private bool isTP = false;
+    private Collider2D actualDoor;
     private Vector3 lastDir = Vector3.zero;
 
     public Animator anim;
@@ -29,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         RIEN    
     }
     private Direction lastAnim = Direction.RIEN;
-    //[SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -50,61 +50,45 @@ public class PlayerMovement : MonoBehaviour
                 walkOnWater = true;
             }
 
-            if (Input.GetKey(KeyCode.Z) && !northCollision)
+            if (Input.GetKey(KeyCode.Z))
             {
-                endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
-                InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
-                //Debug.Log("Up");
-                if (lastAnim != Direction.HAUT)
+                AnimPlayer(Direction.HAUT, "up");
+                if (!northCollision)
                 {
-                    anim.SetTrigger("up");
-
+                    endPos = new Vector3(transform.position.x, transform.position.y + GameManager.Instance.GetMoveDistance, transform.position.z);
+                    InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
                 }
-                lastAnim = Direction.HAUT;
             }
-            else if (Input.GetKey(KeyCode.S) && !southCollision)
+            else if (Input.GetKey(KeyCode.S))
             {
-                endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
-                InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
-                //Debug.Log("Down");
-                if (lastAnim != Direction.BAS)
+                AnimPlayer(Direction.BAS, "bottom");
+                if (!southCollision)
                 {
-                    anim.SetTrigger("bottom");
+                    endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
+                    InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
 
                 }
-                lastAnim = Direction.BAS;
-
-
             }
-            else if (Input.GetKey(KeyCode.Q) && !westCollision)
+            else if (Input.GetKey(KeyCode.Q))
             {
-                endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
-                InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
-                //Debug.Log("Left");
-                if (lastAnim != Direction.GAUCHE)
+                AnimPlayer(Direction.GAUCHE, "left");
+                if (!westCollision)
                 {
-                    anim.SetTrigger("left");
-
+                    endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                    InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
                 }
-                lastAnim = Direction.GAUCHE;
 
 
             }
-            else if (Input.GetKey(KeyCode.D) && !eastCollision)
+            else if (Input.GetKey(KeyCode.D))
             {
-                endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
-                InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
-                //Debug.Log("Right");
-                if(lastAnim != Direction.DROITE)
+                AnimPlayer(Direction.DROITE, "right");
+                if (!eastCollision)
                 {
-                    anim.SetTrigger("right");
-
+                    endPos = new Vector3(transform.position.x + GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
+                    InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
                 }
-                lastAnim = Direction.DROITE;
-
             }
-
-
         }
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
@@ -124,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 anim.SetTrigger("Idl");
                 lastAnim = Direction.RIEN;
-
             }
 
         }
@@ -133,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = false;
         }
 
-        if (GameManager.Instance.ActualGameState != GameState.Paused)
+        if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
 
         Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
@@ -149,6 +132,16 @@ public class PlayerMovement : MonoBehaviour
         lastDir = dir;
 
         //anim.SetBool("Walking", true);
+    }
+
+    private void AnimPlayer(Direction actualDir, string animTrigger)
+    {
+        if (lastAnim != actualDir)
+        {
+            anim.SetTrigger(animTrigger);
+
+        }
+        lastAnim = actualDir;
     }
 
     private void CheckWall()
@@ -194,12 +187,31 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Door") && !isTP)
         {
-            transform.position = TP_Manager.Instance.DictHouseDoor[collision].transform.position;
-            endPos = GetComponent<BoxCenter>().CenterObject() + lastDir;
-            transform.position = GetComponent<BoxCenter>().CenterObject();
             isTP = true;
+            actualDoor = collision;
 
-            //GameManager.Instance.ActualPlayerState = PlayerState.PlayerEnterTP;
+            GameManager.Instance.ActualPlayerState = PlayerState.PlayerEnterTP;
+            GameManager.Instance.ActivateFade(true);
+            
+            anim.SetTrigger("Idl");
+            lastAnim = Direction.RIEN;
+            
+            StartCoroutine(WaitTP());
         }
+    }
+
+    private IEnumerator WaitTP()
+    {
+        yield return new WaitForSeconds(1);
+        TeleportPlayer();
+    }
+
+    private void TeleportPlayer()
+    {
+        transform.position = TP_Manager.Instance.DictHouseDoor[actualDoor].transform.position;
+        endPos = GetComponent<BoxCenter>().CenterObject() + lastDir;
+        transform.position = GetComponent<BoxCenter>().CenterObject();
+        GameManager.Instance.ActivateFade(false);
+        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
     }
 }
