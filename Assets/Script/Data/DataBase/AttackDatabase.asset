@@ -19,3 +19,33 @@ MonoBehaviour:
     TYPE: 0
     dmg: 10
     pp: 10
+  - name: Griffe
+    ID: 1
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10
+  - name: Bulle d'O
+    ID: 2
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10
+  - name: Gros Yeux
+    ID: 3
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10
+  - name: Abri
+    ID: 4
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10
+  - name: Cannon Ultra Geyser
+    ID: 5
+    desc: 
+    TYPE: 0
+    dmg: 10
+    pp: 10
