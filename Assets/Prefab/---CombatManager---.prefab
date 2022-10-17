@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2264434484074525228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4675516419326271149}
+  - component: {fileID: 3170272843035815003}
+  m_Layer: 0
+  m_Name: ---CombatManager---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4675516419326271149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264434484074525228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.214436, y: 2.7113476, z: -8.357527}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3170272843035815003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264434484074525228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ce9e82896aa22245a9829676b24ef44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPokes: {fileID: 0}
+  combatWindow: {fileID: 0}
+  "playerPok\xE9monName": {fileID: 0}
+  "playerPok\xE9monHP": {fileID: 0}
+  "playerPok\xE9monHPText": {fileID: 0}
+  "playerPok\xE9monSprite": {fileID: 0}
+  "enemiePok\xE9monName": {fileID: 0}
+  "enemiePok\xE9monHP": {fileID: 0}
+  "enemiePok\xE9monSprite": {fileID: 0}
+  chatText: {fileID: 0}
+  attackWindow: {fileID: 0}
+  attackButton1: {fileID: 0}
+  attackButton2: {fileID: 0}
+  attackButton3: {fileID: 0}
+  attackButton4: {fileID: 0}
+  pokemonWindow: {fileID: 0}
+  pokemonButton1: {fileID: 0}
+  pokemonButton2: {fileID: 0}
+  pokemonButton3: {fileID: 0}
+  pokemonButton4: {fileID: 0}
+  pokemonButton5: {fileID: 0}
+  pokemonButton6: {fileID: 0}
