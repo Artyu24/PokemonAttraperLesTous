@@ -40,6 +40,13 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton5;
     public Text pokemonButton6;
 
+    [Header("Boucle")] 
+    [Tooltip("false : tour de l'ordi, true : tour du joueur")]
+    public bool aQuiLeTour;
+    private PokeData playerPoke;
+    private PokeData enemiePoke;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -51,6 +58,27 @@ public class CombatManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Return();
+        }
+
+        if (playerPoke.speed < enemiePoke.speed)
+        {
+            aQuiLeTour = false;
+        }
+        else
+        {
+            aQuiLeTour = true;
+        }
+
+        switch (aQuiLeTour)
+        {
+            case false:
+                int atkId = Random.Range(0,4);
+                Debug.Log("Le pokémon adverse à utilisé " + enemiePoke.attacklist[atkId]);
+                aQuiLeTour = true;
+                break;
+            case true:
+                aQuiLeTour = false;
+                break;
         }
     }
 
