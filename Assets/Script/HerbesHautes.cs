@@ -10,7 +10,7 @@ public class HerbesHautes : MonoBehaviour
     private BoxCollider2D herbeCollier;
 
     public GameObject combatWindow;
-    public PokeData[] wildPokes;
+    public PokeData[] wildPokes = new PokeData[4];
     public PokeData wildPoke;
 
     public PokeData WildPoke { get => wildPoke; }
@@ -24,6 +24,11 @@ public class HerbesHautes : MonoBehaviour
     void Start()
     {
         spawnRate = Random.Range(0, 30);
+
+        for (int i = 0; i < wildPokes.Length; i++)
+        {
+            wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)

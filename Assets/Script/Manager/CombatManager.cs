@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
+    #region Variables
     public static CombatManager Instance;
 
     public TeamPokes playerPokes;
@@ -41,7 +42,6 @@ public class CombatManager : MonoBehaviour
 
     [Header("Boucle")] 
     [Tooltip("false : tour de l'ordi, true : tour du joueur")]
-    public bool aQuiLeTour;
     public PokeData playerPoke;
     public PokeData enemiePoke;
 
@@ -51,6 +51,7 @@ public class CombatManager : MonoBehaviour
 
     public Dictionary<int, PokeData> DictPokeData => dictPokeData;
     public Dictionary<int, AttackData> DictAttackData => dictAttackData;
+    #endregion
 
     void Awake()
     {
@@ -60,16 +61,16 @@ public class CombatManager : MonoBehaviour
         {
             DictPokeData.Add(pokeData.ID, pokeData);
         }
+
         foreach (var attackData in attackDatabase.AttackData)
         {
-            Debug.Log("Ajouter au dicossssssss");
             dictAttackData.Add(attackData.ID, attackData);
         }
     }
 
     void Start()
     {
-        enemiePoke = DictPokeData[Random.Range(0,6)];
+        playerPoke = DictPokeData[Random.Range(0, 6)];
     }
 
     private void Update()
@@ -78,32 +79,12 @@ public class CombatManager : MonoBehaviour
         {
             Return();
         }
-
-        /*if (playerPoke.speed < enemiePoke.speed)
-        {
-            aQuiLeTour = false;
-        }
-        else
-        {
-            aQuiLeTour = true;
-        }
-
-        switch (aQuiLeTour)
-        {
-            case false:
-                int atkId = Random.Range(0,4);
-                Debug.Log("Le pokémon adverse à utilisé " + DictAttackData[enemiePoke.attackIDlist[atkId]]);
-                aQuiLeTour = true;
-                break;
-            case true:
-                aQuiLeTour = false;
-                break;
-        }*/
     }
 
     public void StartCombat(PokeData wild)
     {
-        playerPoke = playerPokes.poke1;
+        enemiePoke = wild;
+
         enemiePokémonName.text = wild.name;
         enemiePokémonHP.value = wild.hp;
         enemiePokémonHP.maxValue = wild.hp;
@@ -114,7 +95,7 @@ public class CombatManager : MonoBehaviour
         playerPokémonHP.value = playerPoke.hp;
         playerPokémonHP.maxValue = playerPoke.hp;
         playerPokémonSprite.sprite = playerPoke.sprite;
-
+        
         attackButton1.text = DictAttackData[playerPoke.attackIDlist[0]].name;
         attackButton2.text = DictAttackData[playerPoke.attackIDlist[1]].name;
         attackButton3.text = DictAttackData[playerPoke.attackIDlist[2]].name;

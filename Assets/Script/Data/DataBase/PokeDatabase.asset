@@ -24,7 +24,7 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: c6ed7247df9d98240a60f283e9918b72, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
   - name: Dracolosse
     ID: 1
     desc: 
@@ -36,7 +36,7 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: 8da3ef8a9254d3e4bb2d0027f744f07d, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
   - name: Metalosse
     ID: 2
     desc: 
@@ -48,7 +48,7 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: 5c56269b24a7d154e82a73e0d1e73f07, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
   - name: Tortank
     ID: 3
     desc: 
@@ -60,7 +60,7 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: 82185fef8050b8f4fa6af5c6fef85ae3, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
   - name: Elecable
     ID: 4
     desc: 
@@ -72,7 +72,7 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
   - name: Carchacroc
     ID: 5
     desc: 
@@ -84,4 +84,4 @@ MonoBehaviour:
     speed: 1
     sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
     animator: {fileID: 0}
-    attackIDlist: 00000000000000000000000000000000
+    attackIDlist: 00000000010000000200000003000000
