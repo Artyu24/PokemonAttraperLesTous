@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPokes: {fileID: 0}
+  attackDatabase: {fileID: 11400000, guid: 78d3640d6589776438c2da3b80df37d9, type: 2}
+  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
   combatWindow: {fileID: 0}
   "playerPok\xE9monName": {fileID: 0}
   "playerPok\xE9monHP": {fileID: 0}
@@ -66,3 +68,30 @@ MonoBehaviour:
   pokemonButton4: {fileID: 0}
   pokemonButton5: {fileID: 0}
   pokemonButton6: {fileID: 0}
+  aQuiLeTour: 0
+  playerPoke:
+    name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    animator: {fileID: 0}
+    attackIDlist: 
+  enemiePoke:
+    name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    animator: {fileID: 0}
+    attackIDlist: 

@@ -11,7 +11,10 @@ public class HerbesHautes : MonoBehaviour
 
     public GameObject combatWindow;
     public PokeData[] wildPokes;
-    public PokeData Wild;
+    public PokeData wildPoke;
+
+    public PokeData WildPoke { get => wildPoke; }
+
 
     void Awake()
     {
@@ -31,27 +34,18 @@ public class HerbesHautes : MonoBehaviour
         }
     }
 
-    /*public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player")*//*other.gameObject.layer.ToString() == "Grass"*//* && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
-        {
-            SpawnPokemon();
-            //Faire sur le player
-        }
-    }*/
-
     private void SpawnPokemon()
     {
         if (Random.Range(1, 101) <= spawnRate)
         {
             spawnRate = Random.Range(0, 100);
             int temp = Random.Range(0, wildPokes.Length);
-            Wild = wildPokes[temp];
+            wildPoke = wildPokes[temp];
             Debug.Log("Ratata dans ta gueule !!!");
             combatWindow.SetActive(true);
             GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
-            CombatManager.Instance.StartCombat(Wild);
+            CombatManager.Instance.StartCombat(wildPoke);
         }
         else
         {

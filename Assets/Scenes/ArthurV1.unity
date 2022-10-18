@@ -7743,6 +7743,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1787765959}
     m_Modifications:
+    - target: {fileID: 2560844607759078167, guid: 25def2f1991136f44b80c34667799315, type: 3}
+      propertyPath: combatWindow
+      value: 
+      objectReference: {fileID: 434790710}
     - target: {fileID: 6099478272264508484, guid: 25def2f1991136f44b80c34667799315, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8289,7 +8293,7 @@ MonoBehaviour:
     speed: 0
     sprite: {fileID: 0}
     animator: {fileID: 0}
-    attacklist: []
+    attackIDlist: 
   pokes: []
 --- !u!1 &1038853252
 GameObject:

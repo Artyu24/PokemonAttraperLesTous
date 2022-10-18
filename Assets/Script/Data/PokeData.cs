@@ -17,9 +17,8 @@ namespace Object.Data
         public Sprite sprite;
         public Animator animator;
 
-        [Header("Attack")] 
-        //property drawer/custom atribut pour drop down
-        public AttackData[] attacklist = new AttackData[4];
+        [Header("Attack")]
+        public int[] attackIDlist = new int[4];
 
         public PokeData(string name, int id = 0, string caption = "", Type type = Type.NORMAL) : base(name, id, caption, type)
         {

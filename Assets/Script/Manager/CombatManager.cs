@@ -9,7 +9,8 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
 
     public TeamPokes playerPokes;
-    private PokeData _player;
+    public AttackDatabase attackDatabase;
+    public PokeDataBase pokeDataBase;
     public GameObject combatWindow;
 
     [Header("PokémonsUI")]
@@ -17,11 +18,9 @@ public class CombatManager : MonoBehaviour
     public Slider playerPokémonHP;
     public Text playerPokémonHPText;
     public Image playerPokémonSprite;
-    //public Text playerPokémonLvl;
     public Text enemiePokémonName;
     public Slider enemiePokémonHP;
     public Image enemiePokémonSprite;
-    //public Text enemiePokémonLvl;
 
     [Header("Attacks")]
     public Text chatText;
@@ -43,14 +42,34 @@ public class CombatManager : MonoBehaviour
     [Header("Boucle")] 
     [Tooltip("false : tour de l'ordi, true : tour du joueur")]
     public bool aQuiLeTour;
-    private PokeData playerPoke;
-    private PokeData enemiePoke;
+    public PokeData playerPoke;
+    public PokeData enemiePoke;
 
+
+    private Dictionary<int, PokeData> dictPokeData = new Dictionary<int, PokeData>();
+    private Dictionary<int, AttackData> dictAttackData = new Dictionary<int, AttackData>();
+
+    public Dictionary<int, PokeData> DictPokeData => dictPokeData;
+    public Dictionary<int, AttackData> DictAttackData => dictAttackData;
 
     void Awake()
     {
         if (Instance == null)
-            Instance = this;
+            Instance = this; 
+        foreach (var pokeData in pokeDataBase.PokeData)
+        {
+            DictPokeData.Add(pokeData.ID, pokeData);
+        }
+        foreach (var attackData in attackDatabase.AttackData)
+        {
+            Debug.Log("Ajouter au dicossssssss");
+            dictAttackData.Add(attackData.ID, attackData);
+        }
+    }
+
+    void Start()
+    {
+        enemiePoke = DictPokeData[Random.Range(0,6)];
     }
 
     private void Update()
@@ -60,7 +79,7 @@ public class CombatManager : MonoBehaviour
             Return();
         }
 
-        if (playerPoke.speed < enemiePoke.speed)
+        /*if (playerPoke.speed < enemiePoke.speed)
         {
             aQuiLeTour = false;
         }
@@ -73,38 +92,33 @@ public class CombatManager : MonoBehaviour
         {
             case false:
                 int atkId = Random.Range(0,4);
-                Debug.Log("Le pokémon adverse à utilisé " + enemiePoke.attacklist[atkId]);
+                Debug.Log("Le pokémon adverse à utilisé " + DictAttackData[enemiePoke.attackIDlist[atkId]]);
                 aQuiLeTour = true;
                 break;
             case true:
                 aQuiLeTour = false;
                 break;
-        }
+        }*/
     }
 
     public void StartCombat(PokeData wild)
     {
-        _player = playerPokes.poke1;
+        playerPoke = playerPokes.poke1;
         enemiePokémonName.text = wild.name;
         enemiePokémonHP.value = wild.hp;
         enemiePokémonHP.maxValue = wild.hp;
         enemiePokémonSprite.sprite = wild.sprite;
 
-        playerPokémonName.text = _player.name;
-        playerPokémonHPText.text = _player.hp + "/" + _player.hpMax;
-        playerPokémonHP.value = _player.hp;
-        playerPokémonHP.maxValue = _player.hp;
-        playerPokémonSprite.sprite = _player.sprite;
+        playerPokémonName.text = playerPoke.name;
+        playerPokémonHPText.text = playerPoke.hp + "/" + playerPoke.hpMax;
+        playerPokémonHP.value = playerPoke.hp;
+        playerPokémonHP.maxValue = playerPoke.hp;
+        playerPokémonSprite.sprite = playerPoke.sprite;
 
-        attackButton1.text = _player.attacklist[0].name;
-        attackButton2.text = _player.attacklist[1].name;
-        attackButton3.text = _player.attacklist[2].name;
-        attackButton4.text = _player.attacklist[3].name;
-
-        /*for (int i = 0; i < pokes.length; i++)
-        {
-            pokemonButton1.text = playerPokes[i].name;
-        }*/
+        attackButton1.text = DictAttackData[playerPoke.attackIDlist[0]].name;
+        attackButton2.text = DictAttackData[playerPoke.attackIDlist[1]].name;
+        attackButton3.text = DictAttackData[playerPoke.attackIDlist[2]].name;
+        attackButton4.text = DictAttackData[playerPoke.attackIDlist[3]].name;
 
         chatText.text = wild.name + " est apparu !!!";
     }
@@ -118,8 +132,8 @@ public class CombatManager : MonoBehaviour
 
     public void Attack(int attackNumber)
     {
-        chatText.text = playerPokémonName.text + " utilise " + _player.attacklist[attackNumber].name + " !";
-        enemiePokémonHP.value -= _player.attacklist[attackNumber].dmg;
+        chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[attackNumber]].name + " !";
+        enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[attackNumber]].dmg;
         attackWindow.SetActive(false);
         if (enemiePokémonHP.value <= 0)
         {

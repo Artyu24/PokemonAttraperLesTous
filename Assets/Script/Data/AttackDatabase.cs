@@ -13,11 +13,5 @@ public class AttackDatabase : ScriptableObject
     void Reset()
     {
         AttackData.Add(new AttackData("Charge"));
-
-        /*foreach (var atkData in AttackData.ToList())
-        {
-            atkData.ID = atkData.name?.Substring(0, 3).ToUpper() + " | " + atkData.name;
-        }*/
-
     }
 }

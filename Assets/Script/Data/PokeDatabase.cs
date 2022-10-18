@@ -13,11 +13,5 @@ public class PokeDataBase : ScriptableObject
     void Reset()
     {
         PokeData.Add(new PokeData("Roucool"));
-
-        /*foreach (var pokeData in PokeData.ToList())
-        {
-            pokeData.ID = pokeData.name?.Substring(0, 3).ToUpper() + " | " + pokeData.name;
-        }*/
-
     }
 }
