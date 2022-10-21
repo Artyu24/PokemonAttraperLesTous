@@ -15,8 +15,8 @@ MonoBehaviour:
   PokeData:
   - name: Bulbizarre
     ID: 0
-    desc: 
-    TYPE: 0
+    desc: c'est juste un starter de type plante
+    TYPE: 2
     dmg: 10
     hp: 50
     hpMax: 50
@@ -27,8 +27,8 @@ MonoBehaviour:
     attackIDlist: 00000000010000000200000003000000
   - name: Dracolosse
     ID: 1
-    desc: 
-    TYPE: 0
+    desc: c 1 gro dragon
+    TYPE: 12
     dmg: 10
     hp: 50
     hpMax: 50
