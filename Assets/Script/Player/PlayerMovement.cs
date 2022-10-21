@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     private Vector3 startPos, endPos;
 
+    private Vector2 inputDir;
     public int moveSpeed = 20;
 
-    public LayerMask collisionLayer;
+    public LayerMask wallLayer;
+    public LayerMask waterLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
 
     private bool isMovementFinish;
+    private bool inWater = false;
     private bool walkOnWater = false;
+    public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
 
     private bool isTP = false;
     private Collider2D actualDoor;
@@ -50,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
                 walkOnWater = true;
             }
 
-            if (Input.GetKey(KeyCode.Z))
+            if (inputDir.y > 0)
             {
                 AnimPlayer(Direction.HAUT, "up");
                 if (!northCollision)
@@ -59,17 +65,16 @@ public class PlayerMovement : MonoBehaviour
                     InMovement(new Vector3(0, GameManager.Instance.GetMoveDistance, 0));
                 }
             }
-            else if (Input.GetKey(KeyCode.S))
+            else if (inputDir.y < 0)
             {
                 AnimPlayer(Direction.BAS, "bottom");
                 if (!southCollision)
                 {
                     endPos = new Vector3(transform.position.x, transform.position.y - GameManager.Instance.GetMoveDistance, transform.position.z);
                     InMovement(new Vector3(0, -GameManager.Instance.GetMoveDistance, 0));
-
                 }
             }
-            else if (Input.GetKey(KeyCode.Q))
+            else if (inputDir.x < 0)
             {
                 AnimPlayer(Direction.GAUCHE, "left");
                 if (!westCollision)
@@ -77,10 +82,8 @@ public class PlayerMovement : MonoBehaviour
                     endPos = new Vector3(transform.position.x - GameManager.Instance.GetMoveDistance, transform.position.y, transform.position.z);
                     InMovement(new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0));
                 }
-
-
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (inputDir.x > 0)
             {
                 AnimPlayer(Direction.DROITE, "right");
                 if (!eastCollision)
@@ -102,9 +105,8 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = true;
 
             isTP = false;
-            
-            
-            if(!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.S))
+
+            if(inputDir == Vector2.zero)
             {
                 anim.SetTrigger("Idl");
                 lastAnim = Direction.RIEN;
@@ -125,13 +127,12 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
 
     }
+    public void OnMove(InputAction.CallbackContext ctx) => inputDir = ctx.ReadValue<Vector2>();
 
     private void InMovement(Vector3 dir)
     {
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
         lastDir = dir;
-
-        //anim.SetBool("Walking", true);
     }
 
     private void AnimPlayer(Direction actualDir, string animTrigger)
@@ -139,7 +140,6 @@ public class PlayerMovement : MonoBehaviour
         if (lastAnim != actualDir)
         {
             anim.SetTrigger(animTrigger);
-
         }
         lastAnim = actualDir;
     }
@@ -150,22 +150,21 @@ public class PlayerMovement : MonoBehaviour
         Check(-transform.up, ref southCollision);
         Check(-transform.right, ref westCollision);
         Check(transform.right, ref eastCollision);
-
-        //Debug.Log(northCollision + "/" + southCollision + "/" + westCollision + "/" + eastCollision);
     }
 
     private void Check(Vector3 direction, ref bool isCollision)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, collisionLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, wallLayer);
         if (hit.collider != null)
         {
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Wall"))
-            {
-                isCollision = true;
-                return;
-            }
+            isCollision = true; 
+            return;
+        }
 
-            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Water") && !walkOnWater)
+        if (!walkOnWater)
+        {
+            RaycastHit2D hitWater = Physics2D.Raycast(transform.position, direction, raycastDistance, waterLayer);
+            if (hitWater.collider != null)
             {
                 isCollision = true;
                 return;
@@ -175,13 +174,6 @@ public class PlayerMovement : MonoBehaviour
         isCollision = false;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            walkOnWater = false;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -197,6 +189,22 @@ public class PlayerMovement : MonoBehaviour
             lastAnim = Direction.RIEN;
             
             StartCoroutine(WaitTP());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+
+        if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
+        {
+            if (!inWater)
+                inWater = true;
+            else
+            {
+                inWater = false;
+                walkOnWater = false;
+            }
+
         }
     }
 
