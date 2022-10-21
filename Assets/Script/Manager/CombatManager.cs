@@ -167,7 +167,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat state Player Attack = " + actualCombatState);
         if (actualCombatState == CombatState.PlayerAttack)
         {
-            CheckType(enemiePoke, DictAttackData[playerPoke.attackIDlist[playerAttackNbr]]);
+            //CheckType(enemiePoke, DictAttackData[playerPoke.attackIDlist[playerAttackNbr]]);
             enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].dmg;
             chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].name + " !";
             if (enemiePokémonHP.value <= 0)
@@ -220,6 +220,9 @@ public class CombatManager : MonoBehaviour
 
     public void CheckType(PokeData pokeType, AttackData attackType)
     {
-        
+        Debug.Log((int) attackType.TYPE); //ordonnée
+        Debug.Log((int) pokeType.TYPE); //abscisse
+
+
     }
 }

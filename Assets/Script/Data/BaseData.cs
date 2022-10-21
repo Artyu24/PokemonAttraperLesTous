@@ -11,13 +11,7 @@ namespace Object.Data
         public int ID;
         public string desc;
 
-        public string[] types = new []
-        {
-            "ACIER", "COMBAT", "DRAGON", "EAU", "ELECTRIK", "FEE", "FEU", "GLACE", "INSECTE", "NORMALE", "PLANTE", "POISON",
-            "PSY", "ROCHE", "SOL", "SPECTRE", "TENEBRES", "VOL"
-        };
-
-        /*public Type TYPE;
+        public Type TYPE;
 
         public enum Type
         {
@@ -39,7 +33,7 @@ namespace Object.Data
             SPECTRE,
             TENEBRES,
             VOL
-        }*/
+        }
 
         public BaseData(string name, int id, string caption, Type type)
         {

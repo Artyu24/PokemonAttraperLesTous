@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: Bulbizarre
     ID: 0
     desc: 
-    TYPE: 2
+    TYPE: 10
     dmg: 10
     hp: 50
     hpMax: 50
