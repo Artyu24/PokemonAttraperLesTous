@@ -13,6 +13,8 @@ public class HerbesHautes : MonoBehaviour
     public PokeData[] wildPokes = new PokeData[4];
     public PokeData wildPoke;
 
+    private bool inGrass = false;
+
     public PokeData WildPoke { get => wildPoke; }
 
 
@@ -36,6 +38,20 @@ public class HerbesHautes : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SpawnPokemon();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            if (!inGrass)
+                inGrass = true;
+            else
+            {
+                inGrass = false;
+            }
+
         }
     }
 

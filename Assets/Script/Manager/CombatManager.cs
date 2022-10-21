@@ -82,6 +82,13 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         playerPoke = playerPokes.pokes[0];
+        foreach (var poke in dictPokeData)
+        {
+            int i = 0;
+            dictPokeData[i].hp = dictPokeData[i].hpMax;
+            playerPokémonHP.value = playerPoke.hpMax;
+            enemiePokémonHP.value = enemiePoke.hpMax;
+        }
     }
 
     private void Update()
@@ -89,6 +96,17 @@ public class CombatManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             Return();
+        }
+
+        Debug.Log("Update combat state = " + actualCombatState);
+        if (actualCombatState == CombatState.PlayerVictory)
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+                GameManager.Instance.ActualGameState = GameState.Adventure;
+                combatWindow.SetActive(false);
+            }
         }
     }
 
@@ -152,13 +170,15 @@ public class CombatManager : MonoBehaviour
             chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].name + " !";
             if (enemiePokémonHP.value <= 0)
             {
-                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
-                GameManager.Instance.ActualGameState = GameState.Adventure;
-                combatWindow.SetActive(false);
+                chatText.text = "Player win !!!";
+                actualCombatState = CombatState.PlayerVictory;
+            }
+            else
+            {
+                actualCombatState = CombatState.EnemyAttack;
+                EnemyAttack();
             }
 
-            actualCombatState = CombatState.EnemyAttack;
-            EnemyAttack();
         }
     }
 
@@ -167,22 +187,21 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat state Enemy Attack = " + actualCombatState);
         if (actualCombatState == CombatState.EnemyAttack)
         {
-            playerPoke.hp -= DictAttackData[enemiePoke.attackIDlist[enemyAttackNbr]].dmg; 
+            playerPokémonHP.value -= DictAttackData[enemiePoke.attackIDlist[enemyAttackNbr]].dmg;
+            playerPoke.hp -= DictAttackData[enemiePoke.attackIDlist[enemyAttackNbr]].dmg;
             chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[enemyAttackNbr]].name + " !";
             if (playerPokémonHP.value <= 0)
             {
-                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
-                GameManager.Instance.ActualGameState = GameState.Adventure;
-                combatWindow.SetActive(false);
+                chatText.text = "Enemy win !!!";
+                actualCombatState = CombatState.PlayerVictory; //Changer pour EnemyVictory
+            }
+            else
+            {
+                actualCombatState = CombatState.PlayerChoose;
             }
 
-            actualCombatState = CombatState.PlayerChoose;
         }
     }
-
-
-
-
 
     public void FlyFight()
     {
