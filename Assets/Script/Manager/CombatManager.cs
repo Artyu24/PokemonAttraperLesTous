@@ -220,6 +220,6 @@ public class CombatManager : MonoBehaviour
 
     public void CheckType(PokeData pokeType, AttackData attackType)
     {
-
+        
     }
 }
