@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: Bulbizarre
     ID: 0
     desc: 
-    TYPE: 0
+    TYPE: 2
     dmg: 10
     hp: 50
     hpMax: 50
@@ -28,7 +28,7 @@ MonoBehaviour:
   - name: Dracolosse
     ID: 1
     desc: 
-    TYPE: 0
+    TYPE: 12
     dmg: 10
     hp: 50
     hpMax: 50
@@ -40,7 +40,7 @@ MonoBehaviour:
   - name: Metalosse
     ID: 2
     desc: 
-    TYPE: 0
+    TYPE: 4
     dmg: 10
     hp: 50
     hpMax: 50
@@ -52,7 +52,7 @@ MonoBehaviour:
   - name: Tortank
     ID: 3
     desc: 
-    TYPE: 0
+    TYPE: 1
     dmg: 10
     hp: 50
     hpMax: 50
@@ -64,7 +64,7 @@ MonoBehaviour:
   - name: Elecable
     ID: 4
     desc: 
-    TYPE: 0
+    TYPE: 7
     dmg: 10
     hp: 50
     hpMax: 50
@@ -76,7 +76,7 @@ MonoBehaviour:
   - name: Carchacroc
     ID: 5
     desc: 
-    TYPE: 0
+    TYPE: 15
     dmg: 10
     hp: 50
     hpMax: 50
