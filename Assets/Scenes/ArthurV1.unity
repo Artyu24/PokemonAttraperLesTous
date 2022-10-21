@@ -855,6 +855,8 @@ GameObject:
   - component: {fileID: 185040382}
   - component: {fileID: 185040381}
   - component: {fileID: 185040383}
+  - component: {fileID: 185040385}
+  - component: {fileID: 185040384}
   m_Layer: 4
   m_Name: Water
   m_TagString: Untagged
@@ -1616,10 +1618,91 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!66 &185040384
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185040379}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 185040383}
+    m_ColliderPaths:
+    - - X: -48900004
+        Y: 58900004
+      - X: -117700008
+        Y: 58900004
+      - X: -117700008
+        Y: -9900000
+      - X: -48900004
+        Y: -9900000
+    - - X: -88100008
+        Y: 19700000
+      - X: -88100008
+        Y: 29300000
+      - X: -78500000
+        Y: 29300000
+      - X: -78500000
+        Y: 19700000
+    - - X: 147100000
+        Y: -127300008
+      - X: 97900000
+        Y: -127300008
+      - X: 97900000
+        Y: -147100016
+      - X: 147100000
+        Y: -147100016
+  m_CompositePaths:
+    m_Paths:
+    - - {x: -4.8900294, y: -0.99}
+      - {x: -4.8900294, y: 5.8900003}
+      - {x: -11.770001, y: 5.8899713}
+      - {x: -11.769971, y: -0.99}
+    - - {x: -7.85, y: 1.9700295}
+      - {x: -8.810001, y: 1.9700295}
+      - {x: -8.809971, y: 2.93}
+      - {x: -7.85, y: 2.9299707}
+    - - {x: 14.709971, y: -14.710002}
+      - {x: 14.709971, y: -12.7300005}
+      - {x: 9.79, y: -12.730031}
+      - {x: 9.79003, y: -14.710002}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &185040385
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185040379}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1631,7 +1714,7 @@ GameObject:
   - component: {fileID: 222056220}
   - component: {fileID: 222056219}
   m_Layer: 0
-  m_Name: Plater Vcam
+  m_Name: Player Vcam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20793,10 +20876,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  collisionLayer:
+  wallLayer:
     serializedVersion: 2
-    m_Bits: 80
-  raycastDistance: 1
+    m_Bits: 64
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 16
+  raycastDistance: 1.2
   anim: {fileID: 1284568264}
 --- !u!114 &781142828
 MonoBehaviour:
@@ -20917,17 +21003,21 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 781142827}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d6c832ad-44ed-40f3-a7bd-bbfe19937d88
     m_ActionName: Player/Move[/Keyboard/z,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/q,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a0e45dec-1d9f-44e0-ae9b-eda636e46e04
-    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5935bfae-dd96-4ab7-8280-defe0fc99b3f
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 6bd62cba-805d-44b1-b0e1-30253a31c1aa

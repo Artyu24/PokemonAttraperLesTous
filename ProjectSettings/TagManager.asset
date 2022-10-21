@@ -11,6 +11,10 @@ TagManager:
   - 
   - Water
   - UI
+  - Wall
+  - Ground
+  - Decor
+  - Door
   - 
   - 
   - 
@@ -24,10 +28,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Layer 1
-  - Layer 2
-  - Layer 3
   - 
   - 
   - 
