@@ -56,10 +56,11 @@ public class CombatManager : MonoBehaviour
     [Tooltip("false : tour de l'ordi, true : tour du joueur")]
     public PokeData playerPoke;
     public PokeData enemiePoke;
-    #endregion
-
     private int playerAttackNbr;
     private int enemyAttackNbr;
+    public int[,] types;
+    #endregion
+
     #endregion
 
     void Awake()
@@ -166,6 +167,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat state Player Attack = " + actualCombatState);
         if (actualCombatState == CombatState.PlayerAttack)
         {
+            CheckType(enemiePoke, DictAttackData[playerPoke.attackIDlist[playerAttackNbr]]);
             enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].dmg;
             chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].name + " !";
             if (enemiePokémonHP.value <= 0)
@@ -214,5 +216,10 @@ public class CombatManager : MonoBehaviour
     {
         attackWindow.SetActive(false);
         pokemonWindow.SetActive(false);
+    }
+
+    public void CheckType(PokeData pokeType, AttackData attackType)
+    {
+
     }
 }
