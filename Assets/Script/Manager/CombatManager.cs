@@ -193,6 +193,7 @@ public class CombatManager : MonoBehaviour
 
     public void Return()
     {
+        attackWindow.SetActive(false);
         pokemonWindow.SetActive(false);
     }
 }
