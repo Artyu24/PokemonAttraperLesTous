@@ -46,15 +46,14 @@ public class HerbesHautes : MonoBehaviour
             spawnRate = Random.Range(0, 100);
             int temp = Random.Range(0, wildPokes.Length);
             wildPoke = wildPokes[temp];
-            Debug.Log("Ratata dans ta gueule !!!");
             combatWindow.SetActive(true);
             GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
+            CombatManager.Instance.ActualCombatState = CombatState.Init;
             CombatManager.Instance.StartCombat(wildPoke);
         }
         else
         {
-            Debug.Log("Pas de pokémon");
             spawnRate = Random.Range(0, 100);
         }
     }

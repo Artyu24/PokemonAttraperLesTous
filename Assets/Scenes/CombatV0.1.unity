@@ -9912,19 +9912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100ac43064190cf47b143d2285e164d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poke1:
-    name: 
-    ID: 0
-    desc: 
-    TYPE: 0
-    dmg: 0
-    hp: 0
-    hpMax: 0
-    def: 0
-    speed: 0
-    sprite: {fileID: 0}
-    animator: {fileID: 0}
-    attackIDlist: 
+  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
   pokes: []
 --- !u!1 &1038853252
 GameObject:

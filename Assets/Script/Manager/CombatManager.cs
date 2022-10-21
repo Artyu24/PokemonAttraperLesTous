@@ -9,11 +9,22 @@ public class CombatManager : MonoBehaviour
     #region Variables
     public static CombatManager Instance;
 
-    public TeamPokes playerPokes;
-    public AttackDatabase attackDatabase;
-    public PokeDataBase pokeDataBase;
-    public GameObject combatWindow;
+    private CombatState actualCombatState = CombatState.Init;
 
+    public CombatState ActualCombatState { get => actualCombatState; set => actualCombatState = value; }
+
+    public TeamPokes playerPokes; //pokemons du joueur
+    public AttackDatabase attackDatabase; //scriptable de toutes les attaques du jeu
+    public PokeDataBase pokeDataBase; //scriptable de tout les pokémons du jeu
+    private Dictionary<int, PokeData> dictPokeData = new Dictionary<int, PokeData>(); //dictionnaire de tout les pokémons du jeu
+    private Dictionary<int, AttackData> dictAttackData = new Dictionary<int, AttackData>(); //dictionnaire de toutes les attaques du jeu
+    public Dictionary<int, PokeData> DictPokeData => dictPokeData;
+    public Dictionary<int, AttackData> DictAttackData => dictAttackData;
+
+    public GameObject combatWindow; //fenêtre de l'interface de combat
+    public Text chatText; //zone de text qui affiche les infos, ex : trucmuche utilise charge !
+
+    #region PokémonsUI
     [Header("PokémonsUI")]
     public Text playerPokémonName;
     public Slider playerPokémonHP;
@@ -22,16 +33,6 @@ public class CombatManager : MonoBehaviour
     public Text enemiePokémonName;
     public Slider enemiePokémonHP;
     public Image enemiePokémonSprite;
-
-    [Header("Attacks")]
-    public Text chatText;
-    public GameObject attackWindow;
-    public Text attackButton1;
-    public Text attackButton2;
-    public Text attackButton3;
-    public Text attackButton4;
-    
-    [Header("Pokémons")]
     public GameObject pokemonWindow;
     public Text pokemonButton1;
     public Text pokemonButton2;
@@ -39,24 +40,32 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton4;
     public Text pokemonButton5;
     public Text pokemonButton6;
+    #endregion
 
+    #region AttacksInfo&UI
+    [Header("Attacks")]
+    public GameObject attackWindow;
+    public Text attackButton1;
+    public Text attackButton2;
+    public Text attackButton3;
+    public Text attackButton4;
+    #endregion
+
+    #region BoucleCombat
     [Header("Boucle")] 
     [Tooltip("false : tour de l'ordi, true : tour du joueur")]
     public PokeData playerPoke;
     public PokeData enemiePoke;
+    #endregion
 
-
-    private Dictionary<int, PokeData> dictPokeData = new Dictionary<int, PokeData>();
-    private Dictionary<int, AttackData> dictAttackData = new Dictionary<int, AttackData>();
-
-    public Dictionary<int, PokeData> DictPokeData => dictPokeData;
-    public Dictionary<int, AttackData> DictAttackData => dictAttackData;
     #endregion
 
     void Awake()
     {
         if (Instance == null)
-            Instance = this; 
+            Instance = this;
+
+        //remettre dans chaque database et utiliser le get
         foreach (var pokeData in pokeDataBase.PokeData)
         {
             DictPokeData.Add(pokeData.ID, pokeData);
@@ -67,14 +76,18 @@ public class CombatManager : MonoBehaviour
             dictAttackData.Add(attackData.ID, attackData);
         }
     }
-
+    
     void Start()
     {
-        playerPoke = DictPokeData[Random.Range(0, 6)];
+        playerPoke = playerPokes.pokes[0];
     }
 
     private void Update()
     {
+
+
+
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             Return();
@@ -83,13 +96,17 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(PokeData wild)
     {
+        //INIT
+        Debug.Log("Initialisation du combat : anim + textes");
+        chatText.text = wild.name + " est apparu !!!";
+
         enemiePoke = wild;
 
+        #region SetupUICombat
         enemiePokémonName.text = wild.name;
         enemiePokémonHP.value = wild.hp;
         enemiePokémonHP.maxValue = wild.hp;
         enemiePokémonSprite.sprite = wild.sprite;
-
         playerPokémonName.text = playerPoke.name;
         playerPokémonHPText.text = playerPoke.hp + "/" + playerPoke.hpMax;
         playerPokémonHP.value = playerPoke.hp;
@@ -100,8 +117,42 @@ public class CombatManager : MonoBehaviour
         attackButton2.text = DictAttackData[playerPoke.attackIDlist[1]].name;
         attackButton3.text = DictAttackData[playerPoke.attackIDlist[2]].name;
         attackButton4.text = DictAttackData[playerPoke.attackIDlist[3]].name;
+        #endregion
 
-        chatText.text = wild.name + " est apparu !!!";
+        actualCombatState = CombatState.PlayerChoose;
+    }
+
+    public void SelectAttack(int attackNumber)
+    {
+        if (actualCombatState == CombatState.PlayerChoose)
+        {
+            chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[attackNumber]].name + " !";
+            enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[attackNumber]].dmg;
+            attackWindow.SetActive(false);
+            if (enemiePokémonHP.value <= 0)
+            {
+                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+                GameManager.Instance.ActualGameState = GameState.Adventure;
+                combatWindow.SetActive(false);
+            }
+
+            actualCombatState = CombatState.EnemyChoose;
+        }
+    }
+
+    private void SelectEnemyAttack()
+    {
+        
+    }
+
+    public void PlayerAttack()
+    {
+
+    }
+
+    private void EnemyAttack()
+    {
+
     }
 
     public void FlyFight()
@@ -109,19 +160,6 @@ public class CombatManager : MonoBehaviour
         GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
         GameManager.Instance.ActualGameState = GameState.Adventure;
         combatWindow.SetActive(false);
-    }
-
-    public void Attack(int attackNumber)
-    {
-        chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[attackNumber]].name + " !";
-        enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[attackNumber]].dmg;
-        attackWindow.SetActive(false);
-        if (enemiePokémonHP.value <= 0)
-        {
-            GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
-            GameManager.Instance.ActualGameState = GameState.Adventure;
-            combatWindow.SetActive(false);
-        }
     }
 
     public void Return()

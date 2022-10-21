@@ -19,3 +19,16 @@ public enum PlayerState
     PlayerLeaveTP,
     PlayerInFight
 }
+public enum CombatState
+{
+    Init,
+    PlayerChoose,
+    EnemyChoose,
+    PlayerAttack,
+    EnemyAttack,
+    PlayerDeath,
+    EnemyDeath,
+    PlayerVictory,
+    EnemyVictory,
+    End
+}
