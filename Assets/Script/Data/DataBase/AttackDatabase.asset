@@ -16,36 +16,36 @@ MonoBehaviour:
   - name: Fatal Foudre
     ID: 0
     desc: 
-    TYPE: 7
+    TYPE: 4
     dmg: 10
     pp: 10
   - name: Tranche Herbe
     ID: 1
     desc: 
-    TYPE: 2
+    TYPE: 10
     dmg: 10
     pp: 10
   - name: Bulle d'O
     ID: 2
     desc: 
-    TYPE: 1
+    TYPE: 3
     dmg: 10
     pp: 10
   - name: "Draco M\xE9t\xE9or"
     ID: 3
     desc: 
-    TYPE: 12
+    TYPE: 2
     dmg: 10
     pp: 10
   - name: Tete de fer
     ID: 4
     desc: 
-    TYPE: 4
+    TYPE: 0
     dmg: 10
     pp: 10
   - name: Seisme
     ID: 5
     desc: 
-    TYPE: 15
+    TYPE: 14
     dmg: 10
     pp: 10
