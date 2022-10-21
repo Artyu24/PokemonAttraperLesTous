@@ -58,6 +58,8 @@ public class CombatManager : MonoBehaviour
     public PokeData enemiePoke;
     #endregion
 
+    private int playerAttackNbr;
+    private int enemyAttackNbr;
     #endregion
 
     void Awake()
@@ -84,10 +86,6 @@ public class CombatManager : MonoBehaviour
 
     private void Update()
     {
-
-
-
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             Return();
@@ -122,13 +120,36 @@ public class CombatManager : MonoBehaviour
         actualCombatState = CombatState.PlayerChoose;
     }
 
-    public void SelectAttack(int attackNumber)
+    public void PlayerChoose(int attackNumber)
     {
+        Debug.Log("Combat state Player choose = " + actualCombatState);
         if (actualCombatState == CombatState.PlayerChoose)
         {
-            chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[attackNumber]].name + " !";
-            enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[attackNumber]].dmg;
+            playerAttackNbr = attackNumber;
             attackWindow.SetActive(false);
+            actualCombatState = CombatState.EnemyChoose;
+            EnemyChoose();
+        }
+    }
+
+    private void EnemyChoose()
+    {
+        Debug.Log("Combat state Enemy choose = " + actualCombatState);
+        if (actualCombatState == CombatState.EnemyChoose)
+        {
+            int enemyAttackNbr = Random.Range(0, 5);
+            actualCombatState = CombatState.PlayerAttack;
+            PlayerAttack();
+        }
+    }
+
+    public void PlayerAttack()
+    {
+        Debug.Log("Combat state Player Attack = " + actualCombatState);
+        if (actualCombatState == CombatState.PlayerAttack)
+        {
+            enemiePokémonHP.value -= DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].dmg;
+            chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].name + " !";
             if (enemiePokémonHP.value <= 0)
             {
                 GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
@@ -136,24 +157,32 @@ public class CombatManager : MonoBehaviour
                 combatWindow.SetActive(false);
             }
 
-            actualCombatState = CombatState.EnemyChoose;
+            actualCombatState = CombatState.EnemyAttack;
+            EnemyAttack();
         }
-    }
-
-    private void SelectEnemyAttack()
-    {
-        
-    }
-
-    public void PlayerAttack()
-    {
-
     }
 
     private void EnemyAttack()
     {
+        Debug.Log("Combat state Enemy Attack = " + actualCombatState);
+        if (actualCombatState == CombatState.EnemyAttack)
+        {
+            playerPoke.hp -= DictAttackData[enemiePoke.attackIDlist[enemyAttackNbr]].dmg; 
+            chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[enemyAttackNbr]].name + " !";
+            if (playerPokémonHP.value <= 0)
+            {
+                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+                GameManager.Instance.ActualGameState = GameState.Adventure;
+                combatWindow.SetActive(false);
+            }
 
+            actualCombatState = CombatState.PlayerChoose;
+        }
     }
+
+
+
+
 
     public void FlyFight()
     {
