@@ -92,31 +92,26 @@ public class PlayerMovement : MonoBehaviour
                     InMovement(new Vector3(GameManager.Instance.GetMoveDistance, 0, 0));
                 }
             }
+            else
+                AnimPlayer(Direction.RIEN, "Idl");
         }
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
-            //anim.SetBool("Walking", false);
             CheckWall();
 
             GameManager.Instance.ActualPlayerState = PlayerState.PlayerStartMove;
             isMovementFinish = true;
 
             isTP = false;
-
-            if(inputDir == Vector2.zero)
-            {
-                anim.SetTrigger("Idl");
-                lastAnim = Direction.RIEN;
-            }
-
         }
         else if (transform.position != endPos)
         {
             isMovementFinish = false;
         }
+
 
         if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
