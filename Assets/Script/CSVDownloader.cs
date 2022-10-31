@@ -44,6 +44,6 @@ public class CSVDownloader : MonoBehaviour
             }
         }
 
-        onCompleted(downloadData);x
+        onCompleted(downloadData);
     }
 }
