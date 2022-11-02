@@ -8,35 +8,34 @@ namespace Object.Data
     {
         [Header("Base")] 
         public string name;
-        //public string ID;
         public int ID;
         public string desc;
+
         public Type TYPE;
 
         public enum Type
         {
-            NORMAL,
-            EAU,
-            PLANTE,
-            FEU,
             ACIER,
-            PSY,
             COMBAT,
-            ELECTRIQUE,
-            GLACE,
-            ROCHE,
-            VOL,
-            FÉE,
             DRAGON,
-            TÉNEBRE,
-            POISION,
+            EAU,
+            ELECTRIK,
+            FEE,
+            FEU,
+            GLACE,
+            INSECTE,
+            NORMALE,
+            PLANTE,
+            POISON,
+            PSY,
+            ROCHE,
             SOL,
-            INSECT,
             SPECTRE,
-            OBJET
+            TENEBRES,
+            VOL
         }
 
-        public BaseData(string name, /*string id*/ int id, string caption, Type type)
+        public BaseData(string name, int id, string caption, Type type)
         {
             this.name = name;
             ID = id;

@@ -13,39 +13,39 @@ MonoBehaviour:
   m_Name: AttackDatabase
   m_EditorClassIdentifier: 
   AttackData:
-  - name: Charge
+  - name: Fatal Foudre
     ID: 0
     desc: 
-    TYPE: 0
+    TYPE: 4
     dmg: 10
     pp: 10
-  - name: Griffe
+  - name: Tranche Herbe
     ID: 1
     desc: 
-    TYPE: 0
+    TYPE: 10
     dmg: 10
     pp: 10
   - name: Bulle d'O
     ID: 2
     desc: 
-    TYPE: 0
+    TYPE: 3
     dmg: 10
     pp: 10
-  - name: Gros Yeux
+  - name: "Draco M\xE9t\xE9or"
     ID: 3
     desc: 
-    TYPE: 0
+    TYPE: 2
     dmg: 10
     pp: 10
-  - name: Abri
+  - name: Tete de fer
     ID: 4
     desc: 
     TYPE: 0
     dmg: 10
     pp: 10
-  - name: Cannon Ultra Geyser
+  - name: Seisme
     ID: 5
     desc: 
-    TYPE: 0
+    TYPE: 14
     dmg: 10
     pp: 10

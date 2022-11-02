@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isMovementFinish;
     private bool inWater = false;
+    private bool inGrass = false;
+    private HerbesHautes herbesHautes;
     private bool walkOnWater = false;
     public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
 
@@ -106,6 +108,10 @@ public class PlayerMovement : MonoBehaviour
             isMovementFinish = true;
 
             isTP = false;
+            if (herbesHautes != null)
+            {
+                herbesHautes.SpawnPokemon();
+            }
         }
         else if (transform.position != endPos)
         {
@@ -184,6 +190,20 @@ public class PlayerMovement : MonoBehaviour
             lastAnim = Direction.RIEN;
             
             StartCoroutine(WaitTP());
+        }
+
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Grass"))
+        {
+            if (!inGrass)
+            {
+                inGrass = true;
+                herbesHautes = collision.GetComponent<HerbesHautes>();
+            }
+            else
+            {
+                inGrass = false;
+                herbesHautes = null;
+            }
         }
     }
 
