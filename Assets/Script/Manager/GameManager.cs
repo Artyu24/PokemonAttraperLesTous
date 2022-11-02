@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     private float moveDistance = 1;
     public float GetMoveDistance => moveDistance;
 
-    [SerializeField] private Animator fadeAnim; 
+    [SerializeField] private Animator fadeAnim;
+    public GameObject AreaFrame;
 
     private GameState actualGameState = GameState.Adventure;
     private PlayerState actualPlayerState = PlayerState.PlayerStartMove;
