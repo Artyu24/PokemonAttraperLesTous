@@ -85,15 +85,3 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
     animator: {fileID: 0}
     attackIDlist: 00000000010000000200000003000000
-  - name: TrucMuche
-    ID: 5
-    desc: 
-    TYPE: 3
-    dmg: 10
-    hp: 50
-    hpMax: 50
-    def: 5
-    speed: 1
-    sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
-    animator: {fileID: 0}
-    attackIDlist: 00000000010000000200000003000000
