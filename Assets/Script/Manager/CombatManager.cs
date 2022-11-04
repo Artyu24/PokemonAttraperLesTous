@@ -183,7 +183,7 @@ public class CombatManager : MonoBehaviour
 
         }
     }
-
+    // pour l'instant ca va trop vite faudrait mettre des coroutines, ou jouer avec les animes et les events pour qu'on ai le temps de voir chaque truc qui se passe
     private void EnemyAttack()
     {
         Debug.Log("Combat state Enemy Attack = " + actualCombatState);
@@ -218,11 +218,12 @@ public class CombatManager : MonoBehaviour
         pokemonWindow.SetActive(false);
     }
 
+
+    //c'est pour les types avec le excel, mais j'ai pas eu le temps de finir l'integration du dit excel, en gros ca marche pas encore
+
     public void CheckType(PokeData pokeType, AttackData attackType)
     {
         Debug.Log((int) attackType.TYPE); //ordonnée
         Debug.Log((int) pokeType.TYPE); //abscisse
-
-
     }
 }

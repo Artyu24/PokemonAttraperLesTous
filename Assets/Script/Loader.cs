@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Loader : MonoBehaviour
+/*public class Loader : MonoBehaviour
 {
     private int progress = 0;
     private List<string> languages = new List<string>();
@@ -54,4 +54,4 @@ public class Loader : MonoBehaviour
     {
 
     }
-}
+}*/

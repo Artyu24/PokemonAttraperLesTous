@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class CSVDownloader : MonoBehaviour
+/*public class CSVDownloader : MonoBehaviour
 {
     private const string googleSheetDoc = "11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY";
 
@@ -45,4 +45,4 @@ public class CSVDownloader : MonoBehaviour
         }
         OnCompleted(downloadData);
     }
-}
+}*/
