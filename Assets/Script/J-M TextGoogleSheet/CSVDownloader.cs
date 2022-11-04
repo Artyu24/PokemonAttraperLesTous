@@ -1,48 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-
-/*public class CSVDownloader : MonoBehaviour
-{
-    private const string googleSheetDoc = "11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY";
-
-    private const string url = "https://docs.google.com/spreadsheets/d/" + googleSheetDoc + "/export?format-csv";
-
-    internal static IEnumerator DownloadData(System.Action<string> OnCompleted)
-    {
-        yield return new WaitForEndOfFrame();
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//// CSVDownloader.cs
+//using UnityEngine.Networking;
 
 
-        string downloadData = null;
-        using(UnityWebRequest webRequest = UnityWebRequest.Get(url))
-        {
-            yield return webRequest.SendWebRequest();
+//public static class CSVDownloader
+//{
+//    private const string googleSheetDoc = "11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY";
 
+//    private const string url = "https://docs.google.com/spreadsheets/d/" + googleSheetDoc + "/export?format=csv";
 
-            if (webRequest.isNetworkError)
-            {
-                Debug.Log("Download Error : " + webRequest.error);
-                downloadData = PlayerPrefs.GetString("LastDataDowloaded", null);
-                string versionText = PlayerPrefs.GetString("LastDataDowloaded", null);
-                Debug.Log("Using stale data version " + versionText);
-            }
-            else
-            {
-                Debug.Log("Download Success");
-                Debug.Log("Data : " + webRequest.downloadHandler.text);
+//    internal static IEnumerator DownloadData(System.Action<string> onCompleted)
+//    {
+//        yield return new WaitForEndOfFrame();
 
-                string versionSection = webRequest.downloadHandler.text.Substring(0, 5);
-                int equalIndex = versionSection.IndexOf('=');
-                UnityEngine.Assertions.Assert.IsFalse(equalIndex == -1, "Could not find a '-' at the start of the CSV");
-                string versionText = webRequest.downloadHandler.text.Substring(0, equalIndex);
-                Debug.Log("Dowload Data version: " + versionText);
-                PlayerPrefs.SetString("LastDataDownloaded", webRequest.downloadHandler.text);
-                PlayerPrefs.SetString("LastDataDownloadedVersion", versionText);
-                downloadData = webRequest.downloadHandler.text.Substring(equalIndex + 1);
+//        string downloadData = null;
+//        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+//        {
+//            Debug.Log("Starting Download...");
+//            yield return webRequest.SendWebRequest();
+//            int equalsIndex = ExtractEqualsIndex(webRequest.downloadHandler);
+//            if (webRequest.isNetworkError || (-1 == equalsIndex))
+//            {
+//                Debug.Log("...Download Error: " + webRequest.error);
+//                downloadData = PlayerPrefs.GetString("LastDataDownloaded", null);
+//                string versionText = PlayerPrefs.GetString("LastDataDownloadedVersion", null);
+//                Debug.Log("Using stale data version: " + versionText);
+//            }
+//            else
+//            {
+//                string versionText = webRequest.downloadHandler.text.Substring(0, equalsIndex);
+//                downloadData = webRequest.downloadHandler.text.Substring(equalsIndex + 1);
+//                PlayerPrefs.SetString("LastDataDownloadedVersion", versionText);
+//                PlayerPrefs.SetString("LastDataDownloaded", downloadData);
+//                Debug.Log("...Downloaded version: " + versionText);
 
-            }
-        }
-        OnCompleted(downloadData);
-    }
-}*/
+//            }
+//        }
+
+//        onCompleted(downloadData);
+//    }
+
+//    private static int ExtractEqualsIndex(DownloadHandler d)
+//    {
+//        if (d.text == null || d.text.Length < 10)
+//        {
+//            return -1;
+//        }
+//        // First term will be preceeded by version number, e.g. "100=English"
+//        string versionSection = d.text.Substring(0, 5);
+//        int equalsIndex = versionSection.IndexOf('=');
+//        if (equalsIndex == -1)
+//            Debug.Log("Could not find a '=' at the start of the CVS");
+//        return equalsIndex;
+//    }
+//}
