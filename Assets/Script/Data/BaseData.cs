@@ -11,9 +11,9 @@ namespace Object.Data
         public int ID;
         public string desc;
 
-        public Type TYPE;
+        public PokeType TYPE;
 
-        public enum Type
+        public enum PokeType
         {
             ACIER,
             COMBAT,
@@ -35,12 +35,12 @@ namespace Object.Data
             VOL
         }
 
-        public BaseData(string name, int id, string caption, Type type)
+        public BaseData(string name, int id, string caption, PokeType pokeType)
         {
             this.name = name;
             ID = id;
             desc = caption;
-            TYPE = type;
+            TYPE = pokeType;
         }
     }
 }

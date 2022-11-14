@@ -15,37 +15,38 @@ MonoBehaviour:
   AttackData:
   - name: Fatal Foudre
     ID: 0
-    desc: 
+    desc: "La foudre tombe sur l'ennemi pour lui infliger des d\xE9g\xE2ts."
     TYPE: 4
-    dmg: 10
+    dmg: 110
     pp: 10
   - name: Tranche Herbe
     ID: 1
-    desc: 
+    desc: "Des feuilles aiguis\xE9es comme des rasoirs entaillent l'ennemi."
     TYPE: 10
-    dmg: 10
-    pp: 10
+    dmg: 55
+    pp: 25
   - name: Bulle d'O
     ID: 2
-    desc: 
+    desc: "Des bulles d'eau sont envoy\xE9es avec puissance sur l'ennemi."
     TYPE: 3
-    dmg: 10
-    pp: 10
+    dmg: 65
+    pp: 20
   - name: "Draco M\xE9t\xE9or"
     ID: 3
-    desc: 
+    desc: "Le lanceur invoque des com\xE8tes."
     TYPE: 2
-    dmg: 10
-    pp: 10
+    dmg: 130
+    pp: 5
   - name: Tete de fer
     ID: 4
-    desc: 
+    desc: "Le lanceur heurte l'ennemi avec sa t\xEAte dure comme de l'acier."
     TYPE: 0
-    dmg: 10
-    pp: 10
+    dmg: 80
+    pp: 15
   - name: Seisme
     ID: 5
-    desc: 
+    desc: "Le lanceur provoque un tremblement de terre touchant tous les Pok\xE9mon
+      autour de lui."
     TYPE: 14
-    dmg: 10
+    dmg: 100
     pp: 10
