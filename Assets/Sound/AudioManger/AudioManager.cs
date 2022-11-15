@@ -1,24 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 
 public class AudioManager : MonoBehaviour
 {
+    public Sound[] sounds;
 
-    public AudioMixer audioMixer;
-    private readonly string volumeMain = "MainVolume"; 
-    private readonly string volumeMusic = "MusicVolume"; 
-    private readonly string volumeSFX = "SFXVolume"; 
-    // Start is called before the first frame update
-    void Start()
+    public static AudioManager instance;
+    private void Start()
     {
-        audioMixer.SetFloat(volumeMain , 0);
+        FindObjectOfType<AudioManager>().Play("MainTheme");
+
+    }
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.audioMixer;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play(string name)
     {
-        
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found (surement mal ecrit entre le script et sur Unity)");
+            return;
+        }
+        s.source.Play();
     }
 }
