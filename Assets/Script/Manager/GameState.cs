@@ -33,3 +33,12 @@ public enum CombatState
     EnemyVictory,
     End
 }
+
+public enum PotentialDirection
+{
+    HAUT,
+    BAS,
+    GAUCHE,
+    DROITE,
+    RIEN
+}
