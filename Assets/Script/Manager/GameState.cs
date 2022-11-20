@@ -13,12 +13,11 @@ public enum GameState
 
 public enum PlayerState
 {
-    PlayerStartMove,
-    PlayerInMovement,
-    PlayerEnterTP,
-    PlayerLeaveTP,
-    PlayerWaterInteraction,
-    PlayerInFight
+    Idle,
+    InMovement,
+    InFight,
+    Teleportation,
+    WaterInteraction
 }
 public enum CombatState
 {

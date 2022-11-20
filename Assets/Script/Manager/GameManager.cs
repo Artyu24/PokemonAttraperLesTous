@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject WaterBox => waterBox;
 
     private GameState actualGameState = GameState.Adventure;
-    private PlayerState actualPlayerState = PlayerState.PlayerStartMove;
+    private PlayerState actualPlayerState = PlayerState.Idle;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
     public PlayerState ActualPlayerState { get => actualPlayerState; set => actualPlayerState = value; }
 

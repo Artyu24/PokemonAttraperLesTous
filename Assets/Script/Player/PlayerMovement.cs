@@ -7,11 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Layer for Interaction")]
-    public LayerMask wallLayer;
-    public LayerMask waterLayer;
-    public LayerMask interactLayer;
-    public float raycastDistance = 2;
+    public static PlayerMovement Instance;
 
     [Header("Different Area")]
     private bool inWater = false;
@@ -31,28 +27,51 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 inputDir;
     private Dictionary<PotentialDirection, DirectionData> dictDirection = new Dictionary<PotentialDirection, DirectionData>();
 
+    [Header("Interaction")]
+    public LayerMask wallLayer;
+    public LayerMask waterLayer;
+    public LayerMask interactLayer;
+    public float raycastDistance = 2;
+
+    public delegate void InteractionDelegate();
+    private InteractionDelegate actualInteractionDelegate = null;
+    public InteractionDelegate ActualInteractionDelegate { get => actualInteractionDelegate; set => actualInteractionDelegate = value; }
+
     [Header("Animation")]
     public Animator anim;
     private PotentialDirection lastAnim = PotentialDirection.RIEN;
 
-
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     private void Start()
     {
         endPos = GetComponent<BoxCenter>().CenterObject();
+
+        #region Init Direction Dictionnary
 
         dictDirection.Add(PotentialDirection.HAUT, new DirectionData(PotentialDirection.HAUT, "up", new Vector3(0, GameManager.Instance.GetMoveDistance, 0), transform.up));
         dictDirection.Add(PotentialDirection.BAS, new DirectionData(PotentialDirection.BAS, "bottom", new Vector3(0, -GameManager.Instance.GetMoveDistance, 0), -transform.up));
         dictDirection.Add(PotentialDirection.GAUCHE, new DirectionData(PotentialDirection.GAUCHE, "left", new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0), -transform.right));
         dictDirection.Add(PotentialDirection.DROITE, new DirectionData(PotentialDirection.DROITE, "right", new Vector3(GameManager.Instance.GetMoveDistance, 0, 0), transform.right));
         dictDirection.Add(PotentialDirection.RIEN, new DirectionData(PotentialDirection.RIEN, "Idl"));
+
+        #endregion
+
+        actualInteractionDelegate = LaunchInteraction;
     }
 
 
     private void Update()
     {
-        //INPUT
-        if (GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerStartMove)
+        #region MOVEMENT
+
+        #region Input
+
+        if (GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.Idle)
         {
             PotentialDirection dirEnum = PotentialDirection.RIEN;
             if (inputDir.y > 0)
@@ -75,19 +94,21 @@ public class PlayerMovement : MonoBehaviour
                     endPos = transform.position + dirChoose.mouv;
                     lastDirEnum = dirEnum;
 
-                    GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+                    GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
                 }
             }
-
         }
 
-        //END MOVEMENT
-        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
+        #endregion
+
+        #region End Movement
+
+        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
         {
             endPos = GetComponent<BoxCenter>().CenterObject();
             transform.position = endPos;
 
-            GameManager.Instance.ActualPlayerState = PlayerState.PlayerStartMove;
+            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
 
             isTP = false;
             if (herbesHautes != null)
@@ -96,29 +117,40 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //IN MOVEMENT
-        if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
+        #endregion
+
+        #region In Movement
+
+        if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
+
+        #endregion
+
+        #endregion
     }
+
+    #region Input Action
     public void OnMove(InputAction.CallbackContext ctx)
     {
         inputDir = ctx.ReadValue<Vector2>();
+
+        if (GameManager.Instance.ActualPlayerState == PlayerState.WaterInteraction && ctx.started)
+        {
+            if(Math.Abs(inputDir.y) > 0)
+                WaterZone.Instance.SwitchText();
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, dictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
-            Debug.DrawRay(transform.position, dictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
-
-            if (hit.collider != null)
-            {
-                if (hit.collider.GetComponent<IInteractable>() != null)
-                    hit.collider.GetComponent<IInteractable>().Interact();
-            }
+            actualInteractionDelegate();
         }
     }
+    #endregion
+
+    #region Animation
 
     private void AnimPlayer(PotentialDirection actualDir, string animTrigger)
     {
@@ -129,6 +161,10 @@ public class PlayerMovement : MonoBehaviour
         lastAnim = actualDir;
     }
 
+    #endregion
+
+    #region Check Collision
+
     private void Check(Vector3 direction, ref bool isCollision)
     {
         Debug.DrawRay(transform.position, direction * raycastDistance, Color.blue, 2f);
@@ -137,8 +173,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isCollision = true;
 
-            if(FindObjectOfType<AudioManager>() != null)
-                FindObjectOfType<AudioManager>().Play("BlockSound");
+            //if(FindObjectOfType<AudioManager>() != null)
+            //    FindObjectOfType<AudioManager>().Play("BlockSound");
             
             return;
         }
@@ -157,6 +193,30 @@ public class PlayerMovement : MonoBehaviour
         isCollision = false;
     }
 
+    #endregion
+
+    #region Interaction
+
+    public void ResetInteractionFunction()
+    {
+        actualInteractionDelegate = LaunchInteraction;
+    }
+
+    private void LaunchInteraction()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
+        Debug.DrawRay(transform.position, dictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.GetComponent<IInteractable>() != null)
+                hit.collider.GetComponent<IInteractable>().Interact();
+        }
+    }
+
+    #endregion
+
+    #region Enter / Exit Trigger
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -165,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
             isTP = true;
             actualDoor = collision;
 
-            GameManager.Instance.ActualPlayerState = PlayerState.PlayerEnterTP;
+            GameManager.Instance.ActualPlayerState = PlayerState.Teleportation;
             GameManager.Instance.ActivateFade(true);
             
             anim.SetTrigger("Idl");
@@ -194,7 +254,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
         if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
             if (!inWater)
@@ -204,9 +263,12 @@ public class PlayerMovement : MonoBehaviour
                 inWater = false;
                 walkOnWater = false;
             }
-
         }
     }
+
+    #endregion
+
+    #region Teleportation in Building
 
     private IEnumerator WaitTP()
     {
@@ -220,9 +282,13 @@ public class PlayerMovement : MonoBehaviour
         endPos = GetComponent<BoxCenter>().CenterObject() + dictDirection[lastDirEnum].mouv;
         transform.position = GetComponent<BoxCenter>().CenterObject();
         GameManager.Instance.ActivateFade(false);
-        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+        GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
     }
+
+    #endregion
 }
+
+#region Direction Data Class
 
 public class DirectionData
 {
@@ -248,3 +314,5 @@ public class DirectionData
         transformDir = Vector3.zero;
     }
 }
+
+#endregion

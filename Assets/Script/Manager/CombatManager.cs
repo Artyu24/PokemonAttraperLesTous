@@ -126,7 +126,7 @@ public class CombatManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.C))
             {
-                GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+                GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
                 GameManager.Instance.ActualGameState = GameState.Adventure;
                 combatWindow.SetActive(false);
             }
@@ -229,7 +229,7 @@ public class CombatManager : MonoBehaviour
 
     public void FlyFight()
     {
-        GameManager.Instance.ActualPlayerState = PlayerState.PlayerInMovement;
+        GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
         GameManager.Instance.ActualGameState = GameState.Adventure;
         combatWindow.SetActive(false);
     }
