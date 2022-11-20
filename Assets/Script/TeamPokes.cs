@@ -11,7 +11,14 @@ public class TeamPokes : MonoBehaviour
 
     private void Awake()
     {
-        AddPokeToTeam(pokeDataBase.PokeData);
+        if (pokeDataBase != null)
+        {
+            AddPokeToTeam(pokeDataBase.PokeData);
+        }
+        else
+        {
+            Debug.Log("Il manque la database Pokémon");
+        }
     }
 
     public void AddPokeToTeam(List<PokeData> newPokes)

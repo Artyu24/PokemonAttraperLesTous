@@ -189,7 +189,8 @@ public class PlayerMovement : MonoBehaviour
         if (hit.collider != null)
         {
             isCollision = true;
-            FindObjectOfType<AudioManager>().Play("BlockSound");
+            if(FindObjectOfType<AudioManager>() != null)
+                FindObjectOfType<AudioManager>().Play("BlockSound");
             return;
         }
 

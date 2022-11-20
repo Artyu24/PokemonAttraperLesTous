@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Object.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,19 +70,40 @@ public class CombatManager : MonoBehaviour
             Instance = this;
 
         //remettre dans chaque database et utiliser le get
-        foreach (var pokeData in pokeDataBase.PokeData)
+        if (pokeDataBase != null)
         {
-            DictPokeData.Add(pokeData.ID, pokeData);
+            foreach (var pokeData in pokeDataBase.PokeData)
+            {
+                DictPokeData.Add(pokeData.ID, pokeData);
+            }
+        }
+        else
+        {
+            Debug.Log("Il manque la database de pokémon");
         }
 
-        foreach (var attackData in attackDatabase.AttackData)
+
+        if (attackDatabase != null)
         {
-            dictAttackData.Add(attackData.ID, attackData);
+            foreach (var attackData in attackDatabase.AttackData)
+            {
+                dictAttackData.Add(attackData.ID, attackData);
+            }
+        }
+        else
+        {
+            Debug.Log("Il manque la database d'attack");
         }
     }
     
     void Start()
     {
+        if (playerPokes.pokes.Count == 0)
+        {
+            Debug.Log("Le joueur n'a pas de pokémon");
+            return;
+        }
+
         playerPoke = playerPokes.pokes[0];
         foreach (var poke in dictPokeData)
         {
@@ -99,7 +121,7 @@ public class CombatManager : MonoBehaviour
             Return();
         }
 
-        Debug.Log("Update combat state = " + actualCombatState);
+        //Debug.Log("Update combat state = " + actualCombatState);
         if (actualCombatState == CombatState.PlayerVictory)
         {
             if (Input.GetKeyDown(KeyCode.C))

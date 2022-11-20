@@ -18,8 +18,14 @@ public class HerbesHautes : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < wildPokes.Length; i++)
+        if (CombatManager.Instance.DictPokeData.Count == 0)
         {
+            Debug.Log("Le dictionnaire de Pokémon n'est pas bon");
+            return;
+        }
+
+        for (int i = 0; i < wildPokes.Length; i++)
+        { 
             wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
         }
     }
