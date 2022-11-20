@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask wallLayer;
     public LayerMask waterLayer;
+    public LayerMask interactLayer;
     public float raycastDistance = 2;
     private bool northCollision, southCollision, eastCollision, westCollision;
 
@@ -53,11 +55,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (isMovementFinish && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.PlayerStartMove)
         {
-            if (Input.GetKey(KeyCode.F))
-            {
-                walkOnWater = true;
-            }
-
             if (inputDir.y > 0)
             {
                 AnimPlayer(Direction.HAUT, "up");
@@ -122,13 +119,46 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.PlayerInMovement)
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
 
-        Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
-        Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
-        Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
-        Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
-
+        //Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.blue);
+        //Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.blue);
+        //Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.blue);
+        //Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.blue);
     }
     public void OnMove(InputAction.CallbackContext ctx) => inputDir = ctx.ReadValue<Vector2>();
+
+    public void OnInteract(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            RaycastHit2D hit = new RaycastHit2D();
+            if (lastDir == new Vector3(0, GameManager.Instance.GetMoveDistance, 0))
+            {
+                hit = Physics2D.Raycast(transform.position, transform.up, raycastDistance, interactLayer);
+                Debug.DrawRay(transform.position, transform.up * raycastDistance, Color.yellow);
+            }
+            else if (lastDir == new Vector3(0, -GameManager.Instance.GetMoveDistance, 0))
+            {
+                hit = Physics2D.Raycast(transform.position, -transform.up, raycastDistance, interactLayer);
+                Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.yellow);
+            }
+            else if (lastDir == new Vector3(GameManager.Instance.GetMoveDistance, 0, 0))
+            {
+                hit = Physics2D.Raycast(transform.position, transform.right, raycastDistance, interactLayer);
+                Debug.DrawRay(transform.position, transform.right * raycastDistance, Color.yellow);
+            }
+            else if (lastDir == new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0))
+            {
+                hit = Physics2D.Raycast(transform.position, -transform.right, raycastDistance, interactLayer);
+                Debug.DrawRay(transform.position, -transform.right * raycastDistance, Color.yellow);
+            }
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.GetComponent<IInteractable>() != null)
+                    hit.collider.GetComponent<IInteractable>().Interact();
+            }
+        }
+    }
 
     private void InMovement(Vector3 dir)
     {

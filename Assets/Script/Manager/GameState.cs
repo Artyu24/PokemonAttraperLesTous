@@ -17,6 +17,7 @@ public enum PlayerState
     PlayerInMovement,
     PlayerEnterTP,
     PlayerLeaveTP,
+    PlayerWaterInteraction,
     PlayerInFight
 }
 public enum CombatState
