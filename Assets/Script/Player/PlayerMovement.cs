@@ -188,9 +188,11 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, wallLayer);
         if (hit.collider != null)
         {
-            isCollision = true; 
+            isCollision = true;
+            FindObjectOfType<AudioManager>().Play("BlockSound");
             return;
         }
+
 
         if (!walkOnWater)
         {
@@ -218,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
             
             anim.SetTrigger("Idl");
             lastAnim = Direction.RIEN;
-            
+            FindObjectOfType<AudioManager>().Play("DoorSound");
             StartCoroutine(WaitTP());
         }
 

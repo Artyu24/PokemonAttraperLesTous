@@ -1,16 +1,24 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Codice.CM.Common.Serialization;
 using Object.Data;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Object.Data.BaseData;
+using static UnityEditor.Progress;
 using static UnityEditor.Rendering.FilterWindow;
 
 public class ToolVisuPoke : EditorWindow
 {
-    private List<PokeData> allPoke = new List<PokeData>();
+    private List<PokeData> allPoke;
     private PokeDataBase pokeDataBase;
+
+    private List<AttackData> allAttack;
+    private AttackDatabase attackDataBase;
 
     private VisualElement leftPane;
     private VisualElement rightPane;
@@ -22,7 +30,20 @@ public class ToolVisuPoke : EditorWindow
     private TextField pokeDesc;
     private TextField pokeType;
     private Image pokeImage;
+    private int ID;
 
+    [Header("Attacks")] 
+    private PopupField<string>[] attackPopupFields;
+    private TextElement[] attackDamage;
+    private TextElement[] attackPP;
+    private TextElement[] attackType;
+    private TextElement[] attackDesc;
+
+    [Header("stats")] 
+    private TextField dmgStat;
+    private TextField hpStat;
+    private TextField defStat;
+    private TextField speedStat;
 
     [MenuItem("Window/PokémonCreator")]
     static void Init()
@@ -41,13 +62,46 @@ public class ToolVisuPoke : EditorWindow
         pokeDesc = new TextField();
         pokeType = new TextField();
         pokeImage = new Image();
+
+        attackPopupFields = new PopupField<string>[4];
+        attackDamage = new TextElement[4];
+        attackPP = new TextElement[4];
+        attackType = new TextElement[4];
+        attackDesc = new TextElement[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            attackPopupFields[i] = new PopupField<string>();
+            attackDamage[i] = new TextElement();
+            attackPP[i] = new TextElement();
+            attackType[i] = new TextElement();
+            attackDesc[i] = new TextElement();
+        }
+        dmgStat = new TextField();
+        hpStat = new TextField();
+        defStat = new TextField();
+        speedStat = new TextField();
+
+        }
+
+    void Update()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (attackDesc[i].text != allAttack[attackPopupFields[i].index].desc)
+            {
+                UpdateAttack(i, attackPopupFields[i].index);
+            }
+        }
     }
 
     void CreateGUI()
     {
         pokeDataBase = (PokeDataBase)AssetDatabase.LoadAssetAtPath("Assets/Script/Data/DataBase/PokeDataBase.asset", typeof(PokeDataBase));
+        attackDataBase = (AttackDatabase)AssetDatabase.LoadAssetAtPath("Assets/Script/Data/DataBase/AttackDatabase.asset", typeof(AttackDatabase));
 
         allPoke = pokeDataBase.PokeData;
+        allAttack = attackDataBase.AttackData;
 
         // Create a two-pane view with the left pane being fixed with
         var splitView = new TwoPaneSplitView(0, 300, TwoPaneSplitViewOrientation.Horizontal);
@@ -68,6 +122,28 @@ public class ToolVisuPoke : EditorWindow
         CreateBorder(BoxLTop, 3);
         leftPane.Add(BoxLTop);
 
+        Button save = new Button();
+        save.text = "SAVE CHANGES";
+        save.clicked += SaveOnclicked;
+        BoxLTop.Add(save);
+
+        Button updatePokeList = new Button();
+        updatePokeList.text = "UPDATE POKE LIST";
+        updatePokeList.clicked += UpdatePokeList;
+        BoxLTop.Add(updatePokeList);
+
+        Button createNewPoke = new Button();
+        createNewPoke.text = "CREATE A NEW POKE";
+        createNewPoke.clicked += CreateNewPoke;
+        BoxLTop.Add(createNewPoke);
+
+        Button deletePoke = new Button();
+        deletePoke.text = "DELETE SELECTED POKE";
+        deletePoke.clicked += DeletePoke;
+        BoxLTop.Add(deletePoke);
+
+
+
         BoxLBot = new ListView();
         //BoxLBot.style.backgroundColor = Color.magenta;
         BoxLBot.style.width = new Length(100, LengthUnit.Percent);
@@ -76,7 +152,7 @@ public class ToolVisuPoke : EditorWindow
         BoxLBot.headerTitle = "List of Pokémon";
 
         // Initialize the list view with all sprites' names
-        PrintList(BoxLBot);
+        PrintPokeList(BoxLBot);
 
         // React to the user's selection
         BoxLBot.onSelectionChange += OnSpriteSelectionChange;
@@ -86,9 +162,47 @@ public class ToolVisuPoke : EditorWindow
 
     }
 
+    private void UpdatePokeList()
+    {
+        PrintPokeList(BoxLBot);
+    }
+
+    private void CreateNewPoke()
+    {
+        allPoke.Add(new PokeData("", allPoke.Count));
+        UpdatePokeList();
+    }
+
+    private void DeletePoke()
+    {
+        allPoke.RemoveAt(ID);
+        UpdatePokeList();
+    }
+
+    private void SaveOnclicked()
+    {
+        allPoke[ID].name = pokeName.value;
+        allPoke[ID].desc = pokeDesc.value;
+        PokeType currentPokeType;
+        if (Enum.TryParse<PokeType>(pokeType.value, out currentPokeType))
+            allPoke[ID].TYPE = currentPokeType;
+        for (int i = 0; i < 4; i++)
+            allPoke[ID].attackIDlist[i] = attackPopupFields[i].index;
+        int p;
+        if(int.TryParse(dmgStat.value, out p))
+            allPoke[ID].dmg = p;
+        if (int.TryParse(hpStat.value, out p))
+            allPoke[ID].hpMax = p;
+        if (int.TryParse(defStat.value, out p))
+            allPoke[ID].def = p;
+        if (int.TryParse(speedStat.value, out p))
+            allPoke[ID].speed = p;
+
+        UpdatePokeList();
+    }
+
     void SetUpRightPart(TwoPaneSplitView splitView)
     {
-        
         #region RIGHT
         rightPane = new VisualElement();
         splitView.Add(rightPane);
@@ -98,7 +212,7 @@ public class ToolVisuPoke : EditorWindow
         rightPane.Add(BoxRTop);
         //BoxRTop.style.backgroundColor = Color.red;
         BoxRTop.style.width = new Length(100, LengthUnit.Percent);
-        BoxRTop.style.height = new Length(33, LengthUnit.Percent);
+        BoxRTop.style.height = new Length(45, LengthUnit.Percent);
         BoxRTop.style.top = new Length(0, LengthUnit.Percent);
         BoxRTop.style.flexWrap = new StyleEnum<Wrap>(Wrap.Wrap);
         BoxRTop.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.Column);
@@ -106,7 +220,7 @@ public class ToolVisuPoke : EditorWindow
         BoxRTop.style.alignItems = new StyleEnum<Align>(Align.FlexStart);
 
 
-        var BoxRTopTL = new VisualElement();
+        var BoxRTopTL = new VisualElement();//Image du poke
         BoxRTop.Add(BoxRTopTL);
         BoxRTopTL.style.width = new Length(25, LengthUnit.Percent);
         BoxRTopTL.style.height = new Length(75, LengthUnit.Percent);
@@ -118,7 +232,7 @@ public class ToolVisuPoke : EditorWindow
         pokeImage.scaleMode = ScaleMode.ScaleToFit;
 
 
-        var BoxRTopBL = new VisualElement();
+        var BoxRTopBL = new VisualElement();//PokeType
         BoxRTop.Add(BoxRTopBL);
         BoxRTopBL.style.width = new Length(25, LengthUnit.Percent);
         BoxRTopBL.style.height = new Length(25, LengthUnit.Percent);
@@ -129,11 +243,9 @@ public class ToolVisuPoke : EditorWindow
         BoxRTopBL.Add(pokeType);
         pokeType.style.width = new Length(100, LengthUnit.Percent);
         pokeType.style.height = new Length(100, LengthUnit.Percent);
-        pokeType.value = "TYPE";
+        pokeType.value = "PokeType";
 
-
-
-        var BoxRTopTR = new VisualElement();
+        var BoxRTopTR = new VisualElement();//Name
         BoxRTop.Add(BoxRTopTR);
         BoxRTopTR.style.width = new Length(75, LengthUnit.Percent);
         BoxRTopTR.style.height = new Length(25, LengthUnit.Percent);
@@ -147,7 +259,7 @@ public class ToolVisuPoke : EditorWindow
         pokeName.value = "NAME";
 
 
-        var BoxRTopBR = new VisualElement();
+        var BoxRTopBR = new VisualElement();//desc
         BoxRTop.Add(BoxRTopBR);
         BoxRTopBR.style.width = new Length(75, LengthUnit.Percent);
         BoxRTopBR.style.height = new Length(75, LengthUnit.Percent);
@@ -164,32 +276,129 @@ public class ToolVisuPoke : EditorWindow
         #region MID
         var BoxRMid = new VisualElement();
         rightPane.Add(BoxRMid);
-        BoxRMid.style.backgroundColor = Color.green;
+        //BoxRMid.style.backgroundColor = Color.green;
         BoxRMid.style.width = new Length(100, LengthUnit.Percent);
-        BoxRMid.style.height = new Length(33, LengthUnit.Percent);
+        BoxRMid.style.height = new Length(35, LengthUnit.Percent);
+        BoxRMid.style.flexWrap = new StyleEnum<Wrap>(Wrap.Wrap);
+        BoxRMid.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.Row);
+        BoxRMid.style.alignContent = new StyleEnum<Align>(Align.Center);
+        BoxRMid.style.left = new Length(5, LengthUnit.Percent);
+
+        var BoxRMidTR = CreateAttackBox(BoxRMid,0, attackPopupFields[0], attackDamage[0], attackPP[0], attackType[0], attackDesc[0]);
+        var BoxRMidTL = CreateAttackBox(BoxRMid,1, attackPopupFields[1], attackDamage[1], attackPP[1], attackType[1], attackDesc[1]);
+        var BoxRMidBL = CreateAttackBox(BoxRMid,2, attackPopupFields[2], attackDamage[2], attackPP[2], attackType[2], attackDesc[2]);
+        var BoxRMidBR = CreateAttackBox(BoxRMid,3, attackPopupFields[3], attackDamage[3], attackPP[3], attackType[3], attackDesc[3]);
+
         #endregion
 
         #region Bot
         var BoxRBot = new VisualElement();
         rightPane.Add(BoxRBot);
-        BoxRBot.style.backgroundColor = Color.blue;
+        //BoxRBot.style.backgroundColor = Color.blue;
         BoxRBot.style.width = new Length(100, LengthUnit.Percent);
-        BoxRBot.style.height = new Length(33, LengthUnit.Percent);
+        BoxRBot.style.height = new Length(20, LengthUnit.Percent);
+        BoxRBot.style.alignContent = new StyleEnum<Align>(Align.Center);
+        BoxRBot.style.alignItems = new StyleEnum<Align>(Align.FlexStart);
+
+        var boxDmg = new VisualElement();
+        dmgStat.value = 99999.ToString();
+        dmgStat.label = "Damage Stat : ";
+        BoxRBot.Add(boxDmg);
+        boxDmg.Add(dmgStat);
+        boxDmg.style.height = new Length(25, LengthUnit.Percent);
+        boxDmg.style.left = new Length(40, LengthUnit.Percent);
+
+
+        var boxHp = new VisualElement();
+        hpStat.value = 99999.ToString();
+        hpStat.label = "HP Stat : ";
+        BoxRBot.Add(boxHp);
+        boxHp.Add(hpStat);
+        boxHp.style.height = new Length(25, LengthUnit.Percent);
+        boxHp.style.left = new Length(40, LengthUnit.Percent);
+
+
+        var boxDef = new VisualElement();
+        defStat.value = 99999.ToString();
+        defStat.label = "Defense Stat : ";
+        BoxRBot.Add(boxDef);
+        boxDef.Add(defStat);
+        boxDef.style.height = new Length(25, LengthUnit.Percent);
+        boxDef.style.left = new Length(40, LengthUnit.Percent);
+
+        var boxSpeed = new VisualElement();
+        speedStat.value = 99999.ToString();
+        speedStat.label = "Speed Stat : ";
+        BoxRBot.Add(boxSpeed);
+        boxSpeed.Add(speedStat);
+        boxSpeed.style.height = new Length(25, LengthUnit.Percent);
+        boxSpeed.style.left = new Length(40, LengthUnit.Percent);
+
         #endregion
 
-
-        #endregion 
+        #endregion
 
     }
 
-    void PrintList(ListView Element)
+
+    private VisualElement CreateAttackBox(VisualElement _boxToAttach, int _attackNumber, PopupField<string> _attackPopupField, TextElement _attackDamage, TextElement _attackPP, TextElement _attackType, TextElement _attackDesc)
+    {
+        var _box = new VisualElement();
+        _boxToAttach.Add(_box);
+        _box.style.width = new Length(45, LengthUnit.Percent);
+        _box.style.height = new Length(45, LengthUnit.Percent);
+
+        _attackPopupField.choices = GetAllAttackName();
+        _attackPopupField.label = "Attack No " + (_attackNumber + 1) + " :";
+        _attackPopupField.index = _attackNumber;
+        _box.Add(_attackPopupField);
+
+        _attackDamage.text = "Damage : " + allAttack[_attackNumber].dmg;
+        _box.Add(_attackDamage);
+        
+        _attackPP.text = "PP : " + allAttack[_attackNumber].pp;
+        _box.Add(_attackPP);
+
+        _attackType.text = "PokeType : " + allAttack[_attackNumber].TYPE;
+        _box.Add(_attackType);
+
+        _attackDesc.text = allAttack[_attackNumber].desc;
+        _box.Add(_attackDesc);
+
+        CreateBorder(_box, 2);
+        return _box;
+    }
+    private List<string> GetAllAttackName()
+    {
+        int i = 0;
+        List<string> attackName = new List<string>();
+        foreach (var attack in allAttack)
+        {
+            attackName.Add(allAttack[i].name);
+            i++;
+        }
+        return attackName;
+    }
+
+    private void UpdateAttack(int popupField, int attackID)
+    {
+        attackDamage[popupField].text = "Damage : " + allAttack[attackID].dmg.ToString();
+        attackPP[popupField].text = "PP : " + allAttack[attackID].pp.ToString();
+        attackType[popupField].text = "PokeType : " + allAttack[attackID].TYPE.ToString();
+        attackDesc[popupField].text = allAttack[attackID].desc;
+    }
+
+    void PrintPokeList(ListView Element)
     {
         //leftPane.Clear();
 
         Element.makeItem = () => new Label();
-        Element.bindItem = (item, index) => { (item as Label).text = index + " - " + allPoke[index].name; };
+        Element.bindItem = (item, index) => 
+        { 
+            (item as Label).text = index + " - " + allPoke[index].name;
+            allPoke[index].ID = index;
+        };
         Element.itemsSource = allPoke;
-
     }
 
     void OnSpriteSelectionChange(IEnumerable<object> selectedItems)
@@ -205,6 +414,9 @@ public class ToolVisuPoke : EditorWindow
             pokeData = VARIABLE as PokeData;
         }
 
+        ID = allPoke.Find(x => x == pokeData).ID;
+
+        #region Top
         // Get the selected sprite
         var selectedSprite = allPoke.Find(x => x == pokeData).sprite;
         // Add a new Image control and display the sprite
@@ -219,7 +431,33 @@ public class ToolVisuPoke : EditorWindow
 
         var selectedType = allPoke.Find(x => x == pokeData).TYPE.ToString();
         pokeType.value = selectedType;
+        #endregion
 
+        #region Mid
+        for (int i = 0; i < 4; i++)
+        {
+            int selectedAttack = allPoke.Find(x => x == pokeData).attackIDlist[i];
+            attackPopupFields[i].value = allAttack[selectedAttack].name; 
+            attackDamage[i].text = allAttack[selectedAttack].dmg.ToString();
+            attackPP[i].text = allAttack[selectedAttack].pp.ToString();
+            attackType[i].text = allAttack[selectedAttack].TYPE.ToString();
+            attackDesc[i].text = allAttack[selectedAttack].desc;
+        }
+        #endregion
+
+        #region Bot
+        var selectedDamage = allPoke.Find(x => x == pokeData).dmg;
+        dmgStat.value = selectedDamage.ToString();
+
+        var selectedHp = allPoke.Find(x => x == pokeData).hpMax;
+        hpStat.value = selectedHp.ToString();
+
+        var selectedDef = allPoke.Find(x => x == pokeData).def;
+        defStat.value = selectedDef.ToString();
+
+        var selectedSpeed = allPoke.Find(x => x == pokeData).speed;
+        speedStat.value = selectedSpeed.ToString();
+        #endregion
     }
 
     void CreateBorder(VisualElement elem, int borderSize)

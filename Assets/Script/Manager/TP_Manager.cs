@@ -32,6 +32,7 @@ public class TP_Manager : MonoBehaviour
         {
             dictHouseDoor.Add(pair.doorOne, pair.doorTwo);
             dictHouseDoor.Add(pair.doorTwo, pair.doorOne);
+
         }
     }
 }

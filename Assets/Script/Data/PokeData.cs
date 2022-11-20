@@ -20,7 +20,7 @@ namespace Object.Data
         [Header("Attack")]
         public int[] attackIDlist = new int[4];
 
-        public PokeData(string name, int id = 0, string caption = "", Type type = Type.NORMALE) : base(name, id, caption, type)
+        public PokeData(string name, int id = 0, string caption = "", PokeType pokeType = PokeType.NORMALE) : base(name, id, caption, pokeType)
         {
             dmg = 10;
             hp = 50;
