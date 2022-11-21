@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
+
     [SerializeField] private GameObject dialogueBox;
+    [SerializeField] private GameObject interactionImage;
     [SerializeField] private Text dialogueText;
 
     public delegate void DialogueDelegate();
@@ -15,24 +18,36 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> sentences = new Queue<string>();
     private string actualSentence;
 
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+
     public void InitDialogue<T>(T type, Dialogue dialogue)
     {
         switch (type)
         {
             case WaterZone:
-                actualDialogueDelegate = DisplayTextInstant;
+                PlayerMovement.Instance.ActualInteractionDelegate = null;
+                actualDialogueDelegate = WaterZone.Instance.InitInteraction;
                 break;
             default:
+                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
                 actualDialogueDelegate = null;
                 break;
         }
+
+        StartDialogue(dialogue);
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    private void StartDialogue(Dialogue dialogue)
     {
         sentences.Clear();
 
-        foreach(string sentence in dialogue.sentences)
+        dialogueBox.SetActive(true);
+
+        foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
@@ -44,13 +59,20 @@ public class DialogueManager : MonoBehaviour
     {
         StopAllCoroutines();
         dialogueText.text = actualSentence;
-        //Delegate d'intéraction qui change
+        interactionImage.SetActive(true);
+        PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
     }
 
     public void DisplayNextSentence()
     {
         if(sentences.Count == 0)
         {
+            dialogueBox.SetActive(false);
+            interactionImage.SetActive(false);
+            
+            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+            PlayerMovement.Instance.ResetInteractionFunction();
+
             return;
         }
 
@@ -66,6 +88,14 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.01f);
+        }
+
+        if(actualDialogueDelegate != null)
+            actualDialogueDelegate();
+        else
+        {
+            PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
+            interactionImage.SetActive(true);
         }
     }
 }

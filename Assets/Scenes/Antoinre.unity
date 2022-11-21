@@ -2693,12 +2693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80656c1035498fe4d9aaecc68bfe2b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEnter:
-    sentences:
-    - "L'eau est teint\xE9e d'un bleu fonc\xE9... Voulez-vous utiliser Surf?"
-  dialogueValidation:
-    sentences:
-    - Franck'o utilise Surf.
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -57997,13 +57991,14 @@ GameObject:
   - component: {fileID: 1268204425}
   - component: {fileID: 1268204427}
   - component: {fileID: 1268204426}
+  - component: {fileID: 1268204428}
   m_Layer: 5
   m_Name: Dialogue_Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1268204425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58064,6 +58059,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268204424}
   m_CullTransparentMesh: 1
+--- !u!114 &1268204428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268204424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f919d308433ea64e96f915c27b539e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 1985531695}
 --- !u!1 &1274494840
 GameObject:
   m_ObjectHideFlags: 0
@@ -114533,7 +114541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1376229827
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115302,7 +115310,6 @@ GameObject:
   - component: {fileID: 1748761794}
   - component: {fileID: 1748761793}
   - component: {fileID: 1748761792}
-  - component: {fileID: 1748761796}
   m_Layer: 5
   m_Name: ---UI---
   m_TagString: Untagged
@@ -115396,21 +115403,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1748761796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748761791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f919d308433ea64e96f915c27b539e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueBox: {fileID: 1268204424}
-  interactionImage: {fileID: 1376229826}
-  dialogueText: {fileID: 1985531695}
 --- !u!1 &1775996482
 GameObject:
   m_ObjectHideFlags: 0
@@ -116130,18 +116122,21 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7c70f6ee99931334a873dd1910670041, type: 3}
-    m_FontSize: 70
+    m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 97
+    m_MaxSize: 61
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.14
-  m_Text: "L'eau est teint\xE9e d'un bleu fonc\xE9... Voulez-vous utiliser Surf?"
+  m_Text: "Oui vous savez dans la vie, y'a pas de bonne ou de mauvaise situation,
+    moi je dirais surtout que la vie c'est comme une rencontre (j'ai plus la suite
+    donc la j'\xE9cris surtout beaucoup de texte pour voir la taille que je met \xE0
+    ma police si je met beaucoup de texte)"
 --- !u!222 &1985531696
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -29,7 +29,8 @@ public class ToolVisuPoke : EditorWindow
     private TextField pokeName;
     private TextField pokeDesc;
     private TextField pokeType;
-    private Image pokeImage;
+    private ObjectField pokeImage;
+    private Image pokeImageVisu;
     private int ID;
 
     [Header("Attacks")] 
@@ -61,7 +62,8 @@ public class ToolVisuPoke : EditorWindow
         pokeName = new TextField();
         pokeDesc = new TextField();
         pokeType = new TextField();
-        pokeImage = new Image();
+        pokeImage = new ObjectField();
+        pokeImageVisu = new Image();
 
         attackPopupFields = new PopupField<string>[4];
         attackDamage = new TextElement[4];
@@ -82,9 +84,9 @@ public class ToolVisuPoke : EditorWindow
         defStat = new TextField();
         speedStat = new TextField();
 
-        }
+    }
 
-    void Update()
+    void OnGUI()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -93,6 +95,8 @@ public class ToolVisuPoke : EditorWindow
                 UpdateAttack(i, attackPopupFields[i].index);
             }
         }
+
+        pokeImageVisu.sprite = (Sprite) pokeImage.value;
     }
 
     void CreateGUI()
@@ -162,45 +166,6 @@ public class ToolVisuPoke : EditorWindow
 
     }
 
-    private void UpdatePokeList()
-    {
-        PrintPokeList(BoxLBot);
-    }
-
-    private void CreateNewPoke()
-    {
-        allPoke.Add(new PokeData("", allPoke.Count));
-        UpdatePokeList();
-    }
-
-    private void DeletePoke()
-    {
-        allPoke.RemoveAt(ID);
-        UpdatePokeList();
-    }
-
-    private void SaveOnclicked()
-    {
-        allPoke[ID].name = pokeName.value;
-        allPoke[ID].desc = pokeDesc.value;
-        PokeType currentPokeType;
-        if (Enum.TryParse<PokeType>(pokeType.value, out currentPokeType))
-            allPoke[ID].TYPE = currentPokeType;
-        for (int i = 0; i < 4; i++)
-            allPoke[ID].attackIDlist[i] = attackPopupFields[i].index;
-        int p;
-        if(int.TryParse(dmgStat.value, out p))
-            allPoke[ID].dmg = p;
-        if (int.TryParse(hpStat.value, out p))
-            allPoke[ID].hpMax = p;
-        if (int.TryParse(defStat.value, out p))
-            allPoke[ID].def = p;
-        if (int.TryParse(speedStat.value, out p))
-            allPoke[ID].speed = p;
-
-        UpdatePokeList();
-    }
-
     void SetUpRightPart(TwoPaneSplitView splitView)
     {
         #region RIGHT
@@ -229,8 +194,8 @@ public class ToolVisuPoke : EditorWindow
         CreateBorder(BoxRTopTL, 3);
         
         BoxRTopTL.Add(pokeImage);
-        pokeImage.scaleMode = ScaleMode.ScaleToFit;
-
+        BoxRTopTL.Add(pokeImageVisu);
+        pokeImageVisu.scaleMode = ScaleMode.ScaleToFit;
 
         var BoxRTopBL = new VisualElement();//PokeType
         BoxRTop.Add(BoxRTopBL);
@@ -340,6 +305,46 @@ public class ToolVisuPoke : EditorWindow
 
     }
 
+    private void SaveOnclicked()
+    {
+        allPoke[ID].sprite = (Sprite)pokeImage.value;
+        allPoke[ID].name = pokeName.value;
+        allPoke[ID].desc = pokeDesc.value;
+        PokeType currentPokeType;
+        if (Enum.TryParse<PokeType>(pokeType.value, out currentPokeType))
+            allPoke[ID].TYPE = currentPokeType;
+        for (int i = 0; i < 4; i++)
+            allPoke[ID].attackIDlist[i] = attackPopupFields[i].index;
+        int p;
+        if(int.TryParse(dmgStat.value, out p))
+            allPoke[ID].dmg = p;
+        if (int.TryParse(hpStat.value, out p))
+            allPoke[ID].hpMax = p;
+        if (int.TryParse(defStat.value, out p))
+            allPoke[ID].def = p;
+        if (int.TryParse(speedStat.value, out p))
+            allPoke[ID].speed = p;
+
+        UpdatePokeList();
+    }
+    private void UpdatePokeList()
+    {
+        PrintPokeList(BoxLBot);
+    }
+
+    private void CreateNewPoke()
+    {
+        allPoke.Add(new PokeData("", allPoke.Count));
+        UpdatePokeList();
+    }
+
+    private void DeletePoke()
+    {
+        allPoke.RemoveAt(ID);
+        UpdatePokeList();
+    }
+
+
 
     private VisualElement CreateAttackBox(VisualElement _boxToAttach, int _attackNumber, PopupField<string> _attackPopupField, TextElement _attackDamage, TextElement _attackPP, TextElement _attackType, TextElement _attackDesc)
     {
@@ -420,8 +425,11 @@ public class ToolVisuPoke : EditorWindow
         // Get the selected sprite
         var selectedSprite = allPoke.Find(x => x == pokeData).sprite;
         // Add a new Image control and display the sprite
-        pokeImage.scaleMode = ScaleMode.ScaleToFit;
-        pokeImage.sprite = selectedSprite;
+        //pokeImage.scaleMode = ScaleMode.ScaleToFit;
+        pokeImage.objectType = typeof(Sprite);
+        pokeImage.value = selectedSprite;
+        pokeImageVisu.sprite = (Sprite)pokeImage.value;
+
 
         var selectedName = allPoke.Find(x => x == pokeData).name;
         pokeName.value = selectedName;
