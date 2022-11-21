@@ -99,6 +99,10 @@ public class PlayerMovement : MonoBehaviour
                 else
                 {
                     //BONK
+                    if (FindObjectOfType<AudioManager>() != null)
+                    {
+                        FindObjectOfType<AudioManager>().Play("BlockSound");
+                    }
                 }
             }
         }
@@ -216,6 +220,11 @@ public class PlayerMovement : MonoBehaviour
             if (hit.collider.GetComponent<IInteractable>() != null)
             {
                 hit.collider.GetComponent<IInteractable>().Interact();
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
+                }
+
                 //SON TICK DE DIALOGUE
             }
         }
@@ -267,6 +276,13 @@ public class PlayerMovement : MonoBehaviour
                 inWater = true;
             else
             {
+                //if (FindObjectOfType<AudioManager>() != null)
+                //{
+                    FindObjectOfType<AudioManager>().StopFade("Surf");
+                    FindObjectOfType<AudioManager>().PlayFade("MainTheme");
+
+
+                //}
                 inWater = false;
                 walkOnWater = false;
             }

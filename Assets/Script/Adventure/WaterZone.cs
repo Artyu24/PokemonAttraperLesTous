@@ -65,6 +65,11 @@ public class WaterZone : MonoBehaviour, IInteractable
         if (wantSlide)
         {
             //ICI JM LA REGARDE C EST L EAU
+            if(FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().StopFade("MainTheme");
+                FindObjectOfType<AudioManager>().PlayFade("Surf");
+            }
             PlayerMovement.Instance.WalkOnWater = true;
         }
         
