@@ -21,6 +21,7 @@ public class SoundForWindow : EditorWindow
         SoundForWindow window = GetWindow<SoundForWindow>();
         window.titleContent = new GUIContent("SoundWindow");
         window.Show();
+        
     }
 
 }
