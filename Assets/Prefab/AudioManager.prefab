@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: MainTheme
     clip: {fileID: 8300000, guid: 6048f4df6fcc51341a617766be19345a, type: 3}
-    volume: 0.6
+    volume: 0.293
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
@@ -67,5 +67,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: MusicMenu
+    clip: {fileID: 8300000, guid: 956bc3ebe0fc5ea44a90ee59cf70f742, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
       type: 2}
     source: {fileID: 0}
