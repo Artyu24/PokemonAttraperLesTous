@@ -96,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
 
                     GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
                 }
+                else
+                {
+                    //BONK
+                }
             }
         }
 
@@ -210,7 +214,10 @@ public class PlayerMovement : MonoBehaviour
         if (hit.collider != null)
         {
             if (hit.collider.GetComponent<IInteractable>() != null)
+            {
                 hit.collider.GetComponent<IInteractable>().Interact();
+                //SON TICK DE DIALOGUE
+            }
         }
     }
 

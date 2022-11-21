@@ -64,6 +64,7 @@ public class WaterZone : MonoBehaviour, IInteractable
 
         if (wantSlide)
         {
+            //ICI JM LA REGARDE C EST L EAU
             PlayerMovement.Instance.WalkOnWater = true;
         }
         
