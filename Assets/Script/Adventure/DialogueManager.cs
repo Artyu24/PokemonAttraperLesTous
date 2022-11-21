@@ -69,9 +69,16 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             interactionImage.SetActive(false);
+
+            if (WaterZone.Instance.IsOpen)
+            {
+                WaterZone.Instance.ActivateAnimation();
+                return;
+            }
             
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
+
 
             return;
         }

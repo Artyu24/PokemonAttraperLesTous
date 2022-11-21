@@ -155,8 +155,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.started)
         {
-            if(actualInteractionDelegate != null)
+            if (actualInteractionDelegate != null)
+            {
+                DirectionData dirChoose = dictDirection[PotentialDirection.RIEN];
+                AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
+
                 actualInteractionDelegate();
+            }
         }
     }
     #endregion
@@ -311,6 +316,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+    public DirectionData GetLastDirection()
+    {
+        return dictDirection[lastDirEnum];
+    }
 }
 
 #region Direction Data Class

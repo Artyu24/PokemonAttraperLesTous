@@ -17,8 +17,10 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject areaFrame;
     [SerializeField] private GameObject waterBox;
+    [SerializeField] private GameObject waterAnimation;
     public GameObject AreaFrame => areaFrame;
     public GameObject WaterBox => waterBox;
+    public GameObject WaterAnimation => waterAnimation;
 
     private GameState actualGameState = GameState.Adventure;
     private PlayerState actualPlayerState = PlayerState.Idle;

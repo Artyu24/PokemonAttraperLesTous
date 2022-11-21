@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,13 @@ public class WaterZone : MonoBehaviour, IInteractable
 
     [SerializeField] private Dialogue dialogueEnter;
     [SerializeField] private Dialogue dialogueValidation;
-
+    
     private GameObject waterBox;
+    private GameObject waterAnimation;
     private Text[] waterText = new Text[2];
     private bool wantSlide;
+    private bool isOpen;
+    public bool IsOpen => isOpen;
 
     private void Awake()
     {
@@ -23,6 +27,7 @@ public class WaterZone : MonoBehaviour, IInteractable
     private void Start()
     {
         waterBox = GameManager.Instance.WaterBox;
+        waterAnimation = GameManager.Instance.WaterAnimation;
 
         int i = 0;
         foreach (Transform child in waterBox.transform)
@@ -36,6 +41,7 @@ public class WaterZone : MonoBehaviour, IInteractable
     {
         GameManager.Instance.ActualPlayerState = PlayerState.WaterInteraction;
         DialogueManager.Instance.InitDialogue(this, dialogueEnter);
+        isOpen = true;
     }
 
     public void InitInteraction()
@@ -81,6 +87,32 @@ public class WaterZone : MonoBehaviour, IInteractable
             PlayerMovement.Instance.WalkOnWater = true;
         }
         else
+        {
+            isOpen = false;
             DialogueManager.Instance.DisplayNextSentence();
+        }
+    }
+
+    public void ActivateAnimation()
+    {
+        StartCoroutine(SetAnimation());
+    }
+
+    private IEnumerator SetAnimation()
+    {
+        waterAnimation.SetActive(true);
+        yield return new WaitForSeconds(2.1f);
+        waterAnimation.SetActive(false);
+
+        isOpen = false;
+
+        DirectionData lastDirection = PlayerMovement.Instance.GetLastDirection();
+        GameObject player = PlayerMovement.Instance.gameObject;
+        player.transform.DOJump(lastDirection.mouv + player.transform.position, 1, 1, 1f);
+
+        yield return new WaitForSeconds(1.1f);
+
+        GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+        PlayerMovement.Instance.ResetInteractionFunction();
     }
 }
