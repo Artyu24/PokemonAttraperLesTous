@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<AudioManager>().Play("MusicMenu");
-
     }
     void Awake()
     {

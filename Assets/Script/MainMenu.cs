@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Stop("MusicMenu");
         FindObjectOfType<AudioManager>().Play("MainTheme");
-        SceneManager.LoadScene("SoundScene");
+        SceneManager.LoadScene("BestJMScene");
     }
 
     public void QuitGame()
