@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public int moveSpeed = 20;
     private Vector3 endPos;
     private Vector2 inputDir;
+    private BoxCenter boxCenter;
     private Dictionary<PotentialDirection, DirectionData> dictDirection = new Dictionary<PotentialDirection, DirectionData>();
 
     [Header("Interaction")]
@@ -49,7 +50,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        endPos = GetComponent<BoxCenter>().CenterObject();
+        boxCenter = GetComponent<BoxCenter>();
+        endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary
 
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
         {
-            endPos = GetComponent<BoxCenter>().CenterObject();
+            endPos = boxCenter.CenterObject();
             transform.position = endPos;
 
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
@@ -149,7 +151,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.started)
         {
-            actualInteractionDelegate();
+            if(actualInteractionDelegate != null)
+                actualInteractionDelegate();
         }
     }
     #endregion

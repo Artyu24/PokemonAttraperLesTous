@@ -7,6 +7,8 @@ public class WaterZone : MonoBehaviour, IInteractable
 {
     public static WaterZone Instance;
 
+    [SerializeField] private Dialogue dialogue;
+
     private GameObject waterBox;
     private Text[] waterText = new Text[2];
     private bool wantSlide;
@@ -30,6 +32,11 @@ public class WaterZone : MonoBehaviour, IInteractable
     }
 
     public void Interact()
+    {
+        DialogueManager.Instance.InitDialogue(this, dialogue);
+    }
+
+    public void InitInteraction()
     {
         GameManager.Instance.ActualPlayerState = PlayerState.WaterInteraction;
         wantSlide = true;
@@ -61,6 +68,7 @@ public class WaterZone : MonoBehaviour, IInteractable
         waterBox.SetActive(false);
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         PlayerMovement.Instance.ResetInteractionFunction();
+        DialogueManager.Instance.DisplayNextSentence();
 
         if (wantSlide)
         {
