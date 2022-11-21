@@ -13,10 +13,15 @@ public class GameManager : MonoBehaviour
     public float GetMoveDistance => moveDistance;
 
     [SerializeField] private Animator fadeAnim;
-    public GameObject AreaFrame;
+
+    [Header("UI")]
+    [SerializeField] private GameObject areaFrame;
+    [SerializeField] private GameObject waterBox;
+    public GameObject AreaFrame => areaFrame;
+    public GameObject WaterBox => waterBox;
 
     private GameState actualGameState = GameState.Adventure;
-    private PlayerState actualPlayerState = PlayerState.PlayerStartMove;
+    private PlayerState actualPlayerState = PlayerState.Idle;
     public GameState ActualGameState { get => actualGameState; set => actualGameState = value; }
     public PlayerState ActualPlayerState { get => actualPlayerState; set => actualPlayerState = value; }
 

@@ -18,8 +18,14 @@ public class HerbesHautes : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < wildPokes.Length; i++)
+        if (CombatManager.Instance.DictPokeData.Count == 0)
         {
+            Debug.Log("Le dictionnaire de Pokémon n'est pas bon");
+            return;
+        }
+
+        for (int i = 0; i < wildPokes.Length; i++)
+        { 
             wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
         }
     }
@@ -32,7 +38,7 @@ public class HerbesHautes : MonoBehaviour
             int temp = Random.Range(0, wildPokes.Length);
             wildPoke = wildPokes[temp];
             combatWindow.SetActive(true);
-            GameManager.Instance.ActualPlayerState = PlayerState.PlayerInFight;
+            GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;
             CombatManager.Instance.StartCombat(wildPoke);

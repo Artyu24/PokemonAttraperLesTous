@@ -13,11 +13,11 @@ public enum GameState
 
 public enum PlayerState
 {
-    PlayerStartMove,
-    PlayerInMovement,
-    PlayerEnterTP,
-    PlayerLeaveTP,
-    PlayerInFight
+    Idle,
+    InMovement,
+    InFight,
+    Teleportation,
+    WaterInteraction
 }
 public enum CombatState
 {
@@ -31,4 +31,13 @@ public enum CombatState
     PlayerVictory,
     EnemyVictory,
     End
+}
+
+public enum PotentialDirection
+{
+    HAUT,
+    BAS,
+    GAUCHE,
+    DROITE,
+    RIEN
 }
