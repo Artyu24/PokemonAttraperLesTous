@@ -279,13 +279,12 @@ public class PlayerMovement : MonoBehaviour
                 inWater = true;
             else
             {
-                //if (FindObjectOfType<AudioManager>() != null)
-                //{
+                if (FindObjectOfType<AudioManager>() != null)
+                {
                     FindObjectOfType<AudioManager>().StopFade("Surf");
                     FindObjectOfType<AudioManager>().PlayFade("MainTheme");
+                }
 
-
-                //}
                 inWater = false;
                 walkOnWater = false;
             }

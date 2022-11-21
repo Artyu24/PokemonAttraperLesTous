@@ -2693,9 +2693,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80656c1035498fe4d9aaecc68bfe2b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
+  dialogueEnter:
     sentences:
     - "L'eau est teint\xE9e d'un bleu fonc\xE9... Voulez-vous utiliser Surf?"
+  dialogueValidation:
+    sentences:
+    - Franck'o utilise Surf.
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0

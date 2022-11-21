@@ -69,6 +69,10 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             interactionImage.SetActive(false);
+            
+            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+            PlayerMovement.Instance.ResetInteractionFunction();
+
             return;
         }
 
