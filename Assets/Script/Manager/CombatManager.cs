@@ -43,6 +43,15 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton6;
     #endregion
 
+    #region Anims
+
+    public bool isInHerbeHautes = false;
+    public Animator combatAnimator;
+    //public Animator playerAnimator;
+
+
+    #endregion
+
     #region AttacksInfo&UI
     [Header("Attacks")]
     public GameObject attackWindow;
@@ -141,17 +150,28 @@ public class CombatManager : MonoBehaviour
 
         enemiePoke = wild;
 
+
+        //Play anim enemie/player spawn
         #region SetupUICombat
         enemiePokémonName.text = wild.name;
         enemiePokémonHP.value = wild.hp;
         enemiePokémonHP.maxValue = wild.hp;
-        enemiePokémonSprite.sprite = wild.sprite;
         playerPokémonName.text = playerPoke.name;
         playerPokémonHPText.text = playerPoke.hp + "/" + playerPoke.hpMax;
         playerPokémonHP.value = playerPoke.hp;
         playerPokémonHP.maxValue = playerPoke.hp;
-        playerPokémonSprite.sprite = playerPoke.sprite;
         
+        playerPokémonSprite.sprite = playerPoke.sprite;
+        enemiePokémonSprite.sprite = wild.sprite;
+
+        if (combatAnimator != null)
+        {
+            combatAnimator.SetTrigger("EnemyThrowPoke");
+            combatAnimator.SetTrigger("EnemyPokeAppear");
+            combatAnimator.SetTrigger("PlayerThrowPoke");
+            combatAnimator.SetTrigger("PlayerPokeApper");
+        }
+
         attackButton1.text = DictAttackData[playerPoke.attackIDlist[0]].name;
         attackButton2.text = DictAttackData[playerPoke.attackIDlist[1]].name;
         attackButton3.text = DictAttackData[playerPoke.attackIDlist[2]].name;
@@ -161,6 +181,7 @@ public class CombatManager : MonoBehaviour
         actualCombatState = CombatState.PlayerChoose;
     }
 
+
     public void PlayerChoose(int attackNumber)
     {
         Debug.Log("Combat state Player choose = " + actualCombatState);
@@ -168,6 +189,7 @@ public class CombatManager : MonoBehaviour
         {
             playerAttackNbr = attackNumber;
             attackWindow.SetActive(false);
+            //Play anim texte qui s'écrit
             actualCombatState = CombatState.EnemyChoose;
             EnemyChoose();
         }
@@ -179,6 +201,7 @@ public class CombatManager : MonoBehaviour
         if (actualCombatState == CombatState.EnemyChoose)
         {
             int enemyAttackNbr = Random.Range(0, 5);
+            //Play anim texte qui s'écrit
             actualCombatState = CombatState.PlayerAttack;
             PlayerAttack();
         }
@@ -194,18 +217,21 @@ public class CombatManager : MonoBehaviour
             chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[playerAttackNbr]].name + " !";
             if (enemiePokémonHP.value <= 0)
             {
-                chatText.text = "Player win !!!";
+                //Play anim texte qui s'écrit
+                //Play anim poke qui meurt
+                chatText.text = "Player win !!! \n Press C to quit";
                 actualCombatState = CombatState.PlayerVictory;
             }
             else
             {
+                //Play anim texte qui s'écrit
+                //Play anim Attack
                 actualCombatState = CombatState.EnemyAttack;
                 EnemyAttack();
             }
 
         }
     }
-    // pour l'instant ca va trop vite faudrait mettre des coroutines, ou jouer avec les animes et les events pour qu'on ai le temps de voir chaque truc qui se passe
     private void EnemyAttack()
     {
         Debug.Log("Combat state Enemy Attack = " + actualCombatState);
@@ -216,11 +242,15 @@ public class CombatManager : MonoBehaviour
             chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.attackIDlist[enemyAttackNbr]].name + " !";
             if (playerPokémonHP.value <= 0)
             {
+                //Play anim texte qui s'écrit
+                //Play anim poke qui meurt
                 chatText.text = "Enemy win !!!";
                 actualCombatState = CombatState.PlayerVictory; //Changer pour EnemyVictory
             }
             else
             {
+                //Play anim texte qui s'écrit
+                //Play anim Attack
                 actualCombatState = CombatState.PlayerChoose;
             }
 
