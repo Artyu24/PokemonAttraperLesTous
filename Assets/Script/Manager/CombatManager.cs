@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using Object.Data;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.LowLevel;
 using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
@@ -142,7 +141,6 @@ public class CombatManager : MonoBehaviour
             Return();
         }
 
-        //Debug.Log("Update combat state = " + actualCombatState);
         if (actualCombatState == CombatState.PlayerVictory)
         {
             if (Input.GetKeyDown(KeyCode.C))
@@ -209,6 +207,7 @@ public class CombatManager : MonoBehaviour
     private void EnemyChoose()
     {
         // RANDOM pour trouver son attack
+        enemiePoke.attackId = Random.Range(0, 5);
 
         PresShotRound();
     }
@@ -316,51 +315,18 @@ public class CombatManager : MonoBehaviour
 
     public void PlayerAttack()
     {
-        if (actualCombatState == CombatState.PlayerAttack)
-        {
-            //Dégat player poke to EnemiePokeHP (slider)
-            enemiePokémonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
-            chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerAttackNbr]].name + " !";
-            if (enemiePokémonHP.value <= 0)
-            {
-                //Play anim texte qui s'écrit
-                //Play anim poke qui meurt
-                chatText.text = "Player win !!! \n Press C to quit";
-                actualCombatState = CombatState.PlayerVictory;
-            }
-            else
-            {
-                //Play anim texte qui s'écrit
-                //Play anim Attack
-                actualCombatState = CombatState.EnemyAttack;
-                EnemyAttack();
-            }
-        }
+        enemiePokémonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
+        enemiePoke.data.hp -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg; 
+        combatAnimator.SetTrigger("PlayerAttackRange");
+        chatText.text = playerPokémonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
     }
     private void EnemyAttack()
     {
-        if (actualCombatState == CombatState.EnemyAttack)
-        {
-            playerPokémonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
-            playerPoke.data.hp -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
-            chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[enemyAttackNbr]].name + " !";
-            if (playerPokémonHP.value <= 0)
-            {
-                //Play anim texte qui s'écrit
-                //Play anim poke qui meurt
-                chatText.text = "Enemy win !!!";
-                actualCombatState = CombatState.PlayerVictory; //Changer pour EnemyVictory
-            }
-            else
-            {
-                //Play anim texte qui s'écrit
-                //Play anim Attack
-                actualCombatState = CombatState.PlayerChoose;
-            }
-
-        }
+        playerPokémonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
+        playerPoke.data.hp -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
+        combatAnimator.SetTrigger("EnemieAttackCac");
+        chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
-
 
 
     public void FlyFight()
