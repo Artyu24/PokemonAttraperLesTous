@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Object.Data;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,7 +46,6 @@ public class CombatManager : MonoBehaviour
     #endregion
 
     #region Anims
-
     public bool isInHerbeHautes = false;
     public Animator combatAnimator;
     //public Animator playerAnimator;
@@ -72,7 +70,7 @@ public class CombatManager : MonoBehaviour
 
     public delegate void combatDelegate();
     public Dictionary<CombatState, combatDelegate> combatDictionaire = new Dictionary<CombatState, combatDelegate>();
-    private List<CombatState> combatStates;
+    private List<CombatState> combatStates = new List<CombatState>();
     public float actionTime = 5.0f;
     public Button[] attackButtons = new Button[4];
     private Text[] attackButtonsText = new Text[4];
@@ -157,6 +155,7 @@ public class CombatManager : MonoBehaviour
         enemiePoke = new Pokemon (wild, false);
         chatText.text = wild.name + " est apparu !!!";
 
+        //Remet les hp du poke du joueur au max paske pour des raison bizarre, les attacks touche au scriptables
         foreach (var poke in dictPokeData)
         {
             int i = 0;
@@ -197,7 +196,7 @@ public class CombatManager : MonoBehaviour
 
     public void PlayerChoose()
     {
-        int attackID = Array.IndexOf(attackButtons, UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
+        int attackID = System.Array.IndexOf(attackButtons, UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>());
 
         playerPoke.attackId = attackID;
 
@@ -207,6 +206,7 @@ public class CombatManager : MonoBehaviour
     private void EnemyChoose()
     {
         // RANDOM pour trouver son attack
+        int random = Random.Range(0, 5);
         enemiePoke.attackId = Random.Range(0, 5);
 
         PresShotRound();
@@ -290,26 +290,29 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(actionTime);
         }
     }
-    
 
     private void Victory()
     {
         if (combatStates[combatStates.Count-1] == CombatState.PlayerDeath)
         {
+            playerPokémonSprite.transform.DOScale(new Vector3(0, 0, 0), 2);
             PlayerLoose();
         }
         else
         {
+            enemiePokémonSprite.transform.DOScale(new Vector3(0, 0, 0), 2);
             EnemyLoose();
         }
     }
     private void PlayerLoose()
     {
-
+        chatText.text = playerPokémonName.text + " n'as plus de force, tu dois retourner au centre pokémon le plus proche";
+        //Integrer le text de arthur puis faire un DOFade en sortie
     }
     private void EnemyLoose()
     {
-
+        chatText.text = enemiePokémonName.text + " a été vaincu. Félicitation :";
+        //Integrer le text de arthur puis faire un DOFade en sortie
     }
 
 
@@ -322,10 +325,10 @@ public class CombatManager : MonoBehaviour
     }
     private void EnemyAttack()
     {
-        playerPokémonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
-        playerPoke.data.hp -= DictAttackData[enemiePoke.data.attackIDlist[enemyAttackNbr]].dmg;
+        playerPokémonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
+        playerPoke.data.hp -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
         combatAnimator.SetTrigger("EnemieAttackCac");
-        chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
+        chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
 
 

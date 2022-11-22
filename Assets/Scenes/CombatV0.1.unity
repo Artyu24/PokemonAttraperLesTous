@@ -26573,6 +26573,11 @@ PrefabInstance:
       objectReference: {fileID: 434790709}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
+      propertyPath: actionTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
       propertyPath: playerPokes
       value: 
       objectReference: {fileID: 1890079739}
