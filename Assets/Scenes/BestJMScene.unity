@@ -890,6 +890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 1
   zoneName: Bourgeon City
+  oldSound: 'MusicMenu '
+  newSound: MainTheme
 --- !u!60 &89209015
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1161,6 +1163,7 @@ MonoBehaviour:
   fadeAnim: {fileID: 1786851111}
   areaFrame: {fileID: 126917309}
   waterBox: {fileID: 1092427921}
+  waterAnimation: {fileID: 0}
 --- !u!4 &182230340
 Transform:
   m_ObjectHideFlags: 0
@@ -2693,6 +2696,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80656c1035498fe4d9aaecc68bfe2b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEnter: []
+  dialogueValidation: []
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -58072,6 +58077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueBox: {fileID: 0}
+  interactionImage: {fileID: 0}
   dialogueText: {fileID: 1985531695}
 --- !u!1 &1274494840
 GameObject:
@@ -115252,7 +115258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35ba4c46e1506444ade8f47fd3fa75c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outputArea: {fileID: 1872243371}
 --- !u!4 &1616056347
 Transform:
   m_ObjectHideFlags: 0
@@ -115344,6 +115349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 3
   zoneName: Route 01
+  oldSound: MainTheme
+  newSound: RouteMusic
 --- !u!1 &1748761791
 GameObject:
   m_ObjectHideFlags: 0

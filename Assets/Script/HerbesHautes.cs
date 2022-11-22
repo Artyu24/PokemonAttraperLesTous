@@ -43,5 +43,11 @@ public class HerbesHautes : MonoBehaviour
             CombatManager.Instance.ActualCombatState = CombatState.Init;
             CombatManager.Instance.StartCombat(wildPoke);
         }
+        if (FindObjectOfType<AudioManager>() != null)
+        {
+            FindObjectOfType<AudioManager>().Stop("MainTheme");
+            FindObjectOfType<AudioManager>().Play("PokemonSauvage");
+        }
+
     }
 }
