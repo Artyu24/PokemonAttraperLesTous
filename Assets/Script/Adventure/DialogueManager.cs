@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
     }
 
-    public void InitDialogue<T>(T type, Dialogue dialogue)
+    public void InitDialogue<T>(T type, string[] dialogue)
     {
         switch (type)
         {
@@ -41,13 +41,13 @@ public class DialogueManager : MonoBehaviour
         StartDialogue(dialogue);
     }
 
-    private void StartDialogue(Dialogue dialogue)
+    private void StartDialogue(string[] dialogue)
     {
         sentences.Clear();
 
         dialogueBox.SetActive(true);
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue)
         {
             sentences.Enqueue(sentence);
         }

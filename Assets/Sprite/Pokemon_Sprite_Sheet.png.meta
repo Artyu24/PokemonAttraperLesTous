@@ -1,0 +1,4061 @@
+fileFormatVersion: 2
+guid: b855703a24bad524bb2b948db097e2e2
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 413
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27f5e3ffcd05f1b479bc60cba380e694
+      internalID: -1699105201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 413
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15dc1e0d523ff7949a996a556c53901e
+      internalID: 1729525115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 413
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c76a6be1351794890df551630ac960
+      internalID: 957084800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 409
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc61ebf9535a27d4b9e7c9a6c8a5250a
+      internalID: 428057325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 408
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b0f2c5b3e0afd4e88e0f96e3fa332f
+      internalID: 1882586538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 409
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c5261be30a54445a533e6622530ee2
+      internalID: -522779474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 404
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ad6adadfe74c3e49bc13249d40b2979
+      internalID: 360361802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 405
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff71cadd7f0365e4a948f3ffbfbb26ef
+      internalID: 347469485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 406
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb30b087544e1844f9fdac6a9c9f0f1f
+      internalID: -1085148047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 407
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e17a449747c6b46816427eae2b67a7
+      internalID: 1630820520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 406
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd13ece16ff873c4e99760e63a5c544f
+      internalID: -284826672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 405
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba8d0bcb6d23814585abc3b284dac62
+      internalID: 375076806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 406
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80fba3e890145a4686b6fe731788246
+      internalID: -299273385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 405
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0b11eb2f8df83c42ae3e7874ba5faae
+      internalID: 1695607784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 407
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeaeb37d604fee24b8cca3d742962fc0
+      internalID: 598870331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 408
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd0a83bcc87172408eb70617cd122a7
+      internalID: 1066816300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 407
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb54d4ac9305274e81dfc2cadbd9434
+      internalID: 1427727389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 404
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f671399667114a449b3e52b8ef57550
+      internalID: 160924500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 406
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c523ddb2e62adc64da5435771c1f8249
+      internalID: -521361846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 404
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92f9f24665db6a4894f2bf54a76c4a4
+      internalID: -1926046351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 392
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fa6abd40c291774a9122204f4cff7b8
+      internalID: 936722669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 392
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a254f75f8054c140b190d0d48db1926
+      internalID: -815627255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 392
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 632a26af3484b184ea49f7cfc5930ada
+      internalID: -1458388649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 380
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ed2bf84f77f6946a213bada26b4732
+      internalID: -615435132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 379
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1414a7933158ecf4788ca7c14750f551
+      internalID: -1651750343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 380
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36922396cb1ee624191ca2071dcf9e94
+      internalID: -977078073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 372
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d370594d8e7ec24f9cf84ddfe2b3eeb
+      internalID: -1939320895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 385
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be3b5b753ed2a94fba68a08af6e9e70
+      internalID: -1603647407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 386
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007306fafe139624db0227cac454ff6d
+      internalID: -1174689846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 385
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba28da364feb40498be589408d35768
+      internalID: -1821392939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 387
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e180b67e0f057c47a1b12dce159e070
+      internalID: 1762433763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 388
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af10e20a0ccdb1478b5fc50896eec74
+      internalID: 692654364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 387
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec53f895ded859648a1926b101873364
+      internalID: -1027010789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 386
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857d3eec9feff7b4e96914b0cc1f3301
+      internalID: 990474043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 387
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43e27581be359f74ba2dcb2056915e29
+      internalID: -858834323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 386
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87290860dc13d7d45bc279753b92ece4
+      internalID: 1178486055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 379
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747d40e588bd51e42a025fe679b20598
+      internalID: 628168518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 381
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233a9a3f89bb32447b626b647d7c86f2
+      internalID: 177459182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 379
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634a60c0da5ef9844bf745e5f985f298
+      internalID: 1475202808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 371
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33672754ee355654eb4018e0b4035ff8
+      internalID: -354305004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 371
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371ec0595f9d9ed448463fe6a13cd871
+      internalID: -680825668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 370
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae70c0db82a3f3d45b7b15700c753fbe
+      internalID: -404583989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 351
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85e745706da34d4e87a05e664fa96fb
+      internalID: 78276508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 351
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca71591060f398458336297ceea4b51
+      internalID: -350193112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 351
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d120ce3401da44d89b992f31fa4c68
+      internalID: 1377744771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 370
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d2c05e56fa4954282153e1d775a8c9
+      internalID: 1916494449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 364
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916440e7bbbff3741a6d9beb80324e1d
+      internalID: -2058377325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 365
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30869a6d0fd87d6469c4e306b27874de
+      internalID: -1843211278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 364
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d73ab54db8d0884488d0b5da6c7f76a
+      internalID: -527433410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 367
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8807437c147257a4abe0302369f32e45
+      internalID: 1415601141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 368
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03b16617d6a65a545a33a8ce7d5e49a2
+      internalID: 1142279035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 367
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811f065123d886348990801d4dd6d556
+      internalID: -728118650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 367
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae62cbb71c28b34bb1107af7e2abb1b
+      internalID: -173519620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 367
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dafe94ffb5c8b54489237bf96be00210
+      internalID: 80662140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 366
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f530b83fb5a5d43a315bf9b8508285
+      internalID: 1093631734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 355
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b88ce6837ca02e469798780e4d8d29b
+      internalID: 1751414361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 356
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ada96ea44098b449cda7b7bced8769
+      internalID: -1941785806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 355
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a846e8d9954c4c43a8fdec2f94f9896
+      internalID: 819497312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 351
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e79b9b19abb8f44963b4f5974e81c0
+      internalID: 1725745042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 351
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7821ab7ed2fffd43939656df8ebcaf5
+      internalID: 44539165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 351
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7445cdf1b395847a8e9f817aa3f2eb
+      internalID: -1691664324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 341
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb5894bb32b45d4ca52c51f3664d24f
+      internalID: -1861076730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 343
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41b30f4deea03fc4baae588c96e3656b
+      internalID: -1433167012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 342
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9728701924b04b428f3b663f1f0566b
+      internalID: -39956363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 349
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b96614a60f01a429b00d4d85a9b7c4
+      internalID: 626770267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 350
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9273db0eafb2cef4a96baade9024664b
+      internalID: -83917844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 349
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f84cae44756954c961a589da484abc
+      internalID: -2040094319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 346
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6544110ca5a836647a4d0fbde3c5e069
+      internalID: 1934755017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 347
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692ff722daca3c24b849bd8997bdaff5
+      internalID: 1113646485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 345
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db80f4f0a4a890d4e8d5684f9965ae21
+      internalID: -1307709188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 322
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e5c380a5091174c9065c9216068933
+      internalID: 1850725939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 323
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad9d1601317aaee40b2e198bf1fe1126
+      internalID: -1703871866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 323
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7662c961dc89fe449ab000b49051b446
+      internalID: 182482914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 331
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c30797f9198f04a8c5a6b74b7e43e4
+      internalID: -1989507017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 332
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af4747b597d8924087c2cc12d8260e0
+      internalID: 976138700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 664
+        y: 331
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9595d6571e95a4ebc6ccdfa0ae7f66
+      internalID: 906825284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 292
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acfc83f0b7394004c86cfa1b420fde77
+      internalID: 978891377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 293
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc00c3bd453f55449b9f5c3ccfa05d5c
+      internalID: -1180370724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 292
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a210ae1339bedf0498080460c2b1ab4c
+      internalID: -297776568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 287
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc4188e107c32f4bae590f95dc82023
+      internalID: 911381633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 288
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227fca74f6f0e8a4597ce90510a29e3f
+      internalID: 643048181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 287
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc52d1a52b30cc549a5b3cbfc376c200
+      internalID: -2142841342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 294
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 804470f18a6a748499aeec1e7e0f35c1
+      internalID: 1912738786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 295
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cec482e3c9c7647b7819ff1aab98e5
+      internalID: -1532502515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 294
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43d85e9f3f7fe8c40b5072dba9e779f5
+      internalID: -1544582011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 291
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd18a90f5beab24b85bc1c187ae411b
+      internalID: -2133857435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 293
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0c99a5c8757284d877b84a7e0c0298
+      internalID: -50099043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 291
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c784c48960d7b0c4e9a149b8ec48c5f2
+      internalID: 619960162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 295
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d478018e0f9d83a458a23597c5975525
+      internalID: -128221540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 296
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3edc3cfdaa16145a1538ef3153da03
+      internalID: -197347400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 295
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f3130993f7ae347a0dc04a5b9fda28
+      internalID: -681346849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 293
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5a7fecad39b0245a951fcef02e5cda
+      internalID: -2014051716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 294
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87166c05803929489a8e486009a2a4e
+      internalID: -1332470599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 293
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9fb6ad479c5c6d48a4839c8378e8c5e
+      internalID: -132429355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 283
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2816757b65330054f99b4252a99a32d1
+      internalID: 1880820733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 267
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9244c665a832a246a7ff242c9792290
+      internalID: -895875432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 268
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aba1134161cd73c4f844bcd94975c622
+      internalID: 1746892491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 267
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d23c89aa61d24844a892ccf91c67c29
+      internalID: -872894865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 262
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473f3207afed8e741be259e6e6c2ffbf
+      internalID: 1532833061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 263
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f5e837c8d80634db44df3c6dc07d4f
+      internalID: 1450168793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 262
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec62a02adb9dc834e8bd4009e075525f
+      internalID: 1004352195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 270
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 336d8d1af11e5fa438d8212eb3bd7c3a
+      internalID: -1252764076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 271
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58d38769c39554148807d3bdfca17553
+      internalID: 906146386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 270
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a2865ec1e1998459589fd97e2f5a12
+      internalID: 162458331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 270
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82b43abfaf0ac174daa405a19c2af83a
+      internalID: 1828014834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 272
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9011f479ae60d34bb2961717f6e78eb
+      internalID: 2102995589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 270
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2245cf020bc67414a9fc27a9059dd0b8
+      internalID: -2037479320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 271
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a26505d69d9412145a2ef81c54081a30
+      internalID: 1880062871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_108
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 272
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2385ebfc7e8a6e429c9ffb437765542
+      internalID: 789327415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_109
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 271
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81da2107baa7ee54793088f2f3054511
+      internalID: 492927199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_110
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 273
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027bb0782b453a6438c95d88c416c061
+      internalID: -1324206951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_111
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 274
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2925cad9bd6c424692d626bd13472ba
+      internalID: -374303832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_112
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 273
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d440f3713a5f9f4d891b5e48f57a6c9
+      internalID: 201147828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_113
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 242
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0556949349b6cbe45bd18674475cb62a
+      internalID: -1396332039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_114
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 242
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3137a3676d3574da3dd4ffc96c321b
+      internalID: 295653448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_115
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 241
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfbd6c272de3cc7498e62fc0e49e5d91
+      internalID: 1247459840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_116
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 240
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 552207f7f90acfe4c8020fe9d236aebf
+      internalID: -871974625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_117
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 241
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c2cdea2b5d0a74389d73cddd0dadf0
+      internalID: -659994776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_118
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 240
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b745c04b5c2864ba17aa76d06d9c37
+      internalID: 1623157686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_119
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 246
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6bf7aefe8c48d4dbc7c3551cb17c23
+      internalID: 464754958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_120
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 247
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633eabf7b1614df45b824ce908114354
+      internalID: 2051885252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_121
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 246
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec862cb79be81e940b45bbf737b25ac1
+      internalID: 1645552868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_122
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 250
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1b61ed24fa0aa4aba2e2b2ebe2471c
+      internalID: 1888664666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_123
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 251
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb81a32842dce9b4ebf8597f3a041f8c
+      internalID: 387082034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_124
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 250
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ea9588a63795646b6006f98284eef4
+      internalID: 649970442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_125
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 247
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdb2f798f6abf040ae5666798174520
+      internalID: -294446690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_126
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 248
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ee398f27b24fe74792efe0a601e4e31
+      internalID: 431272335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_127
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 247
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49900532af7a0ca4e8f066517654703f
+      internalID: -1183048785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_128
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 253
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0dc3489d665fdd4d84d7aa138872f8c
+      internalID: 1843516659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_129
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 254
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1cca155b659714a882c9b31f43c0d4
+      internalID: -2097865863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_130
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 252
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840b9d198cab31e48a70ac56ad3bf66f
+      internalID: 465947250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_131
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 251
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b4a630b591b5904792a1c6252a4c054
+      internalID: 177483870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_132
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 216
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03084e186447b0f4888cc64e6ee8b906
+      internalID: -1590370728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_133
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 217
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5715f80b66256a429bf6d65db620d3b
+      internalID: -739068349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_134
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 216
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18ee9b66eb20f24c802f58d8e5a054a
+      internalID: -1800892739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_135
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 217
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6927e4bf0a525b438187c3363b21029
+      internalID: -1208024353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_136
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 219
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bbaace8f32d1084481a2b6cd20eaa2e
+      internalID: -489442739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_137
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 218
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d3548e7361d604795660531eda7ca4
+      internalID: -589028174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_138
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 223
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5c84a43dd7e0644896f4d3d791aaac
+      internalID: 837616360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_139
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 224
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12254b16845a6a641a03c32a3347e514
+      internalID: -785235917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_140
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 223
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fc3d16c0a231e042a73b62e390e0245
+      internalID: -1537315679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_141
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 228
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7226577ca3cbd4a4fa3a19328d302494
+      internalID: -7136478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_142
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 230
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae74e584704f75046a55f7d54954dcf8
+      internalID: -117405745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_143
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 229
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6440bb35ce8c76b408ae26bcb2d24234
+      internalID: 1951646489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_144
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 225
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7001aa2bace8c1044a2bdb9955a9eb90
+      internalID: 1516692592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_145
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 226
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b57819ea5c0395048bebdaf0230f6bd2
+      internalID: 525310864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_146
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 225
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f2f86880c82b14aaf6c2f39fdb90a8
+      internalID: -2051998632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_147
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 233
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785c760df8cca4d4283061f4fcc4e2f9
+      internalID: -1029924543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_148
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 234
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007fa73be03a8da4d84ecc1f1f9c8627
+      internalID: 1311099278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_149
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 233
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0089a30a9f253a3488f0da5fb9e1d308
+      internalID: 1906632146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_150
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 160
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d36482ce55ef43149b351b91ef6febdd
+      internalID: 806101727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_151
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 160
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067ea718d0c07394faa3655c05f1c054
+      internalID: 292432318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_152
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 160
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56419780638db74d8cbcc5326d41416
+      internalID: -1553410433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_153
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 129
+        width: 38
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a1ce3f781de11408c7a5160083700b
+      internalID: 522687833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_154
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 130
+        width: 36
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e99e91be30fe0a04bab7998f85dff9c0
+      internalID: 127690298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_155
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 131
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f40303cd0d20e479fba3c17b18e0a9
+      internalID: 1228831030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_156
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 132
+        width: 56
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8634dc0e110fb374f83aaf0cd8b9834b
+      internalID: -225904497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_157
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 162
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94fd8edb594ca94c9607ee4f9b25035
+      internalID: -983629289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_158
+      rect:
+        serializedVersion: 2
+        x: 501
+        y: 135
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07a55881cc17cd49892ea30a0851ee7
+      internalID: -172540260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_159
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 128
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffe34ab35bddd6459a4170484c948c1
+      internalID: -896233187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_160
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 128
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8300b51bd238344b45be76110d6e73
+      internalID: -747497668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_161
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 128
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293dabd475ecb464ca698bfafdd46b7d
+      internalID: -1221859090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_162
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 130
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cc17b9d6ef14e48b330db6d07230a6
+      internalID: -228854331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_163
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 17
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f64741957b86b46b5c939ccf701114
+      internalID: -1244099121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_164
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 18
+        width: 62
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949a581dadc1aa24b9e02b680c555cfb
+      internalID: 1149717784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_165
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 49
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6724cc60b867564e989905cc6cc6cb0
+      internalID: 2034447560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_166
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 49
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484118977c1932f4fa77348168850cb1
+      internalID: 985444382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_167
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 65
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9774d90947d55e74dad0e7496c5ce035
+      internalID: -226782410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_168
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 64
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f764cd6f17854f4495b2c9e19be9fcd
+      internalID: -788352486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_169
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 20
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b738c222de6062b4dad8982ba8d8d484
+      internalID: -1610060335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_170
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 21
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69436818e8967364eb72bd40209c312b
+      internalID: 1359804820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_171
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 18
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a05297c01ebc614989fd3f6e07e52a6
+      internalID: -42743565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_172
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 18
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3853b068f7fe594693eb49f49a978d7
+      internalID: -1634910320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_173
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 46
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f662a66e7752cf4a999aa821d8029cd
+      internalID: -1168746247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_174
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 45
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f33c2094f25f5c45b1aa4f3ff5d81c9
+      internalID: -1462225893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_175
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 27
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77844f1ca89c13d4386fbf2f343cac07
+      internalID: -1437747467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_176
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 27
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e076ed85c4dab24497e82ca65d0b287
+      internalID: 1971461792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_177
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 9
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e2357d17ca98d4fa969f570917f895
+      internalID: 7389304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pokemon_Sprite_Sheet_178
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 8
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0740c9fbb7f07cd49a6259c74bb1937b
+      internalID: 793544602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Pokemon_Sprite_Sheet_115: 1247459840
+      Pokemon_Sprite_Sheet_148: 1311099278
+      Pokemon_Sprite_Sheet_125: -294446690
+      Pokemon_Sprite_Sheet_176: 1971461792
+      Pokemon_Sprite_Sheet_177: 7389304
+      Pokemon_Sprite_Sheet_87: 619960162
+      Pokemon_Sprite_Sheet_22: -1458388649
+      Pokemon_Sprite_Sheet_71: -1703871866
+      Pokemon_Sprite_Sheet_42: 78276508
+      Pokemon_Sprite_Sheet_61: -1861076730
+      Pokemon_Sprite_Sheet_80: 643048181
+      Pokemon_Sprite_Sheet_16: 1427727389
+      Pokemon_Sprite_Sheet_108: 789327415
+      Pokemon_Sprite_Sheet_163: -1244099121
+      Pokemon_Sprite_Sheet_25: -977078073
+      Pokemon_Sprite_Sheet_15: 1066816300
+      Pokemon_Sprite_Sheet_100: 1004352195
+      Pokemon_Sprite_Sheet_41: -404583989
+      Pokemon_Sprite_Sheet_109: 492927199
+      Pokemon_Sprite_Sheet_178: 793544602
+      Pokemon_Sprite_Sheet_24: -1651750343
+      Pokemon_Sprite_Sheet_121: 1645552868
+      Pokemon_Sprite_Sheet_46: -2058377325
+      Pokemon_Sprite_Sheet_94: 1880820733
+      Pokemon_Sprite_Sheet_167: -226782410
+      Pokemon_Sprite_Sheet_78: -297776568
+      Pokemon_Sprite_Sheet_150: 806101727
+      Pokemon_Sprite_Sheet_73: -1989507017
+      Pokemon_Sprite_Sheet_74: 976138700
+      Pokemon_Sprite_Sheet_113: -1396332039
+      Pokemon_Sprite_Sheet_67: 1934755017
+      Pokemon_Sprite_Sheet_6: 360361802
+      Pokemon_Sprite_Sheet_126: 431272335
+      Pokemon_Sprite_Sheet_169: -1610060335
+      Pokemon_Sprite_Sheet_118: 1623157686
+      Pokemon_Sprite_Sheet_98: 1532833061
+      Pokemon_Sprite_Sheet_105: 2102995589
+      Pokemon_Sprite_Sheet_47: -1843211278
+      Pokemon_Sprite_Sheet_142: -117405745
+      Pokemon_Sprite_Sheet_23: -615435132
+      Pokemon_Sprite_Sheet_89: -197347400
+      Pokemon_Sprite_Sheet_129: -2097865863
+      Pokemon_Sprite_Sheet_11: 375076806
+      Pokemon_Sprite_Sheet_154: 127690298
+      Pokemon_Sprite_Sheet_128: 1843516659
+      Pokemon_Sprite_Sheet_122: 1888664666
+      Pokemon_Sprite_Sheet_112: 201147828
+      Pokemon_Sprite_Sheet_21: -815627255
+      Pokemon_Sprite_Sheet_44: 1377744771
+      Pokemon_Sprite_Sheet_151: 292432318
+      Pokemon_Sprite_Sheet_39: -354305004
+      Pokemon_Sprite_Sheet_145: 525310864
+      Pokemon_Sprite_Sheet_123: 387082034
+      Pokemon_Sprite_Sheet_136: -489442739
+      Pokemon_Sprite_Sheet_117: -659994776
+      Pokemon_Sprite_Sheet_27: -1603647407
+      Pokemon_Sprite_Sheet_8: -1085148047
+      Pokemon_Sprite_Sheet_111: -374303832
+      Pokemon_Sprite_Sheet_158: -172540260
+      Pokemon_Sprite_Sheet_57: 819497312
+      Pokemon_Sprite_Sheet_72: 182482914
+      Pokemon_Sprite_Sheet_81: -2142841342
+      Pokemon_Sprite_Sheet_69: -1307709188
+      Pokemon_Sprite_Sheet_52: -173519620
+      Pokemon_Sprite_Sheet_156: -225904497
+      Pokemon_Sprite_Sheet_40: -680825668
+      Pokemon_Sprite_Sheet_96: 1746892491
+      Pokemon_Sprite_Sheet_37: 177459182
+      Pokemon_Sprite_Sheet_63: -39956363
+      Pokemon_Sprite_Sheet_19: -1926046351
+      Pokemon_Sprite_Sheet_35: 1178486055
+      Pokemon_Sprite_Sheet_66: -2040094319
+      Pokemon_Sprite_Sheet_95: -895875432
+      Pokemon_Sprite_Sheet_36: 628168518
+      Pokemon_Sprite_Sheet_79: 911381633
+      Pokemon_Sprite_Sheet_171: -42743565
+      Pokemon_Sprite_Sheet_64: 626770267
+      Pokemon_Sprite_Sheet_134: -1800892739
+      Pokemon_Sprite_Sheet_160: -747497668
+      Pokemon_Sprite_Sheet_99: 1450168793
+      Pokemon_Sprite_Sheet_140: -1537315679
+      Pokemon_Sprite_Sheet_14: 598870331
+      Pokemon_Sprite_Sheet_18: -521361846
+      Pokemon_Sprite_Sheet_4: 1882586538
+      Pokemon_Sprite_Sheet_147: -1029924543
+      Pokemon_Sprite_Sheet_3: 428057325
+      Pokemon_Sprite_Sheet_75: 906825284
+      Pokemon_Sprite_Sheet_7: 347469485
+      Pokemon_Sprite_Sheet_70: 1850725939
+      Pokemon_Sprite_Sheet_30: 1762433763
+      Pokemon_Sprite_Sheet_59: 44539165
+      Pokemon_Sprite_Sheet_133: -739068349
+      Pokemon_Sprite_Sheet_127: -1183048785
+      Pokemon_Sprite_Sheet_50: 1142279035
+      Pokemon_Sprite_Sheet_102: 906146386
+      Pokemon_Sprite_Sheet_33: 990474043
+      Pokemon_Sprite_Sheet_32: -1027010789
+      Pokemon_Sprite_Sheet_107: 1880062871
+      Pokemon_Sprite_Sheet_68: 1113646485
+      Pokemon_Sprite_Sheet_83: -1532502515
+      Pokemon_Sprite_Sheet_97: -872894865
+      Pokemon_Sprite_Sheet_86: -50099043
+      Pokemon_Sprite_Sheet_55: 1751414361
+      Pokemon_Sprite_Sheet_173: -1168746247
+      Pokemon_Sprite_Sheet_53: 80662140
+      Pokemon_Sprite_Sheet_49: 1415601141
+      Pokemon_Sprite_Sheet_149: 1906632146
+      Pokemon_Sprite_Sheet_120: 2051885252
+      Pokemon_Sprite_Sheet_162: -228854331
+      Pokemon_Sprite_Sheet_104: 1828014834
+      Pokemon_Sprite_Sheet_164: 1149717784
+      Pokemon_Sprite_Sheet_165: 2034447560
+      Pokemon_Sprite_Sheet_116: -871974625
+      Pokemon_Sprite_Sheet_93: -132429355
+      Pokemon_Sprite_Sheet_170: 1359804820
+      Pokemon_Sprite_Sheet_168: -788352486
+      Pokemon_Sprite_Sheet_144: 1516692592
+      Pokemon_Sprite_Sheet_110: -1324206951
+      Pokemon_Sprite_Sheet_132: -1590370728
+      Pokemon_Sprite_Sheet_90: -681346849
+      Pokemon_Sprite_Sheet_139: -785235917
+      Pokemon_Sprite_Sheet_12: -299273385
+      Pokemon_Sprite_Sheet_10: -284826672
+      Pokemon_Sprite_Sheet_137: -589028174
+      Pokemon_Sprite_Sheet_103: 162458331
+      Pokemon_Sprite_Sheet_130: 465947250
+      Pokemon_Sprite_Sheet_159: -896233187
+      Pokemon_Sprite_Sheet_29: -1821392939
+      Pokemon_Sprite_Sheet_17: 160924500
+      Pokemon_Sprite_Sheet_152: -1553410433
+      Pokemon_Sprite_Sheet_38: 1475202808
+      Pokemon_Sprite_Sheet_9: 1630820520
+      Pokemon_Sprite_Sheet_51: -728118650
+      Pokemon_Sprite_Sheet_161: -1221859090
+      Pokemon_Sprite_Sheet_91: -2014051716
+      Pokemon_Sprite_Sheet_157: -983629289
+      Pokemon_Sprite_Sheet_13: 1695607784
+      Pokemon_Sprite_Sheet_76: 978891377
+      Pokemon_Sprite_Sheet_82: 1912738786
+      Pokemon_Sprite_Sheet_85: -2133857435
+      Pokemon_Sprite_Sheet_43: -350193112
+      Pokemon_Sprite_Sheet_84: -1544582011
+      Pokemon_Sprite_Sheet_92: -1332470599
+      Pokemon_Sprite_Sheet_20: 936722669
+      Pokemon_Sprite_Sheet_119: 464754958
+      Pokemon_Sprite_Sheet_155: 1228831030
+      Pokemon_Sprite_Sheet_124: 649970442
+      Pokemon_Sprite_Sheet_166: 985444382
+      Pokemon_Sprite_Sheet_88: -128221540
+      Pokemon_Sprite_Sheet_5: -522779474
+      Pokemon_Sprite_Sheet_106: -2037479320
+      Pokemon_Sprite_Sheet_28: -1174689846
+      Pokemon_Sprite_Sheet_1: 1729525115
+      Pokemon_Sprite_Sheet_26: -1939320895
+      Pokemon_Sprite_Sheet_77: -1180370724
+      Pokemon_Sprite_Sheet_131: 177483870
+      Pokemon_Sprite_Sheet_172: -1634910320
+      Pokemon_Sprite_Sheet_56: -1941785806
+      Pokemon_Sprite_Sheet_45: 1916494449
+      Pokemon_Sprite_Sheet_175: -1437747467
+      Pokemon_Sprite_Sheet_2: 957084800
+      Pokemon_Sprite_Sheet_146: -2051998632
+      Pokemon_Sprite_Sheet_48: -527433410
+      Pokemon_Sprite_Sheet_143: 1951646489
+      Pokemon_Sprite_Sheet_31: 692654364
+      Pokemon_Sprite_Sheet_65: -83917844
+      Pokemon_Sprite_Sheet_60: -1691664324
+      Pokemon_Sprite_Sheet_101: -1252764076
+      Pokemon_Sprite_Sheet_114: 295653448
+      Pokemon_Sprite_Sheet_0: -1699105201
+      Pokemon_Sprite_Sheet_174: -1462225893
+      Pokemon_Sprite_Sheet_138: 837616360
+      Pokemon_Sprite_Sheet_141: -7136478
+      Pokemon_Sprite_Sheet_135: -1208024353
+      Pokemon_Sprite_Sheet_62: -1433167012
+      Pokemon_Sprite_Sheet_34: -858834323
+      Pokemon_Sprite_Sheet_153: 522687833
+      Pokemon_Sprite_Sheet_58: 1725745042
+      Pokemon_Sprite_Sheet_54: 1093631734
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
