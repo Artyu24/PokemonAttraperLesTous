@@ -72,18 +72,20 @@ public class DialogueManager : MonoBehaviour
 
             if (WaterZone.Instance.IsOpen)
             {
-                WaterZone.Instance.ActivateAnimation();
+                PlayerMovement.Instance.ActualInteractionDelegate = null;
+                WaterZone.Instance.ActivateEnterAnimation();
                 return;
             }
             
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
 
-
             return;
         }
 
         actualSentence = sentences.Dequeue();
+        FixText(ref actualSentence);
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(actualSentence));
     }
@@ -97,12 +99,17 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        if(actualDialogueDelegate != null)
+        if (actualDialogueDelegate != null)
             actualDialogueDelegate();
         else
         {
             PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
             interactionImage.SetActive(true);
         }
+    }
+
+    private void FixText(ref string texte)
+    {
+        texte = texte.Replace("PLAYER", "Franck'o").Replace("POKEMON", "Pikachu").Replace("VILLE", "Bourgeon");
     }
 }

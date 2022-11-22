@@ -2697,7 +2697,7 @@ MonoBehaviour:
   dialogueEnter:
   - "L'eau est tint\xE9e d'un bleu fonc\xE9.... Voulez-vous utiliser Surf?"
   dialogueValidation:
-  - Franck'o utilise Surf.
+  - PLAYER utilise Surf.
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -46244,6 +46244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291735401}
   - component: {fileID: 291735402}
+  - component: {fileID: 291735403}
   m_Layer: 0
   m_Name: WaterPokemon
   m_TagString: Untagged
@@ -46318,6 +46319,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &291735403
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291735400}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47776a6c5bfe35b499c1f97fc96953b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &388095171
 GameObject:
   m_ObjectHideFlags: 0
@@ -50307,6 +50328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f533282370ca1e4990d5f50eaff172d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterPokemon: {fileID: 291735400}
   moveSpeed: 5
   wallLayer:
     serializedVersion: 2
@@ -58241,7 +58263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.002524842, y: 0.3805542}
+  m_AnchoredPosition: {x: -0.002524842, y: 0.38049316}
   m_SizeDelta: {x: 1920, y: 351.486}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1268204426

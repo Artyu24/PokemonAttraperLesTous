@@ -9,11 +9,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
 
-    [Header("Different Area")]
-    private bool inWater = false;
+    [Header("Different Area")] 
+    [SerializeField] private GameObject waterPokemon;
     private bool inGrass = false;
     private HerbesHautes herbesHautes;
     private bool walkOnWater = false;
+    public GameObject WaterPokemon => waterPokemon;
     public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
 
     [Header("Teleportation")]
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Animation")]
     public Animator anim;
+    private Animator animPokeWater;
     private PotentialDirection lastAnim = PotentialDirection.RIEN;
 
     private void Awake()
@@ -51,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         boxCenter = GetComponent<BoxCenter>();
+        animPokeWater = waterPokemon.GetComponent<Animator>();
         endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary
@@ -90,11 +93,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (dirEnum != PotentialDirection.RIEN)
             {
-                Check(dirChoose.transformDir, ref dirChoose.collision);
-                if (!dirChoose.collision)
+                lastDirEnum = dirEnum;
+                
+                if (!Check(dirChoose.transformDir))
                 {
                     endPos = transform.position + dirChoose.mouv;
-                    lastDirEnum = dirEnum;
 
                     GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
                 }
@@ -132,7 +135,11 @@ public class PlayerMovement : MonoBehaviour
         #region In Movement
 
         if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
+        {
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
+            if(waterPokemon.activeInHierarchy && walkOnWater)
+                waterPokemon.transform.position = transform.position;
+        }
 
         #endregion
 
@@ -173,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
         if (lastAnim != actualDir)
         {
             anim.SetTrigger(animTrigger);
+            if(waterPokemon.activeInHierarchy && animTrigger != "Idl" && walkOnWater)
+                animPokeWater.SetTrigger(animTrigger);
         }
         lastAnim = actualDir;
     }
@@ -181,32 +190,28 @@ public class PlayerMovement : MonoBehaviour
 
     #region Check Collision
 
-    private void Check(Vector3 direction, ref bool isCollision)
+    private bool Check(Vector3 direction)
     {
         Debug.DrawRay(transform.position, direction * raycastDistance, Color.blue, 2f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, raycastDistance, wallLayer);
         if (hit.collider != null)
         {
-            isCollision = true;
-
             //if(FindObjectOfType<AudioManager>() != null)
             //    FindObjectOfType<AudioManager>().Play("BlockSound");
             
-            return;
+            return true;
         }
 
-
-        if (!walkOnWater)
+        RaycastHit2D hitWater = Physics2D.Raycast(transform.position, direction, raycastDistance, waterLayer);
+        if (hitWater.collider != null)
         {
-            RaycastHit2D hitWater = Physics2D.Raycast(transform.position, direction, raycastDistance, waterLayer);
-            if (hitWater.collider != null)
+            if (walkOnWater)
             {
-                isCollision = true;
-                return;
+                WaterZone.Instance.ActivateExitAnimation();      
             }
+            return true;
         }
-        
-        isCollision = false;
+        return false;
     }
 
     #endregion
@@ -227,7 +232,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.collider.GetComponent<IInteractable>() != null)
             {
+                if (walkOnWater && hit.collider.gameObject.layer == 4)
+                    return;
+
                 hit.collider.GetComponent<IInteractable>().Interact();
+
                 if (FindObjectOfType<AudioManager>() != null)
                 {
                     FindObjectOfType<AudioManager>().Play("SFXMenuClick");
@@ -240,7 +249,7 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    #region Enter / Exit Trigger
+    #region Enter in Door or Grass (Trigger)
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -276,26 +285,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.transform.gameObject.layer == LayerMask.NameToLayer("Water"))
-        {
-            if (!inWater)
-                inWater = true;
-            else
-            {
-                if (FindObjectOfType<AudioManager>() != null)
-                {
-                    FindObjectOfType<AudioManager>().StopFade("Surf");
-                    FindObjectOfType<AudioManager>().PlayFade("MainTheme");
-                }
-
-                inWater = false;
-                walkOnWater = false;
-            }
-        }
-    }
-
     #endregion
 
     #region Teleportation in Building
@@ -317,6 +306,18 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    #region Water Pokemon
+
+    public void InitWaterPokemon()
+    {
+        DirectionData lastDirData = GetLastDirection();
+        waterPokemon.transform.position = transform.position + lastDirData.mouv;
+        waterPokemon.SetActive(true);
+        animPokeWater.SetTrigger(lastDirData.animName);
+    }
+
+    #endregion
+    
     public DirectionData GetLastDirection()
     {
         return dictDirection[lastDirEnum];
@@ -327,7 +328,6 @@ public class PlayerMovement : MonoBehaviour
 
 public class DirectionData
 {
-    public bool collision = false;
     public PotentialDirection dirEnum;
     public string animName;
     public Vector3 mouv;
