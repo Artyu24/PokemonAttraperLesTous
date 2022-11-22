@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public int moveSpeed = 20;
     private Vector3 endPos;
     private Vector2 inputDir;
+    private BoxCenter boxCenter;
     private Dictionary<PotentialDirection, DirectionData> dictDirection = new Dictionary<PotentialDirection, DirectionData>();
 
     [Header("Interaction")]
@@ -49,7 +50,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        endPos = GetComponent<BoxCenter>().CenterObject();
+        boxCenter = GetComponent<BoxCenter>();
+        endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary
 
@@ -96,6 +98,14 @@ public class PlayerMovement : MonoBehaviour
 
                     GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
                 }
+                else
+                {
+                    //BONK
+                    if (FindObjectOfType<AudioManager>() != null)
+                    {
+                        FindObjectOfType<AudioManager>().Play("BlockSound");
+                    }
+                }
             }
         }
 
@@ -105,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
         {
-            endPos = GetComponent<BoxCenter>().CenterObject();
+            endPos = boxCenter.CenterObject();
             transform.position = endPos;
 
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
@@ -145,7 +155,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.started)
         {
-            actualInteractionDelegate();
+            if (actualInteractionDelegate != null)
+            {
+                DirectionData dirChoose = dictDirection[PotentialDirection.RIEN];
+                AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
+
+                actualInteractionDelegate();
+            }
         }
     }
     #endregion
@@ -210,7 +226,15 @@ public class PlayerMovement : MonoBehaviour
         if (hit.collider != null)
         {
             if (hit.collider.GetComponent<IInteractable>() != null)
+            {
                 hit.collider.GetComponent<IInteractable>().Interact();
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
+                }
+
+                //SON TICK DE DIALOGUE
+            }
         }
     }
 
@@ -260,6 +284,12 @@ public class PlayerMovement : MonoBehaviour
                 inWater = true;
             else
             {
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().StopFade("Surf");
+                    FindObjectOfType<AudioManager>().PlayFade("MainTheme");
+                }
+
                 inWater = false;
                 walkOnWater = false;
             }
@@ -286,6 +316,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+    public DirectionData GetLastDirection()
+    {
+        return dictDirection[lastDirEnum];
+    }
 }
 
 #region Direction Data Class

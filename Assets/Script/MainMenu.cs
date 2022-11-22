@@ -7,7 +7,9 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("ArthurV1");
+        FindObjectOfType<AudioManager>().Stop("MusicMenu");
+        FindObjectOfType<AudioManager>().Play("MainTheme");
+        SceneManager.LoadScene("BestJMScene");
     }
 
     public void QuitGame()

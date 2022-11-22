@@ -15,7 +15,7 @@ public enum Zone
     CAVE
 }
 
-public class Zone_Change : MonoBehaviour
+public class ZoneChange : MonoBehaviour
 {
     [SerializeField] private Zone zoneState;
     [SerializeField] private String zoneName;

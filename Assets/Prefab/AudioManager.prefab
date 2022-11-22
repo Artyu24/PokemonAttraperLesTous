@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8326253640107128955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8326253640107128953}
+  - component: {fileID: 8326253640107128954}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8326253640107128953
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326253640107128955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8326253640107128954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8326253640107128955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c951f2efcbd3340b5b39bbc0745b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: 6048f4df6fcc51341a617766be19345a, type: 3}
+    volume: 0.293
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: DoorSound
+    clip: {fileID: 8300000, guid: fffd25a79efe586419cb11f0897750e4, type: 3}
+    volume: 0.795
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: BlockSound
+    clip: {fileID: 8300000, guid: 7d93dcaa184f66547bbb1f475e596f87, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: MusicMenu
+    clip: {fileID: 8300000, guid: 956bc3ebe0fc5ea44a90ee59cf70f742, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: SFXMenuClick
+    clip: {fileID: 8300000, guid: e7346886bea0bbf4db041478561202c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Surf
+    clip: {fileID: 8300000, guid: c36aac7cb3b3bd848891b64adb041b50, type: 3}
+    volume: 0.659
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
