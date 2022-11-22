@@ -64,7 +64,7 @@ public class ZoneChange : MonoBehaviour
                 {
                     textArea.gameObject.GetComponent<Text>().text = zoneName;
                 }
-                if (FindObjectOfType<AudioManager>() != null)
+                if (FindObjectOfType<AudioManager>() != null && oldSound != "" && newSound != "")
                 {
                     FindObjectOfType<AudioManager>().StopFade(oldSound);
                     FindObjectOfType<AudioManager>().PlayFade(newSound);
