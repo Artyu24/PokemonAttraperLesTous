@@ -41,6 +41,8 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton4;
     public Text pokemonButton5;
     public Text pokemonButton6;
+
+    public Dialogue dialogue;
     #endregion
 
     #region Anims
@@ -145,8 +147,9 @@ public class CombatManager : MonoBehaviour
     public void StartCombat(PokeData wild)
     {
         //INIT
-        Debug.Log("Initialisation du combat : anim + textes");
-        chatText.text = wild.name + " est apparu !!!";
+        //Debug.Log("Initialisation du combat : anim + textes");
+        DialogueManager.Instance.InitDialogue(this, dialogue);
+        //chatText.text = wild.name + " est apparu !!!";
 
         enemiePoke = wild;
 
