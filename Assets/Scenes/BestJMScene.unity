@@ -890,7 +890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 1
   zoneName: Bourgeon City
-  oldSound: 'MusicMenu '
+  oldSound: RouteMusic
   newSound: MainTheme
 --- !u!60 &89209015
 PolygonCollider2D:
