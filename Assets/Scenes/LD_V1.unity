@@ -890,6 +890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 1
   zoneName: Bourgeon City
+  oldSound: 
+  newSound: 
 --- !u!60 &89209015
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -46318,6 +46320,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &298234448
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128953, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128955, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 105b49e1b96c464459a1ca2edf6a6305, type: 3}
 --- !u!1 &388095171
 GameObject:
   m_ObjectHideFlags: 0
@@ -115584,6 +115655,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 3
   zoneName: Route 01
+  oldSound: 
+  newSound: 
 --- !u!1 &1748761791
 GameObject:
   m_ObjectHideFlags: 0
