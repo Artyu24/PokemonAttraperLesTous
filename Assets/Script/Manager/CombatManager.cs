@@ -16,7 +16,7 @@ public class CombatManager : MonoBehaviour
 
     public TeamPokes playerPokes; //pokemons du joueur
     public AttackDatabase attackDatabase; //scriptable de toutes les attaques du jeu
-    public PokeDataBase pokeDataBase; //scriptable de tout les pokémons du jeu
+    public PokeDatabase pokeDataBase; //scriptable de tout les pokémons du jeu
     private Dictionary<int, PokeData> dictPokeData = new Dictionary<int, PokeData>(); //dictionnaire de tout les pokémons du jeu
     private Dictionary<int, AttackData> dictAttackData = new Dictionary<int, AttackData>(); //dictionnaire de toutes les attaques du jeu
     public Dictionary<int, PokeData> DictPokeData => dictPokeData;
@@ -42,7 +42,7 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton5;
     public Text pokemonButton6;
 
-    public Dialogue dialogue;
+    //public Dialogue dialogue;
     #endregion
 
     #region Anims

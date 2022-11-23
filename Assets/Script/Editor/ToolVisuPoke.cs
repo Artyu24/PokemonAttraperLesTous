@@ -15,7 +15,7 @@ using static UnityEditor.Rendering.FilterWindow;
 public class ToolVisuPoke : EditorWindow
 {
     private List<PokeData> allPoke;
-    private PokeDataBase pokeDataBase;
+    private PokeDatabase _pokeDatabase;
 
     private List<AttackData> allAttack;
     private AttackDatabase attackDataBase;
@@ -30,7 +30,9 @@ public class ToolVisuPoke : EditorWindow
     private TextField pokeDesc;
     private TextField pokeType;
     private ObjectField pokeImage;
+    private ObjectField pokeDresseurImage;
     private Image pokeImageVisu;
+    private Image pokeDresseurImageVisu;
     private int ID;
 
     [Header("Attacks")] 
@@ -63,7 +65,9 @@ public class ToolVisuPoke : EditorWindow
         pokeDesc = new TextField();
         pokeType = new TextField();
         pokeImage = new ObjectField();
+        pokeDresseurImage = new ObjectField();
         pokeImageVisu = new Image();
+        pokeDresseurImageVisu = new Image();
 
         attackPopupFields = new PopupField<string>[4];
         attackDamage = new TextElement[4];
@@ -97,14 +101,15 @@ public class ToolVisuPoke : EditorWindow
         }
 
         pokeImageVisu.sprite = (Sprite) pokeImage.value;
+        pokeDresseurImageVisu.sprite = (Sprite) pokeDresseurImage.value;
     }
 
     void CreateGUI()
     {
-        pokeDataBase = (PokeDataBase)AssetDatabase.LoadAssetAtPath("Assets/Script/Data/DataBase/PokeDataBase.asset", typeof(PokeDataBase));
+        _pokeDatabase = (PokeDatabase)AssetDatabase.LoadAssetAtPath("Assets/Script/Data/DataBase/PokeDatabase.asset", typeof(PokeDatabase));
         attackDataBase = (AttackDatabase)AssetDatabase.LoadAssetAtPath("Assets/Script/Data/DataBase/AttackDatabase.asset", typeof(AttackDatabase));
 
-        allPoke = pokeDataBase.PokeData;
+        allPoke = _pokeDatabase.PokeData;
         allAttack = attackDataBase.AttackData;
 
         // Create a two-pane view with the left pane being fixed with
@@ -196,6 +201,10 @@ public class ToolVisuPoke : EditorWindow
         BoxRTopTL.Add(pokeImage);
         BoxRTopTL.Add(pokeImageVisu);
         pokeImageVisu.scaleMode = ScaleMode.ScaleToFit;
+
+        BoxRTopTL.Add(pokeDresseurImage);
+        BoxRTopTL.Add(pokeDresseurImageVisu);
+        pokeDresseurImageVisu.scaleMode = ScaleMode.ScaleToFit;
 
         var BoxRTopBL = new VisualElement();//PokeType
         BoxRTop.Add(BoxRTopBL);
@@ -308,6 +317,7 @@ public class ToolVisuPoke : EditorWindow
     private void SaveOnclicked()
     {
         allPoke[ID].sprite = (Sprite)pokeImage.value;
+        allPoke[ID].BackSprite = (Sprite)pokeDresseurImage.value;
         allPoke[ID].name = pokeName.value;
         allPoke[ID].desc = pokeDesc.value;
         PokeType currentPokeType;
@@ -343,8 +353,6 @@ public class ToolVisuPoke : EditorWindow
         allPoke.RemoveAt(ID);
         UpdatePokeList();
     }
-
-
 
     private VisualElement CreateAttackBox(VisualElement _boxToAttach, int _attackNumber, PopupField<string> _attackPopupField, TextElement _attackDamage, TextElement _attackPP, TextElement _attackType, TextElement _attackDesc)
     {
@@ -424,12 +432,18 @@ public class ToolVisuPoke : EditorWindow
         #region Top
         // Get the selected sprite
         var selectedSprite = allPoke.Find(x => x == pokeData).sprite;
+        var selectedBackSprite = allPoke.Find(x => x == pokeData).BackSprite;
         // Add a new Image control and display the sprite
         //pokeImage.scaleMode = ScaleMode.ScaleToFit;
         pokeImage.objectType = typeof(Sprite);
         pokeImage.value = selectedSprite;
+
         pokeImageVisu.sprite = (Sprite)pokeImage.value;
 
+
+        pokeDresseurImage.objectType = typeof(Sprite);
+        pokeDresseurImage.value = selectedBackSprite;
+        pokeDresseurImageVisu.sprite = (Sprite)pokeDresseurImage.value;
 
         var selectedName = allPoke.Find(x => x == pokeData).name;
         pokeName.value = selectedName;
