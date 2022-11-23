@@ -5,7 +5,7 @@ using Object.Data;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PokeDatabase", menuName = "Database/Pokemon", order = 1)]
-public class PokeDataBase : ScriptableObject
+public class PokeDatabase : ScriptableObject
 {
     //custom editor pour pouvoir modifier l'inspector
     public List<PokeData> PokeData = new List<PokeData>();

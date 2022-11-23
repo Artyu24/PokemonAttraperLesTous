@@ -15,6 +15,7 @@ namespace Object.Data
 
         [Header("Visuel")] 
         public Sprite sprite;
+        public Sprite BackSprite;
         public Animator animator;
 
         [Header("Attack")]

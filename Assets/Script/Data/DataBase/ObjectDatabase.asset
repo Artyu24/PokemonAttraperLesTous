@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa3a7509f60b8640853d600ff9f77f8, type: 3}
+  m_Name: ObjectDatabase
+  m_EditorClassIdentifier: 
+  objectsData:
+  - name: Potion
+    ID: 1
+    desc: "\xE7a heal quoi"
+    TYPE: 18
+    value: 20
+    categorie: 0
+    subCategorie: 1
+  - name: Super Potion
+    ID: 2
+    desc: "\xE7a heal quoi"
+    TYPE: 18
+    value: 50
+    categorie: 0
+    subCategorie: 1
+  - name: Restore PP
+    ID: 3
+    desc: "\xE7a rend des pp  quoi"
+    TYPE: 18
+    value: 5
+    categorie: 0
+    subCategorie: 0
+  - name: ATK boost
+    ID: 4
+    desc: ATK ++
+    TYPE: 18
+    value: 10
+    categorie: 1
+    subCategorie: 2
+  - name: DEF boost
+    ID: 5
+    desc: DEF ++
+    TYPE: 18
+    value: 10
+    categorie: 1
+    subCategorie: 3
+  - name: SPEED boost
+    ID: 6
+    desc: SPEED ++
+    TYPE: 18
+    value: 10
+    categorie: 1
+    subCategorie: 4
+  - name: PokeBall
+    ID: 7
+    desc: Caputure?
+    TYPE: 18
+    value: 50
+    categorie: 2
+    subCategorie: 5

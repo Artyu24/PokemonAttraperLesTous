@@ -6,14 +6,14 @@ using UnityEngine;
 public class TeamPokes : MonoBehaviour
 {
     //public AttackDatabase attackDatabase; //scriptable de toutes les attaques du jeu
-    public PokeDataBase pokeDataBase; //scriptable de tout les pokémons du jeu
+    public PokeDatabase PokeDatabase; //scriptable de tout les pokémons du jeu
     public List<PokeData> pokes = null;
 
     private void Awake()
     {
-        if (pokeDataBase != null)
+        if (PokeDatabase != null)
         {
-            AddPokeToTeam(pokeDataBase.PokeData);
+            AddPokeToTeam(PokeDatabase.PokeData);
         }
         else
         {
