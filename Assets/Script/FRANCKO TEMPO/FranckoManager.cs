@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SaveManager : MonoBehaviour {
+public class FranckoManager : MonoBehaviour {
 
     public string NameInput { get; set; }
     public Text txtGameName;

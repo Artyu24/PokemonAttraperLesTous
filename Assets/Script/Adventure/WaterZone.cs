@@ -8,8 +8,8 @@ public class WaterZone : MonoBehaviour, IInteractable
 {
     public static WaterZone Instance;
 
-    [SerializeField] private Dialogue dialogueEnter;
-    [SerializeField] private Dialogue dialogueValidation;
+    [SerializeField, TextArea(3, 10)] private string[] dialogueEnter;
+    [SerializeField, TextArea(3, 10)] private string[] dialogueValidation;
     
     private GameObject waterBox;
     private GameObject waterAnimation;
@@ -93,26 +93,59 @@ public class WaterZone : MonoBehaviour, IInteractable
         }
     }
 
-    public void ActivateAnimation()
-    {
-        StartCoroutine(SetAnimation());
-    }
+    #region Animation
 
-    private IEnumerator SetAnimation()
+    public void ActivateEnterAnimation()
+    {
+        StartCoroutine(EnterAnimation());
+    }
+    private IEnumerator EnterAnimation()
     {
         waterAnimation.SetActive(true);
-        yield return new WaitForSeconds(2.1f);
+        yield return new WaitForSeconds(2.2f);
         waterAnimation.SetActive(false);
 
         isOpen = false;
 
+        PlayerMovement.Instance.InitWaterPokemon();
+
         DirectionData lastDirection = PlayerMovement.Instance.GetLastDirection();
         GameObject player = PlayerMovement.Instance.gameObject;
-        player.transform.DOJump(lastDirection.mouv + player.transform.position, 1, 1, 1f);
+        CircleCollider2D playerCollider = player.GetComponent<CircleCollider2D>();
+        playerCollider.enabled = false;
+        player.transform.DOJump(lastDirection.mouv + player.transform.position, 1, 1, 1f).SetEase(Ease.OutQuart);
 
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1.4f);
+
+        playerCollider.enabled = true;
+        GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+        PlayerMovement.Instance.ResetInteractionFunction();
+    }
+
+    public void ActivateExitAnimation()
+    {
+        StartCoroutine(ExitAnimation());
+    }
+    private IEnumerator ExitAnimation()
+    {
+        PlayerMovement.Instance.WalkOnWater = false;
+        GameManager.Instance.ActualPlayerState = PlayerState.WaterInteraction;
+        PlayerMovement.Instance.ActualInteractionDelegate = null;
+
+        DirectionData lastDirection = PlayerMovement.Instance.GetLastDirection();
+        GameObject player = PlayerMovement.Instance.gameObject;
+        CircleCollider2D playerCollider = player.GetComponent<CircleCollider2D>();
+        playerCollider.enabled = false;
+        player.transform.DOJump(lastDirection.mouv + player.transform.position, 1, 1, 1f).SetEase(Ease.OutQuart);
+
+        yield return new WaitForSeconds(1.4f);
+
+        playerCollider.enabled = true;
+        PlayerMovement.Instance.WaterPokemon.SetActive(false);
 
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         PlayerMovement.Instance.ResetInteractionFunction();
     }
+    
+    #endregion
 }

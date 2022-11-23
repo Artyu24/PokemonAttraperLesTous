@@ -24,7 +24,7 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
     }
 
-    public void InitDialogue<T>(T type, Dialogue dialogue)
+    public void InitDialogue<T>(T type, string[] dialogue)
     {
         switch (type)
         {
@@ -41,13 +41,13 @@ public class DialogueManager : MonoBehaviour
         StartDialogue(dialogue);
     }
 
-    private void StartDialogue(Dialogue dialogue)
+    private void StartDialogue(string[] dialogue)
     {
         sentences.Clear();
 
         dialogueBox.SetActive(true);
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue)
         {
             sentences.Enqueue(sentence);
         }
@@ -72,18 +72,20 @@ public class DialogueManager : MonoBehaviour
 
             if (WaterZone.Instance.IsOpen)
             {
-                WaterZone.Instance.ActivateAnimation();
+                PlayerMovement.Instance.ActualInteractionDelegate = null;
+                WaterZone.Instance.ActivateEnterAnimation();
                 return;
             }
             
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
 
-
             return;
         }
 
         actualSentence = sentences.Dequeue();
+        FixText(ref actualSentence);
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(actualSentence));
     }
@@ -97,12 +99,17 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        if(actualDialogueDelegate != null)
+        if (actualDialogueDelegate != null)
             actualDialogueDelegate();
         else
         {
             PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
             interactionImage.SetActive(true);
         }
+    }
+
+    private void FixText(ref string texte)
+    {
+        texte = texte.Replace("PLAYER", "Franck'o").Replace("POKEMON", "Pikachu").Replace("VILLE", "Bourgeon");
     }
 }
