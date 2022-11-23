@@ -37,7 +37,9 @@ public class HerbesHautes : MonoBehaviour
         {
             int temp = Random.Range(0, wildPokes.Length);
             wildPoke = wildPokes[temp];
+
             combatWindow.SetActive(true);
+            
             GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;

@@ -53,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         boxCenter = GetComponent<BoxCenter>();
-        animPokeWater = waterPokemon.GetComponent<Animator>();
+        if(waterPokemon != null)
+            animPokeWater = waterPokemon.GetComponent<Animator>();
         endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary
@@ -137,8 +138,9 @@ public class PlayerMovement : MonoBehaviour
         if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
         {
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
-            if(waterPokemon.activeInHierarchy && walkOnWater)
-                waterPokemon.transform.position = transform.position;
+            if(waterPokemon != null)
+                if(waterPokemon.activeInHierarchy && walkOnWater)
+                    waterPokemon.transform.position = transform.position;
         }
 
         #endregion
@@ -180,8 +182,9 @@ public class PlayerMovement : MonoBehaviour
         if (lastAnim != actualDir)
         {
             anim.SetTrigger(animTrigger);
-            if(waterPokemon.activeInHierarchy && animTrigger != "Idl" && walkOnWater)
-                animPokeWater.SetTrigger(animTrigger);
+            if (waterPokemon != null)
+                if (waterPokemon.activeInHierarchy && animTrigger != "Idl" && walkOnWater)
+                    animPokeWater.SetTrigger(animTrigger);
         }
         lastAnim = actualDir;
     }

@@ -1159,8 +1159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ldGrid: {fileID: 1787765958}
   fadeAnim: {fileID: 1786851111}
-  areaFrame: {fileID: 126917309}
-  waterBox: {fileID: 1092427921}
+  areaFrame: {fileID: 0}
+  waterBox: {fileID: 0}
+  waterAnimation: {fileID: 0}
 --- !u!4 &182230340
 Transform:
   m_ObjectHideFlags: 0
@@ -2693,6 +2694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80656c1035498fe4d9aaecc68bfe2b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueEnter: []
+  dialogueValidation: []
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -50168,7 +50171,7 @@ MonoBehaviour:
     m_Bits: 16
   interactLayer:
     serializedVersion: 2
-    m_Bits: 80
+    m_Bits: 0
   raycastDistance: 1.2
   anim: {fileID: 1284568264}
 --- !u!114 &781142828
@@ -50249,7 +50252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100ac43064190cf47b143d2285e164d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
+  PokeDatabase: {fileID: 0}
   pokes: []
 --- !u!114 &781142834
 MonoBehaviour:
@@ -50333,22 +50336,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5f50ac4c-9fe5-4c76-b624-64188a9f2b14
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 781142827}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnInteract
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 455dae4b-1480-4307-a40b-5d433f841b47
-    m_ActionName: Player/Interaction[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -58071,6 +58058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f919d308433ea64e96f915c27b539e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 0}
+  interactionImage: {fileID: 0}
   dialogueText: {fileID: 1985531695}
 --- !u!1 &1274494840
 GameObject:
@@ -115222,6 +115211,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 056b5626dd77d0b4eaf49fdea8edd85d, type: 3}
+--- !u!1 &1679661923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1679661925}
+  - component: {fileID: 1679661924}
+  m_Layer: 0
+  m_Name: -----TEST-----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1679661924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679661923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e528d522b70e1044c85724729890b652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1679661925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679661923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 89.72132, y: -15.085117, z: -1.8436311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1689649343
 GameObject:
   m_ObjectHideFlags: 0
