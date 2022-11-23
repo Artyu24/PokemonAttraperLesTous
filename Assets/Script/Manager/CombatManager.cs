@@ -42,7 +42,7 @@ public class CombatManager : MonoBehaviour
     public Text pokemonButton5;
     public Text pokemonButton6;
 
-    public Dialogue dialogue;
+    //public Dialogue dialogue;
     #endregion
 
     #region Anims
