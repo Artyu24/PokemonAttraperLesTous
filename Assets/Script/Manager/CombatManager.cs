@@ -119,7 +119,8 @@ public class CombatManager : MonoBehaviour
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
-            attackButtonsText[i] = attackButtons[i].GetComponentInChildren<Text>();
+            if (attackButtons[i] != null)
+                attackButtonsText[i] = attackButtons[i].GetComponentInChildren<Text>();
         }
 
         if (playerPokes.pokes.Count == 0)
