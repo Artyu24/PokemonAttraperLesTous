@@ -36,6 +36,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -632,6 +633,7 @@ namespace SimpleJSON
                             Token.Append(aJSON[i]);
                             break;
                         }
+
                         if (Token.Length > 0 || TokenIsQuoted)
                             ctx.Add(TokenName, ParseElement(Token.ToString(), TokenIsQuoted));
                         TokenIsQuoted = false;
