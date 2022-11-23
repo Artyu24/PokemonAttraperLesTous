@@ -22,6 +22,7 @@ public enum PlayerState
 public enum CombatState
 {
     Init,
+    CallButton,
     PlayerChoose,
     EnemyChoose,
     PlayerAttack,

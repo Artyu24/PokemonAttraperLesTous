@@ -750,6 +750,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5691858638951115660, guid: a570596afe3949d459a01cae7bd55f76,
         type: 3}
+      propertyPath: PokeDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5,
+        type: 2}
+    - target: {fileID: 5691858638951115660, guid: a570596afe3949d459a01cae7bd55f76,
+        type: 3}
       propertyPath: pokeDataBase
       value: 
       objectReference: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5,

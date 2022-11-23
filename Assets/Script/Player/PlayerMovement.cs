@@ -127,6 +127,7 @@ public class PlayerMovement : MonoBehaviour
             isTP = false;
             if (herbesHautes != null)
             {
+                Debug.Log("Appel combat");
                 herbesHautes.SpawnPokemon();
             }
         }
