@@ -79,7 +79,6 @@ public class WaterZone : MonoBehaviour, IInteractable
             //ICI JM LA REGARDE C EST L EAU
             if(FindObjectOfType<AudioManager>() != null)
             {
-                FindObjectOfType<AudioManager>().StopFade("MainTheme");
                 FindObjectOfType<AudioManager>().PlayFade("Surf");
             }
             DialogueManager.Instance.InitDialogue(PlayerMovement.Instance, dialogueValidation);
