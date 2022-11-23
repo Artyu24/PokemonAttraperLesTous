@@ -53,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         boxCenter = GetComponent<BoxCenter>();
-        animPokeWater = waterPokemon.GetComponent<Animator>();
+        if(waterPokemon != null)
+            animPokeWater = waterPokemon.GetComponent<Animator>();
         endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary

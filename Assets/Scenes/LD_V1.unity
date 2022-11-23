@@ -890,6 +890,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 1
   zoneName: Bourgeon City
+  oldSound: 
+  newSound: 
 --- !u!60 &89209015
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -115606,6 +115608,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 3
   zoneName: Route 01
+  oldSound: 
+  newSound: 
 --- !u!1 &1748761791
 GameObject:
   m_ObjectHideFlags: 0
