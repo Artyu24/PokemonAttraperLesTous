@@ -19,7 +19,6 @@ public class ZoneChange : MonoBehaviour
 {
     [SerializeField] private Zone zoneState;
     [SerializeField] private String zoneName;
-    [SerializeField] private String oldSound;
     [SerializeField] private String newSound;
     private Sprite background;
 
@@ -64,9 +63,8 @@ public class ZoneChange : MonoBehaviour
                 {
                     textArea.gameObject.GetComponent<Text>().text = zoneName;
                 }
-                if (FindObjectOfType<AudioManager>() != null && oldSound != "" && newSound != "")
+                if (FindObjectOfType<AudioManager>() != null)
                 {
-                    FindObjectOfType<AudioManager>().StopFade(oldSound);
                     FindObjectOfType<AudioManager>().PlayFade(newSound);
                 }
             }

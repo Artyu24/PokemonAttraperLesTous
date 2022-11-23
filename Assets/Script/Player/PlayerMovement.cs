@@ -170,6 +170,11 @@ public class PlayerMovement : MonoBehaviour
                 AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
                 actualInteractionDelegate();
+
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
+                }
             }
         }
     }
@@ -240,10 +245,7 @@ public class PlayerMovement : MonoBehaviour
 
                 hit.collider.GetComponent<IInteractable>().Interact();
 
-                if (FindObjectOfType<AudioManager>() != null)
-                {
-                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
-                }
+                
 
                 //SON TICK DE DIALOGUE
             }
