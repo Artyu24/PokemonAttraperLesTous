@@ -29,8 +29,7 @@ public enum CombatState
     EnemyAttack,
     PlayerDeath,
     EnemyDeath,
-    PlayerVictory,
-    EnemyVictory,
+    Victory,
     End
 }
 

@@ -8830,6 +8830,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_Duration
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_AmplitudeGain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_FrequencyGain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_SecondaryNoise
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a705aea2d80e0478fb89b6f43d8530,
+        type: 2}
     - target: {fileID: 2268882985629867431, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8868,6 +8889,11 @@ PrefabInstance:
     - target: {fileID: 3295880292285146207, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674953268461266292, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3778875152320271406, guid: bf3323137239afd40bc9d68d19d00e74,
@@ -8950,6 +8976,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 556516436}
+    - target: {fileID: 3778875153181369189, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3778875153239332438, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9175,6 +9206,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 343.8354
+      objectReference: {fileID: 0}
     - target: {fileID: 5939215690742735547, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_Color.b
@@ -9189,6 +9240,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3323137239afd40bc9d68d19d00e74, type: 3}
@@ -9438,28 +9509,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 434790688}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &434790714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434790710}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ChannelMask: 1
-  m_Gain: 1
-  m_Use2DDistance: 0
-  m_UseLocalSpace: 1
-  m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_Duration: 1
-    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &556516436 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
