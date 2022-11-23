@@ -32,7 +32,8 @@ namespace Object.Data
             SOL,
             SPECTRE,
             TENEBRES,
-            VOL
+            VOL,
+            OBJECT
         }
 
         public BaseData(string name, int id, string caption, PokeType pokeType)

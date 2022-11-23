@@ -10,6 +10,11 @@ public class FranckoManager : MonoBehaviour {
     public string NameInput { get; set; }
     public Text txtGameName;
 
+    public void Awake()
+    {
+        SaveSystem.InitSaveData();
+    }
+
     public void OnSave()
     {
         SaveSystem.SaveGameData(NameInput);
