@@ -154,10 +154,19 @@ public class PlayerMovement : MonoBehaviour
     {
         inputDir = ctx.ReadValue<Vector2>();
 
-        if (GameManager.Instance.ActualPlayerState == PlayerState.WaterInteraction && ctx.started)
+        if (ctx.started)
         {
-            if(Math.Abs(inputDir.y) > 0)
-                WaterZone.Instance.SwitchText();
+            if (GameManager.Instance.ActualPlayerState == PlayerState.WaterInteraction && GameManager.Instance.ActualGameState == GameState.Adventure)
+            {
+                if(Math.Abs(inputDir.y) > 0)
+                    WaterZone.Instance.SwitchText();
+            }
+
+            if (GameManager.Instance.ActualGameState == GameState.Paused)
+            {
+                if (Math.Abs(inputDir.y) > 0)
+                    PauseMenu.Instance.SwitchPauseSelection(inputDir.y);
+            }
         }
     }
 
@@ -171,9 +180,26 @@ public class PlayerMovement : MonoBehaviour
                 AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
                 actualInteractionDelegate();
+
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
+                }
             }
         }
     }
+
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            if (GameManager.Instance.ActualGameState == GameState.Adventure || GameManager.Instance.ActualGameState == GameState.Paused)
+            {
+                PauseMenu.Instance.OpenPauseMenu();
+            }
+        }
+    }
+
     #endregion
 
     #region Animation
@@ -241,10 +267,7 @@ public class PlayerMovement : MonoBehaviour
 
                 hit.collider.GetComponent<IInteractable>().Interact();
 
-                if (FindObjectOfType<AudioManager>() != null)
-                {
-                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
-                }
+                
 
                 //SON TICK DE DIALOGUE
             }

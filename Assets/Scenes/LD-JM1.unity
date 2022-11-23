@@ -890,7 +890,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 1
   zoneName: Bourgeon City
-  oldSound: RouteMusic
   newSound: MainTheme
 --- !u!60 &89209015
 PolygonCollider2D:
@@ -46382,6 +46381,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8326253640107128954, guid: 105b49e1b96c464459a1ca2edf6a6305,
+        type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.266
+      objectReference: {fileID: 0}
     - target: {fileID: 8326253640107128955, guid: 105b49e1b96c464459a1ca2edf6a6305,
         type: 3}
       propertyPath: m_Name
@@ -50378,6 +50382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f533282370ca1e4990d5f50eaff172d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterPokemon: {fileID: 0}
   moveSpeed: 5
   wallLayer:
     serializedVersion: 2
@@ -50468,7 +50473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100ac43064190cf47b143d2285e164d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
+  PokeDatabase: {fileID: 0}
   pokes: []
 --- !u!114 &781142834
 MonoBehaviour:
@@ -115655,7 +115660,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneState: 3
   zoneName: Route 01
-  oldSound: MainTheme
   newSound: RouteMusic
 --- !u!1 &1748761791
 GameObject:

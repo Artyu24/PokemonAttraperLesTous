@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
 
     bool resetSound = false;
 
+    private string currentSound;
+
     private void Start()
     {
         FindObjectOfType<AudioManager>().Play("MusicMenu");
@@ -69,6 +71,7 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayFade(string name)
     {
+        StopFade();
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
@@ -76,6 +79,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         StartCoroutine(FadeIn(s));
+        currentSound = name;
     }
     public void Stop(string name)
     {
@@ -87,12 +91,12 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Stop();
     }
-    public void StopFade(string name)
+    public void StopFade()
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == currentSound);
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found (surement mal ecrit entre le script et sur Unity)");
+            Debug.LogWarning("Sound: " + currentSound + " not found (surement mal ecrit entre le script et sur Unity)");
             return;
         }
         StartCoroutine(FadeOut(s));
@@ -135,6 +139,7 @@ public class AudioManager : MonoBehaviour
     }
     public IEnumerator FadeIn(Sound s)
     {
+        yield return new WaitForSeconds(0.5f);
         s.source.volume = 0f;
         s.source.Play();
         s.source.DOFade(s.volume, 2f);        
