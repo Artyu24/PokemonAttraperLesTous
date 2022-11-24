@@ -29,5 +29,23 @@ namespace Object.Data
             def = 5;
             speed = 1;
         }
+
+        private PokeData(string name, PokeData pokedata, int id = 0, string caption = "", PokeType pokeType = PokeType.NORMALE) : base(name, id, caption, pokeType)
+        {
+            dmg = pokedata.dmg;
+            hp = pokedata.hp;
+            hpMax = pokedata.hpMax ;
+            def = pokedata.def;
+            speed = pokedata.speed;
+            sprite = pokedata.sprite;
+            BackSprite = pokedata.BackSprite;
+            animator = pokedata.animator;
+            attackIDlist = pokedata.attackIDlist;
+        }
+
+        public PokeData CopyPokeData()
+        {
+            return new PokeData(name, this, ID, desc, TYPE);
+        }
     }
 }
