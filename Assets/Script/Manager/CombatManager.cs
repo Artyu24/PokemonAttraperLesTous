@@ -383,11 +383,17 @@ public class CombatManager : MonoBehaviour
         //Integrer le text de arthur puis faire un DOFade en sortie
     }
 
-
+    private void Damage(Pokemon attaquant, Pokemon defenseur)
+    {
+        ReadPokeTypes.instance.ObtainSheetData(defenseur.data.TYPE.GetHashCode(), attaquant.data.TYPE.GetHashCode());
+        int multipliyer = ReadPokeTypes.instance.multiplyer;
+        defenseur.data.hp -= attaquant.data.dmg * multipliyer;
+    }
 
     public void PlayerAttack()
     {
-        if ((enemiePoke.data.hp - (enemiePoke.data.hp -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg)) <= 0)
+        Damage(enemiePoke, playerPoke);
+        if (enemiePoke.data.hp <= 0)
         {
             enemiePokémonHP.value = 0;
             enemiePoke.data.hp = 0;
@@ -402,7 +408,8 @@ public class CombatManager : MonoBehaviour
     }
     private void EnemyAttack()
     {
-        if ((playerPoke.data.hp - DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg) <= 0)
+        Damage(playerPoke, enemiePoke);
+        if (playerPoke.data.hp <= 0)
         {
             playerPoke.data.hp = 0;
             playerPokémonHP.value = 0;
@@ -443,12 +450,6 @@ public class CombatManager : MonoBehaviour
     {
         attackWindow.SetActive(false);
         pokemonWindow.SetActive(false);
-    }
-
-    public void CheckType(PokeData pokeType, AttackData attackType)
-    {
-        Debug.Log((int) attackType.TYPE); //ordonnée
-        Debug.Log((int) pokeType.TYPE); //abscisse
     }
 }
 
