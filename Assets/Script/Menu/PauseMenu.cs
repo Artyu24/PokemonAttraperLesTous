@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
@@ -12,18 +13,28 @@ public class PauseMenu : MonoBehaviour
     private RectTransform[] tabMenuObject;
     private bool isOpen = false;
 
+    private delegate void MenuDelegate();
+    private Dictionary<int, MenuDelegate> dicDelegateSelection = new Dictionary<int, MenuDelegate>();
+
     private void Awake()
     {
         if(Instance == null)
             Instance = this;
 
-        tabMenuObject = new RectTransform[pauseMenu.transform.childCount - 1];
+        tabMenuObject = new RectTransform[pauseMenu.transform.childCount - 2];
         for (int i = 0; i < tabMenuObject.Length; i++)
         {
             tabMenuObject[i] = pauseMenu.transform.GetChild(i).GetComponent<RectTransform>();
+
+            Tween a = tabMenuObject[i].DOScale(new Vector3(1.1f, 1.1f), 0.5f);
+            Tween b = tabMenuObject[i].DOScale(new Vector3(1, 1), 0.5f);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(a).Append(b).SetLoops(-1);
         }
 
         selection = pauseMenu.transform.GetChild(pauseMenu.transform.childCount - 1).GetComponent<RectTransform>();
+
+        dicDelegateSelection.Add(3, SaveParty);
     }
 
     public void OpenPauseMenu()
@@ -38,6 +49,7 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             GameManager.Instance.ActualGameState = GameState.Adventure;
+            PlayerMovement.Instance.ResetInteractionFunction();
         }
 
         isOpen = !isOpen;
@@ -58,6 +70,8 @@ public class PauseMenu : MonoBehaviour
         actualSelection += change;
         ChangeSelection();
 
+        if (actualSelection == 3)
+            dicDelegateSelection[3]();
         //Changer sur la bonne fonction
     }
 
@@ -65,5 +79,21 @@ public class PauseMenu : MonoBehaviour
     {
         tabMenuObject[actualSelection].gameObject.SetActive(true);
         selection.anchoredPosition = new Vector3(0, tabMenuObject[actualSelection].anchoredPosition.y);
+    }
+
+    private void ActivateMap()
+    {
+        //Afficher la map
+    }
+
+    private void SaveParty()
+    {
+        SaveSystem.SaveSettingData();
+    }
+
+    private void Nothing()
+    {
+        Debug.Log("Ya r");
+        OpenPauseMenu();
     }
 }

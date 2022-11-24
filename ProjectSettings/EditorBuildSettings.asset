@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BestJMScene.unity
     guid: 61ed8525c7626174b9dfc1776917da05
+  - enabled: 1
+    path: Assets/Scenes/LD_V1.unity
+    guid: 2bf68e3b816c0c349ac4a7efa3b93a2e
   m_configObjects: {}
