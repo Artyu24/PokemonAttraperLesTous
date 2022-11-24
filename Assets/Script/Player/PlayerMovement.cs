@@ -173,7 +173,9 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         inputDir = ctx.ReadValue<Vector2>();
-        //smokeStep.UpdateWalkingState(ctx.performed);
+
+        if(smokeStep != null)
+            smokeStep.UpdateWalkingState(ctx.performed);
 
         if (ctx.started)
         {
