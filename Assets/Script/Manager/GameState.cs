@@ -24,6 +24,7 @@ public enum CombatState
     Init,
     CallButton,
     PlayerChoose,
+    UsePotion,
     EnemyChoose,
     PlayerAttack,
     EnemyAttack,
