@@ -28,6 +28,7 @@ public static class SaveSystem
     public static void SaveGameData(string name)
     {
         SaveData.GameData saveGame = new SaveData.GameData(name, 0);
+        SaveSettingData();
         SaveData data = new SaveData(saveGame, LoadSettingData());
 
         string path = Application.persistentDataPath + "/Game.save";
@@ -85,6 +86,9 @@ public static class SaveSystem
     public static void SaveSettingData()
     {
         SaveData.SettingData saveSetting = new SaveData.SettingData();
+        if (PlayerMovement.Instance != null)
+             saveSetting = new SaveData.SettingData(PlayerMovement.Instance.gameObject);
+        
         SaveData data = new SaveData(LoadGameData(), saveSetting);
 
         string path = Application.persistentDataPath + "/Game.save";

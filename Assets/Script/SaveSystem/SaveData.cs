@@ -27,23 +27,40 @@ public class SaveData
     [System.Serializable]
     public struct SettingData
     {
-        public bool fullScreenOn;
-        public int idResolution;
+        //public bool fullScreenOn;
+        //public int idResolution;
 
-        public int idLanguage;
-        public int idQuality;
+        //public int idLanguage;
+        //public int idQuality;
     
-        public int musicVolume;
-        public int sfxVolume;
+        //public int musicVolume;
+        //public int sfxVolume;
 
-        public SettingData(bool fullScreenOn, int idResolution, int idLanguage, int idQuality, int musicVolume, int sfxVolume)
+        //public SettingData(bool fullScreenOn, int idResolution, int idLanguage, int idQuality, int musicVolume, int sfxVolume)
+        //{
+        //    this.fullScreenOn = fullScreenOn;
+        //    this.idResolution = idResolution;
+        //    this.idLanguage = idLanguage;
+        //    this.idQuality = idQuality;
+        //    this.musicVolume = musicVolume;
+        //    this.sfxVolume = sfxVolume;
+        //}
+
+        public float posX;
+        public float posY;
+
+        public SettingData(GameObject player)
         {
-            this.fullScreenOn = fullScreenOn;
-            this.idResolution = idResolution;
-            this.idLanguage = idLanguage;
-            this.idQuality = idQuality;
-            this.musicVolume = musicVolume;
-            this.sfxVolume = sfxVolume;
+            if (player != null)
+            {
+                posX = player.transform.position.x;
+                posY = player.transform.position.y;
+            }
+            else
+            {
+                posX = 0;
+                posY = 0;
+            }
         }
     }
     public SettingData MySettingData { get; private set; }
