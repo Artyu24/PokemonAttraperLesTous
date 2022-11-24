@@ -36,16 +36,7 @@ public class ReadGoogleSheet : MonoBehaviour
             string updateText = "";
             string json = www.downloadHandler.text;
             var o = JSON.Parse(json);
-
-            foreach (var item in o["values"][firstNumber])
-            {
-                var itemo = JSON.Parse(item.ToString());
-
-                //foreach (var i in itemo)
-                //    Debug.Log(JSON.Parse(i.ToString()));
-
-                updateText = JSON.Parse(itemo[secondNumber].ToString());
-            }
+            updateText = JSON.Parse(o["values"][firstNumber][secondNumber].ToString());
             outputArea.text = updateText;
         }
     }
