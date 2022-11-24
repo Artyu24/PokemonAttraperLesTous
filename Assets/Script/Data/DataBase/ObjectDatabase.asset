@@ -17,7 +17,7 @@ MonoBehaviour:
     ID: 1
     desc: "\xE7a heal quoi"
     TYPE: 18
-    value: 20
+    value: 100
     categorie: 0
     subCategorie: 1
   - name: Super Potion

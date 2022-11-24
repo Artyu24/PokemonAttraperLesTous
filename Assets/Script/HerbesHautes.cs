@@ -11,6 +11,7 @@ public class HerbesHautes : MonoBehaviour
     private int maxSpawnRate;
 
     public GameObject combatWindow;
+    public GameObject blackBackground;
     public PokeData[] wildPokes = new PokeData[4];
     public PokeData wildPoke;
 
@@ -39,7 +40,9 @@ public class HerbesHautes : MonoBehaviour
             wildPoke = wildPokes[temp].CopyPokeData();
 
             combatWindow.SetActive(true);
-            
+            blackBackground.SetActive(true);
+
+
             GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;
