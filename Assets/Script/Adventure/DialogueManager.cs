@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,13 +19,17 @@ public class DialogueManager : MonoBehaviour
     public Queue<string> sentences = new Queue<string>();
     private string actualSentence;
 
+    private ReadGoogleSheet readGoogleSheet;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        readGoogleSheet = GetComponent<ReadGoogleSheet>();
     }
 
-    public void InitDialogue<T>(T type, string[] dialogue)
+    public void InitDialogue<T>(T type, DialogueID[] dialogue)
     {
         switch (type)
         {
@@ -38,10 +43,10 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
-        StartDialogue(dialogue);
+        readGoogleSheet.GetTextString(dialogue);
     }
 
-    private void StartDialogue(string[] dialogue)
+    public void StartDialogue(string[] dialogue)
     {
         sentences.Clear();
 

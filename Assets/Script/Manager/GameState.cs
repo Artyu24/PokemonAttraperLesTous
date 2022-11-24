@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,4 +42,11 @@ public enum PotentialDirection
     GAUCHE,
     DROITE,
     RIEN
+}
+
+[Serializable]
+public struct DialogueID
+{
+    public int lineId;
+    public int columnId;
 }
