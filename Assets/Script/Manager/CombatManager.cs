@@ -118,13 +118,13 @@ public class CombatManager : MonoBehaviour
     
     void Start()
     {
+        combatDictionaire.Add(CombatState.CallButton, CallButton);
         combatDictionaire.Add(CombatState.UsePotion, HealPlayerPoke);
         combatDictionaire.Add(CombatState.PlayerAttack, PlayerAttack);
-        combatDictionaire.Add(CombatState.Victory, Victory);
-        combatDictionaire.Add(CombatState.PlayerDeath, PlayerLoose);
         combatDictionaire.Add(CombatState.EnemyAttack, EnemyAttack);
+        combatDictionaire.Add(CombatState.PlayerDeath, PlayerLoose);
         combatDictionaire.Add(CombatState.EnemyDeath, EnemyLoose);
-        combatDictionaire.Add(CombatState.CallButton, CallButton);
+        combatDictionaire.Add(CombatState.Victory, Victory);
         combatDictionaire.Add(CombatState.End, QuitCombat);
 
         for (int i = 0; i < attackButtons.Length; i++)
@@ -156,8 +156,9 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void StartCombat(PokeData wild)
+    public void StartCombat(PokeData wild, bool isInHH)
     {
+        isInHerbeHautes = isInHH;
         enemiePoke = new Pokemon (wild, false);
         chatText.text = wild.name + " est apparu !!!";
         foreach (var poke in dictPokeData)
@@ -191,10 +192,19 @@ public class CombatManager : MonoBehaviour
 
         if (combatAnimator != null)
         {
-            combatAnimator.SetTrigger("EnemyThrowPoke");
+            if (isInHerbeHautes)
+            {
+                combatAnimator.SetTrigger("PasDresseur");
+                combatAnimator.SetTrigger("IsInHautesHerbes");
+            }
+            else
+            {
+                combatAnimator.SetTrigger("Dresseur");
+                combatAnimator.SetTrigger("EnemyThrowPoke");
+            }
             combatAnimator.SetTrigger("EnemyPokeAppear");
             combatAnimator.SetTrigger("PlayerThrowPoke");
-            combatAnimator.SetTrigger("PlayerPokeApper");
+            combatAnimator.SetTrigger("PlayerPokeAppear");
         }
     }
 
@@ -344,7 +354,7 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(PlayRound());
     }
 
-    private bool IsDead(int pokeLife, int attackDmg)
+    private bool IsDead(float pokeLife, float attackDmg)
     {
         if (pokeLife <= attackDmg)
             return true;
@@ -370,23 +380,28 @@ public class CombatManager : MonoBehaviour
         if (combatStates[combatStates.Count - 1] == CombatState.EnemyDeath)
         {
             combatAnimator.SetTrigger("EnemiePokeDeath");// JM
+            Debug.Log("Kaput");
         }
     }
     private void PlayerLoose()
     {
+        combatAnimator.SetTrigger("PlayerPokeDeath");// JM
         chatText.text = playerPokémonName.text + " n'as plus de force, tu dois retourner au centre pokémon le plus proche";
-        //Integrer le text de arthur puis faire un DOFade en sortie
     }
     private void EnemyLoose()
     {
+        if (isInHerbeHautes)
+        {
+            combatAnimator.SetTrigger("EnemiePokeDeath");// JM
+        }else
+            combatAnimator.SetTrigger("Dresseur&Death");// JM
         chatText.text = enemiePokémonName.text + " a été vaincu. Félicitation :";
-        //Integrer le text de arthur puis faire un DOFade en sortie
     }
 
     private void Damage(Pokemon attaquant, Pokemon defenseur)
     {
         ReadPokeTypes.instance.ObtainSheetData(defenseur.data.TYPE.GetHashCode(), attaquant.data.TYPE.GetHashCode());
-        int multipliyer = ReadPokeTypes.instance.multiplyer;
+        float multipliyer = ReadPokeTypes.instance.multiplyer;
         defenseur.data.hp -= attaquant.data.dmg * multipliyer;
     }
 
