@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
         if(Instance == null)
             Instance = this;
 
-        tabMenuObject = new RectTransform[pauseMenu.transform.childCount - 2];
+        tabMenuObject = new RectTransform[5];
         for (int i = 0; i < tabMenuObject.Length; i++)
         {
             tabMenuObject[i] = pauseMenu.transform.GetChild(i).GetComponent<RectTransform>();
@@ -34,7 +34,11 @@ public class PauseMenu : MonoBehaviour
 
         selection = pauseMenu.transform.GetChild(pauseMenu.transform.childCount - 1).GetComponent<RectTransform>();
 
+
+        dicDelegateSelection.Add(1, ActivateMap);
+
         dicDelegateSelection.Add(3, SaveParty);
+
     }
 
     public void OpenPauseMenu()
