@@ -82,6 +82,9 @@ public class CombatManager : MonoBehaviour
     private bool isUsingPotion = false;
     private int objectUseID;
 
+    public Image dresseurImage;
+    public List<Sprite> dresseurSprite = new List<Sprite>();
+    private int dresseurID;
     #endregion
 
     void Awake()
@@ -156,8 +159,27 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    public void StartCombat(PokeData wild, bool isInHH)
+    public void StartCombat(PokeData wild, bool isInHH, int qui)
     {
+        dresseurID = qui; 
+        switch (dresseurID)
+        {
+            case 0:
+                dresseurImage.sprite = dresseurSprite[0];
+                break;
+            case 1:
+                dresseurImage.sprite = dresseurSprite[1];
+                break;
+            case 2:
+                dresseurImage.sprite = dresseurSprite[2];
+                break;
+            case 3:
+                dresseurImage.sprite = dresseurSprite[3];
+                break;
+            case 4:
+                dresseurImage.sprite = dresseurSprite[4];
+                break;
+        }
         isInHerbeHautes = isInHH;
         enemiePoke = new Pokemon (wild, false);
         chatText.text = wild.name + " est apparu !!!";
@@ -194,13 +216,36 @@ public class CombatManager : MonoBehaviour
         {
             if (isInHerbeHautes)
             {
+                
                 combatAnimator.SetTrigger("PasDresseur");
                 combatAnimator.SetTrigger("IsInHautesHerbes");
             }
             else
             {
                 combatAnimator.SetTrigger("Dresseur");
-                combatAnimator.SetTrigger("EnemyThrowPoke");
+                switch (dresseurID)
+                {
+                    case 0:
+                        combatAnimator.SetInteger("Dresseurs", 0);
+                        //Téo
+                        break;
+                    case 1:
+                        combatAnimator.SetInteger("Dresseurs", 1);
+                        //Antoine
+                        break; 
+                    case 2:
+                        combatAnimator.SetInteger("Dresseurs", 2);
+                        //Arthur
+                        break; 
+                    case 3:
+                        combatAnimator.SetInteger("Dresseurs", 3);
+                        //JM
+                        break;
+                    case 4:
+                        combatAnimator.SetTrigger("EnemyThrowPoke");
+                        //FranckO
+                        break;
+                }
             }
             combatAnimator.SetTrigger("EnemyPokeAppear");
             combatAnimator.SetTrigger("PlayerThrowPoke");
@@ -373,15 +418,13 @@ public class CombatManager : MonoBehaviour
 
     private void Victory()
     {
-        if (combatStates[combatStates.Count-1] == CombatState.PlayerDeath)
+        /*if (combatStates[combatStates.Count-1] == CombatState.PlayerDeath)
         {
-            combatAnimator.SetTrigger("PlayerPokeDeath");// JM
         }
         if (combatStates[combatStates.Count - 1] == CombatState.EnemyDeath)
         {
-            combatAnimator.SetTrigger("EnemiePokeDeath");// JM
             Debug.Log("Kaput");
-        }
+        }*/
     }
     private void PlayerLoose()
     {
@@ -393,8 +436,34 @@ public class CombatManager : MonoBehaviour
         if (isInHerbeHautes)
         {
             combatAnimator.SetTrigger("EnemiePokeDeath");// JM
-        }else
-            combatAnimator.SetTrigger("Dresseur&Death");// JM
+        }
+        else
+        {
+            switch (dresseurID)
+            {
+                case 0:
+                    combatAnimator.SetTrigger("TeoDeath");
+                    //Téo
+                    break;
+                case 1:
+                    combatAnimator.SetTrigger("AntoineDeath");
+                    //Antoine
+                    break;
+                case 2:
+                    combatAnimator.SetTrigger("ArthurDeath");
+                    //Arthur
+                    break;
+                case 3:
+                    combatAnimator.SetTrigger("JMDeath");
+                    //JM
+                    break;
+                case 4:
+                    combatAnimator.SetTrigger("Dresseur&Death");
+                    // Francko
+                    break;
+            }
+            //combatAnimator.SetInteger("DresseurDeath", 5);
+        }
         chatText.text = enemiePokémonName.text + " a été vaincu. Félicitation :";
     }
 
