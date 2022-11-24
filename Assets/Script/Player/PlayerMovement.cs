@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -43,11 +44,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     private Animator animPokeWater;
     private PotentialDirection lastAnim = PotentialDirection.RIEN;
+    private PlayerSmokeStep smokeStep;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        smokeStep = GetComponent<PlayerSmokeStep>();
     }
 
     private void Start()
@@ -109,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
                     endPos = transform.position + dirChoose.mouv;
 
                     GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
+
                 }
                 else
                 {
@@ -161,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         inputDir = ctx.ReadValue<Vector2>();
+        smokeStep.UpdateWalkingState(ctx.performed);
 
         if (ctx.started)
         {
