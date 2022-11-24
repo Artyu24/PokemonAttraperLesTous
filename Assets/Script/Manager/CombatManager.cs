@@ -125,6 +125,7 @@ public class CombatManager : MonoBehaviour
         combatDictionaire.Add(CombatState.EnemyAttack, EnemyAttack);
         combatDictionaire.Add(CombatState.EnemyDeath, EnemyLoose);
         combatDictionaire.Add(CombatState.CallButton, CallButton);
+        combatDictionaire.Add(CombatState.End, QuitCombat);
 
         for (int i = 0; i < attackButtons.Length; i++)
         {
@@ -287,6 +288,7 @@ public class CombatManager : MonoBehaviour
             {
                 combatStates.Add(CombatState.Victory);
                 combatStates.Add(CombatState.EnemyDeath);
+                combatStates.Add(CombatState.End);
             }
             else
                 combatStates.Add(CombatState.EnemyAttack);
@@ -297,6 +299,7 @@ public class CombatManager : MonoBehaviour
             {
                 combatStates.Add(CombatState.Victory);
                 combatStates.Add(CombatState.PlayerDeath);
+                combatStates.Add(CombatState.End);
             }
             else
             {
@@ -321,6 +324,7 @@ public class CombatManager : MonoBehaviour
                 {
                     combatStates.Add(CombatState.Victory);
                     combatStates.Add(CombatState.EnemyDeath);
+                    combatStates.Add(CombatState.End);
                 }
                 else
                     combatStates.Add(CombatState.CallButton);
@@ -331,6 +335,7 @@ public class CombatManager : MonoBehaviour
                 {
                     combatStates.Add(CombatState.Victory);
                     combatStates.Add(CombatState.PlayerDeath);
+                    combatStates.Add(CombatState.End);
                 }
                 else
                     combatStates.Add(CombatState.CallButton);
@@ -378,14 +383,6 @@ public class CombatManager : MonoBehaviour
         //Integrer le text de arthur puis faire un DOFade en sortie
     }
 
-    public void QuitCombat()
-    {
-        combatAnimator.SetTrigger("FinFight");// JM
-        blackBackground.SetActive(false);
-        combatWindow.SetActive(false);
-        GameManager.Instance.ActualPlayerState = PlayerState.Idle;
-        GameManager.Instance.ActualGameState = GameState.Adventure;
-    }
 
 
     public void PlayerAttack()
@@ -421,13 +418,25 @@ public class CombatManager : MonoBehaviour
         chatText.text = enemiePokémonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
 
+    public void QuitCombat()
+    {
+        StartCoroutine(QuitAnim());
+    }
     public void FlyFight()
     {
+        StartCoroutine(QuitAnim());
+    }
+
+    private IEnumerator QuitAnim()
+    {
+        GameManager.Instance.ActivateFade(true);
+        yield return new WaitForSeconds(2.5f);
         combatAnimator.SetTrigger("FinFight");// JM
         blackBackground.SetActive(false);
         combatWindow.SetActive(false);
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         GameManager.Instance.ActualGameState = GameState.Adventure;
+        GameManager.Instance.ActivateFade(false);
     }
 
     public void Return()

@@ -13,8 +13,7 @@ public class PauseMenu : MonoBehaviour
     private RectTransform[] tabMenuObject;
     private bool isOpen = false;
 
-    private delegate void MenuDelegate();
-    private Dictionary<int, MenuDelegate> dicDelegateSelection = new Dictionary<int, MenuDelegate>();
+    private Dictionary<int, PlayerMovement.InteractionDelegate> dicDelegateSelection = new Dictionary<int, PlayerMovement.InteractionDelegate>();
 
     private void Awake()
     {
@@ -34,11 +33,11 @@ public class PauseMenu : MonoBehaviour
 
         selection = pauseMenu.transform.GetChild(pauseMenu.transform.childCount - 1).GetComponent<RectTransform>();
 
-
+        dicDelegateSelection.Add(0, CombatManager.Instance.HealPlayerPoke);
         dicDelegateSelection.Add(1, ActivateMap);
-
+        dicDelegateSelection.Add(2, Nothing);
         dicDelegateSelection.Add(3, SaveParty);
-
+        dicDelegateSelection.Add(4, Nothing);
     }
 
     public void OpenPauseMenu()
@@ -74,9 +73,7 @@ public class PauseMenu : MonoBehaviour
         actualSelection += change;
         ChangeSelection();
 
-        if (actualSelection == 3)
-            dicDelegateSelection[3]();
-        //Changer sur la bonne fonction
+        PlayerMovement.Instance.ActualInteractionDelegate = dicDelegateSelection[actualSelection];
     }
 
     private void ChangeSelection()

@@ -56,9 +56,12 @@ public class PlayerMovement : MonoBehaviour
         if(waterPokemon != null)
             animPokeWater = waterPokemon.GetComponent<Animator>();
 
-        if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+        if (SaveSystemManager.Instance != null)
         {
-            transform.position = SaveSystemManager.Instance.LastPosPlayer;
+            if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+            {
+                transform.position = SaveSystemManager.Instance.LastPosPlayer;
+            }
         }
         endPos = boxCenter.CenterObject();
 
