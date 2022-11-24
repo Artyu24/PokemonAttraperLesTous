@@ -8,10 +8,14 @@ public class PauseMenu : MonoBehaviour
     public static PauseMenu Instance;
 
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private Camera gameCamera;
+    [SerializeField] private Camera mapCamera;
     private RectTransform selection;
     private int actualSelection = 0;
     private RectTransform[] tabMenuObject;
     private bool isOpen = false;
+
+    [SerializeField] private DialogueID[] saveDialogue;
 
     private Dictionary<int, PlayerMovement.InteractionDelegate> dicDelegateSelection = new Dictionary<int, PlayerMovement.InteractionDelegate>();
 
@@ -72,24 +76,38 @@ public class PauseMenu : MonoBehaviour
         tabMenuObject[actualSelection].gameObject.SetActive(false);
         actualSelection += change;
         ChangeSelection();
-
-        PlayerMovement.Instance.ActualInteractionDelegate = dicDelegateSelection[actualSelection];
     }
 
     private void ChangeSelection()
     {
         tabMenuObject[actualSelection].gameObject.SetActive(true);
         selection.anchoredPosition = new Vector3(0, tabMenuObject[actualSelection].anchoredPosition.y);
+        PlayerMovement.Instance.ActualInteractionDelegate = dicDelegateSelection[actualSelection];
     }
 
     private void ActivateMap()
     {
-        //Afficher la map
+        if (gameCamera.isActiveAndEnabled)
+        {
+            pauseMenu.SetActive(false);
+            isOpen = false;
+            gameCamera.enabled = false;
+            mapCamera.enabled = true;
+        }
+        else
+        {
+            gameCamera.enabled = true;
+            mapCamera.enabled = false;
+            GameManager.Instance.ActualGameState = GameState.Adventure;
+            PlayerMovement.Instance.ResetInteractionFunction();
+        }
     }
 
     private void SaveParty()
     {
         SaveSystem.SaveSettingData();
+        OpenPauseMenu();
+        DialogueManager.Instance.InitDialogue(this, saveDialogue);
     }
 
     private void Nothing()
