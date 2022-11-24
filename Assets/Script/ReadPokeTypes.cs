@@ -11,7 +11,8 @@ using static System.Net.WebRequestMethods;
 
 public class ReadPokeTypes : MonoBehaviour
 {
-    public int multiplyer;
+    public float multiplyer;
+    //public Text outputArea;
     public static ReadPokeTypes instance;
     [SerializeField] private int firstNumber;
     [SerializeField] private int secondNumber;
@@ -40,8 +41,12 @@ public class ReadPokeTypes : MonoBehaviour
             string json = www.downloadHandler.text;
             var o = JSON.Parse(json);
 
-            updateText = JSON.Parse(o["values"][liste][emplacement]);
-            multiplyer = int.Parse(updateText);
+            updateText = JSON.Parse(o["values"][liste][emplacement].ToString());
+
+            if (updateText != null)
+            {
+                multiplyer = float.Parse(updateText);
+            }
         }
     }
 }

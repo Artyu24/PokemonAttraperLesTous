@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Different Area")] 
     [SerializeField] private GameObject waterPokemon;
     private bool inGrass = false;
+    private bool fightDresseur = false;
     private HerbesHautes herbesHautes;
+    private Dresseur dresseur;
     private bool walkOnWater = false;
     public GameObject WaterPokemon => waterPokemon;
     public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
@@ -143,6 +145,11 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Appel combat");
                 herbesHautes.SpawnPokemon();
             }
+            if (dresseur != null)
+            {
+                Debug.Log("Appel combat");
+                dresseur.SpawnPokemon();
+            }
         }
 
         #endregion
@@ -166,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext ctx)
     {
         inputDir = ctx.ReadValue<Vector2>();
-        smokeStep.UpdateWalkingState(ctx.performed);
+        //smokeStep.UpdateWalkingState(ctx.performed);
 
         if (ctx.started)
         {
@@ -322,6 +329,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 inGrass = false;
                 herbesHautes = null;
+            }
+        }
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Dresseur"))
+        {
+            if (!fightDresseur)
+            {
+                fightDresseur = true;
+                dresseur = collision.GetComponent<Dresseur>();
+            }
+            else
+            {
+                fightDresseur = false;
+                dresseur = null;
             }
         }
     }

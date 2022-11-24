@@ -1,9 +1,9 @@
+using Object.Data;
 using System.Collections;
 using System.Collections.Generic;
-using Object.Data;
 using UnityEngine;
 
-public class HerbesHautes : MonoBehaviour
+public class Dresseur : MonoBehaviour
 {
     [SerializeField]
     private int spawnRate;
@@ -26,11 +26,11 @@ public class HerbesHautes : MonoBehaviour
         }
 
         for (int i = 0; i < wildPokes.Length; i++)
-        { 
+        {
             wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
         }
     }
-    
+
     public void SpawnPokemon()
     {
         int random = Random.Range(0, maxSpawnRate);
@@ -46,12 +46,12 @@ public class HerbesHautes : MonoBehaviour
             GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;
-            CombatManager.Instance.StartCombat(wildPoke, true);
+            CombatManager.Instance.StartCombat(wildPoke, false);
         }
         if (FindObjectOfType<AudioManager>() != null)
         {
             FindObjectOfType<AudioManager>().Stop("MainTheme");
-            FindObjectOfType<AudioManager>().Play("PokemonSauvage");
+            FindObjectOfType<AudioManager>().Play("PokemonSauvage");//JM changer pour Dresseur
         }
     }
 }
