@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private Camera gameCamera;
     [SerializeField] private Camera mapCamera;
+    [SerializeField] private Text playerName;
     private RectTransform selection;
     private int actualSelection = 0;
     private RectTransform[] tabMenuObject;
@@ -44,18 +47,26 @@ public class PauseMenu : MonoBehaviour
         dicDelegateSelection.Add(4, Nothing);
     }
 
+    private void Start()
+    {
+        if (SaveSystemManager.Instance != null)
+            playerName.text = SaveSystemManager.Instance.GetNameSave();
+        else
+            playerName.text = "PLAYER";
+    }
+
     public void OpenPauseMenu()
     {
         if (!isOpen)
         {
             pauseMenu.SetActive(true);
             ChangeSelection();
-            GameManager.Instance.ActualGameState = GameState.Paused;
+            GameManager.Instance.ActualPlayerState = PlayerState.Inventory;
         }
         else
         {
             pauseMenu.SetActive(false);
-            GameManager.Instance.ActualGameState = GameState.Adventure;
+            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
         }
 
@@ -93,12 +104,13 @@ public class PauseMenu : MonoBehaviour
             isOpen = false;
             gameCamera.enabled = false;
             mapCamera.enabled = true;
+            GameManager.Instance.ActualPlayerState = PlayerState.Map;
         }
         else
         {
             gameCamera.enabled = true;
             mapCamera.enabled = false;
-            GameManager.Instance.ActualGameState = GameState.Adventure;
+            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
         }
     }
