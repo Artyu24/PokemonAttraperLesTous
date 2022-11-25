@@ -10,6 +10,9 @@ public class Dresseur : MonoBehaviour
     [SerializeField]
     private int maxSpawnRate;
 
+    [Tooltip("0 : Téo/ 1 : Antoine/ 2 : Arthur/ 3 : JM/ 4 : FranckO")]
+    public int dresseur;
+
     public GameObject combatWindow;
     public GameObject blackBackground;
     public PokeData[] wildPokes = new PokeData[4];
@@ -46,7 +49,7 @@ public class Dresseur : MonoBehaviour
             GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;
-            CombatManager.Instance.StartCombat(wildPoke, false);
+            CombatManager.Instance.StartCombat(wildPoke, false, dresseur) ;
         }
         if (FindObjectOfType<AudioManager>() != null)
         {

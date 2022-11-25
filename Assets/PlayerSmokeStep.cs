@@ -28,6 +28,7 @@ public class PlayerSmokeStep : MonoBehaviour
     }
     private void Update()
     {
-        if (isCurrentlyWalking) visualEffect.SetFloat("Walking Time", Time.time - lastWalkingStart);
+        if (isCurrentlyWalking) 
+            visualEffect.SetFloat("Walking Time", Time.time - lastWalkingStart);
     }
 }

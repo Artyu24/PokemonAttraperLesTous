@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPokes: {fileID: 0}
   attackDatabase: {fileID: 11400000, guid: 78d3640d6589776438c2da3b80df37d9, type: 2}
-  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
-  objectsDataBase: {fileID: 0}
+  pokeDataBase: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5, type: 2}
+  objectsDataBase: {fileID: 11400000, guid: 7bb9a5fa1debafe41ac42eb4bb6db0ed, type: 2}
   combatWindow: {fileID: 0}
   blackBackground: {fileID: 0}
   chatText: {fileID: 0}
@@ -70,12 +70,19 @@ MonoBehaviour:
   combatAnimator: {fileID: 0}
   attackWindow: {fileID: 0}
   objectWindow: {fileID: 0}
-  actionTime: 5
+  actionTime: 2
   attackButtons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dresseurImage: {fileID: 0}
+  dresseurSprite:
+  - {fileID: 21300000, guid: 82185fef8050b8f4fa6af5c6fef85ae3, type: 3}
+  - {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
+  - {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
+  - {fileID: 21300000, guid: 8da3ef8a9254d3e4bb2d0027f744f07d, type: 3}
+  - {fileID: 21300000, guid: 43928c81679ea384f9332c8ba96c8688, type: 3}
 --- !u!114 &1729520104322117245
 MonoBehaviour:
   m_ObjectHideFlags: 0

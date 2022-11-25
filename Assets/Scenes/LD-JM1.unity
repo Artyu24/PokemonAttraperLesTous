@@ -2696,9 +2696,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueEnter:
-  - "L'eau est tint\xE9e d'un bleu fonc\xE9.... Voulez-vous utiliser Surf?"
+  - lineId: 0
+    columnId: 0
   dialogueValidation:
-  - Franck'o utilise Surf.
+  - lineId: 0
+    columnId: 0
 --- !u!1 &222056218
 GameObject:
   m_ObjectHideFlags: 0
@@ -50629,9 +50631,9 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
+  m_SortingOrder: 26
 --- !u!2083052967 &781142837
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -50649,11 +50651,14 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 2
+      - m_Value: 0
         m_Name: Walking Time
+        m_Overridden: 0
+      - m_Value: 2.5
+        m_Name: Max Speed
         m_Overridden: 1
       - m_Value: 2
-        m_Name: Max Speed
+        m_Name: Delay Until Maximum
         m_Overridden: 1
     m_Vector2f:
       m_Array: []
@@ -50665,13 +50670,57 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 2
+      - m_Value: 20
         m_Name: Mac Rate
         m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.05905266
+            value: 1.5042689
+            inSlope: -0.4299721
+            outSlope: -0.4299721
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.15116341
+          - serializedVersion: 3
+            time: 0.29985914
+            value: 0.27466333
+            inSlope: 0.2144991
+            outSlope: 0.2144991
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.6525266
+          - serializedVersion: 3
+            time: 2.8618317
+            value: 0.9902954
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: Fire Rate
+        m_Overridden: 1
     m_Gradient:
       m_Array: []
     m_NamedObject:
