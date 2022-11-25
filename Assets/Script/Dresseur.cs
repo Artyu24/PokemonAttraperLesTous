@@ -3,8 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dresseur : MonoBehaviour
+public class Dresseur : MonoBehaviour, IInteractable
 {
+    [SerializeField] private DialogueID[] dialogue;
+
+    public void Interact()
+    {
+        SpawnPokemon();
+    }
+
     [SerializeField]
     private int spawnRate;
     [SerializeField]
@@ -12,6 +19,7 @@ public class Dresseur : MonoBehaviour
 
     [Tooltip("0 : Téo/ 1 : Antoine/ 2 : Arthur/ 3 : JM/ 4 : FranckO")]
     public int dresseur;
+    public int pokechoose;
 
     public GameObject combatWindow;
     public GameObject blackBackground;
@@ -30,7 +38,7 @@ public class Dresseur : MonoBehaviour
 
         for (int i = 0; i < wildPokes.Length; i++)
         {
-            wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
+            wildPokes[i] = CombatManager.Instance.DictPokeData[pokechoose];
         }
     }
 

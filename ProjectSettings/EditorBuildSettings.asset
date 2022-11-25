@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LeJeu/MainMenu.unity
     guid: 7680e9cea2d89f64196a45fe106e5f30
   - enabled: 1
-    path: Assets/Scenes/BestJMScene.unity
-    guid: 61ed8525c7626174b9dfc1776917da05
-  - enabled: 1
-    path: Assets/Scenes/LeJeu/LD_V1.unity
-    guid: 2bf68e3b816c0c349ac4a7efa3b93a2e
+    path: Assets/Scenes/LeJeu/LD_JM.unity
+    guid: c532d93234c017e499202b0451a89844
   m_configObjects: {}

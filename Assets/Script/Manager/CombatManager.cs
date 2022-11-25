@@ -67,7 +67,7 @@ public class CombatManager : MonoBehaviour
     [Header("Boucle")] 
     [Tooltip("false : tour de l'ordi, true : tour du joueur")]
     public Pokemon playerPoke;
-    public Pokemon enemiePoke;
+    public Pokemon enemiePoke = new Pokemon(new PokeData(""), false);
     private int playerAttackNbr;
     private int enemyAttackNbr;
     public int[,] types;
@@ -88,7 +88,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     private DialogueID[] enemieVictoryDialogue;
 
-    private string playerAttackName, enemieAttackName;
+    private string playerAttackName = "", enemieAttackName = "";
     public string PlayerAttackName { get => playerAttackName;}
     public string EnemieAttackName { get => enemieAttackName;}
 

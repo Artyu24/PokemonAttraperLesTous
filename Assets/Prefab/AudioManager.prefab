@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: MusicMenu
     clip: {fileID: 8300000, guid: 956bc3ebe0fc5ea44a90ee59cf70f742, type: 3}
-    volume: 0
+    volume: 0.194
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
