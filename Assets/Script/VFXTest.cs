@@ -12,10 +12,11 @@ public class VFXTest : MonoBehaviour
     }
     void Start()
     {
-        
+        visualEffect = GetComponent<VisualEffect>();
     }
 
     void Update()
     {
+        visualEffect.SetFloat("MaxSpeed", Time.time);
     }
 }

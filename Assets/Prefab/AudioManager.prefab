@@ -141,3 +141,28 @@ MonoBehaviour:
     audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
       type: 2}
     source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 87d726467b1466646a19df6a72bdb140, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Lose
+    clip: {fileID: 8300000, guid: b88f96406bd9d244da8afac000972162, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Attack
+    clip: {fileID: 8300000, guid: 64e29c15236331547a6ed9bed0c1de53, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  currentSound: 

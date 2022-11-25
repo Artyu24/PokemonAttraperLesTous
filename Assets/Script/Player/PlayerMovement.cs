@@ -104,6 +104,8 @@ public class PlayerMovement : MonoBehaviour
             DirectionData dirChoose = dictDirection[dirEnum];
             AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
+            
+
             if (dirEnum != PotentialDirection.RIEN)
             {
                 lastDirEnum = dirEnum;
@@ -165,9 +167,8 @@ public class PlayerMovement : MonoBehaviour
     #region Input Action
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        inputDir = ctx.ReadValue<Vector2>();
-
-        if(smokeStep != null)
+        inputDir = ctx.ReadValue<Vector2>();        
+        if (smokeStep != null)
             smokeStep.UpdateWalkingState(ctx.performed);
 
         if (ctx.started)
@@ -176,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(Math.Abs(inputDir.y) > 0)
                     WaterZone.Instance.SwitchText();
-            }
+            }            
 
             if (GameManager.Instance.ActualGameState == GameState.Paused)
             {
