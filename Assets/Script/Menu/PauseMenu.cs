@@ -18,7 +18,11 @@ public class PauseMenu : MonoBehaviour
     private RectTransform[] tabMenuObject;
     private bool isOpen = false;
 
+    [SerializeField] private DialogueID[] healDialogue;
+    [SerializeField] private DialogueID[] personalDialogue;
     [SerializeField] private DialogueID[] saveDialogue;
+    [SerializeField] private DialogueID[] saveRaterDialogue;
+    [SerializeField] private DialogueID[] nothingDialogue;
 
     private Dictionary<int, PlayerMovement.InteractionDelegate> dicDelegateSelection = new Dictionary<int, PlayerMovement.InteractionDelegate>();
 
@@ -40,9 +44,9 @@ public class PauseMenu : MonoBehaviour
 
         selection = pauseMenu.transform.GetChild(pauseMenu.transform.childCount - 1).GetComponent<RectTransform>();
 
-        dicDelegateSelection.Add(0, CombatManager.Instance.HealPlayerPoke);
+        dicDelegateSelection.Add(0, HealPoke);
         dicDelegateSelection.Add(1, ActivateMap);
-        dicDelegateSelection.Add(2, Nothing);
+        dicDelegateSelection.Add(2, Personal);
         dicDelegateSelection.Add(3, SaveParty);
         dicDelegateSelection.Add(4, Nothing);
     }
@@ -115,16 +119,36 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    private void HealPoke()
+    {
+        CombatManager.Instance.HealPlayerPoke();
+        OpenPauseMenu();
+        DialogueManager.Instance.InitDialogue(this, healDialogue);
+    }
+
+    private void Personal()
+    {
+        OpenPauseMenu();
+        DialogueManager.Instance.InitDialogue(this, personalDialogue);
+    }
+
     private void SaveParty()
     {
-        SaveSystem.SaveSettingData();
         OpenPauseMenu();
-        DialogueManager.Instance.InitDialogue(this, saveDialogue);
+        if (!PlayerMovement.Instance.WalkOnWater)
+        {
+            SaveSystem.SaveSettingData();
+            DialogueManager.Instance.InitDialogue(this, saveDialogue);
+        }
+        else
+        {
+            DialogueManager.Instance.InitDialogue(this, saveRaterDialogue);
+        }
     }
 
     private void Nothing()
     {
-        Debug.Log("Ya r");
         OpenPauseMenu();
+        DialogueManager.Instance.InitDialogue(this, nothingDialogue);
     }
 }
