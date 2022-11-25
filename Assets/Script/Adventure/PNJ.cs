@@ -13,6 +13,7 @@ public class PNJ : MonoBehaviour, IInteractable
     public int moveSpeed = 20;
     private Vector3 endPos;
     private BoxCenter boxCenter;
+    [SerializeField] private float fixMouvement; 
     [SerializeField] private List<PotentialDirection> pnjDir = new List<PotentialDirection>();
     private int pnjIndex = 0;
     private PNJState actualPnjState = PNJState.Idle;
@@ -97,7 +98,13 @@ public class PNJ : MonoBehaviour, IInteractable
 
     private IEnumerator PNJMouv()
     {
-        float random = Random.Range(2f, 8f);
+        float random = 0 ;
+
+        if (fixMouvement == 0)
+            random = Random.Range(2f, 8f);
+        else
+            random = fixMouvement;
+        
         yield return new WaitForSeconds(random);
 
         if (actualPnjState == PNJState.Idle)

@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private DialogueID[] healDialogue;
     [SerializeField] private DialogueID[] personalDialogue;
     [SerializeField] private DialogueID[] saveDialogue;
+    [SerializeField] private DialogueID[] saveRaterDialogue;
     [SerializeField] private DialogueID[] nothingDialogue;
 
     private Dictionary<int, PlayerMovement.InteractionDelegate> dicDelegateSelection = new Dictionary<int, PlayerMovement.InteractionDelegate>();
@@ -133,9 +134,16 @@ public class PauseMenu : MonoBehaviour
 
     private void SaveParty()
     {
-        SaveSystem.SaveSettingData();
         OpenPauseMenu();
-        DialogueManager.Instance.InitDialogue(this, saveDialogue);
+        if (!PlayerMovement.Instance.WalkOnWater)
+        {
+            SaveSystem.SaveSettingData();
+            DialogueManager.Instance.InitDialogue(this, saveDialogue);
+        }
+        else
+        {
+            DialogueManager.Instance.InitDialogue(this, saveRaterDialogue);
+        }
     }
 
     private void Nothing()
