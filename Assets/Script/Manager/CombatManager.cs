@@ -161,27 +161,9 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(PokeData wild, bool isInHH, int qui)
     {
-        dresseurID = qui; 
-        switch (dresseurID)
-        {
-            case 0:
-                dresseurImage.sprite = dresseurSprite[0];
-                break;
-            case 1:
-                dresseurImage.sprite = dresseurSprite[1];
-                break;
-            case 2:
-                dresseurImage.sprite = dresseurSprite[2];
-                break;
-            case 3:
-                dresseurImage.sprite = dresseurSprite[3];
-                break;
-            case 4:
-                dresseurImage.sprite = dresseurSprite[4];
-                break;
-        }
         isInHerbeHautes = isInHH;
-        enemiePoke = new Pokemon (wild, false);
+        dresseurID = qui;
+        enemiePoke = new Pokemon(wild, false);
         chatText.text = wild.name + " est apparu !!!";
         foreach (var poke in dictPokeData)
         {
@@ -212,11 +194,32 @@ public class CombatManager : MonoBehaviour
 
         #endregion
 
+        switch (dresseurID)
+        {
+            case 0:
+                dresseurImage.sprite = dresseurSprite[0];
+                Debug.Log("tnhsoihbos");
+                break;
+            case 1:
+                dresseurImage.sprite = dresseurSprite[1];
+                break;
+            case 2:
+                dresseurImage.sprite = dresseurSprite[2];
+                break;
+            case 3:
+                dresseurImage.sprite = dresseurSprite[3];
+                break;
+            case 4:
+                dresseurImage.sprite = dresseurSprite[4];
+                break;
+        }
+
+
+
         if (combatAnimator != null)
         {
             if (isInHerbeHautes)
             {
-                
                 combatAnimator.SetTrigger("PasDresseur");
                 combatAnimator.SetTrigger("IsInHautesHerbes");
             }
@@ -472,6 +475,8 @@ public class CombatManager : MonoBehaviour
         ReadPokeTypes.instance.ObtainSheetData(defenseur.data.TYPE.GetHashCode(), attaquant.data.TYPE.GetHashCode());
         float multipliyer = ReadPokeTypes.instance.multiplyer;
         defenseur.data.hp -= attaquant.data.dmg * multipliyer;
+
+        //attaquant.data.attackIDlist[enemiePoke.attackId].
     }
 
     public void PlayerAttack()
