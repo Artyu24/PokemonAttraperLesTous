@@ -29,8 +29,8 @@ public class CombatManager : MonoBehaviour
     public GameObject blackBackground;
     public Text chatText; //zone de text qui affiche les infos, ex : trucmuche utilise charge !
 
-    #region Pok�monsUI
-    [Header("Pok�monsUI")]
+    #region PokémonsUI
+    [Header("PokémonsUI")]
     public Text playerPokemonName;
     public Slider playerPokemonHP;
     public Text playerPokemonHPText;
@@ -73,6 +73,28 @@ public class CombatManager : MonoBehaviour
     public int[,] types;
     #endregion
 
+    #region Dialogue
+    [Header("Dialogue")]
+    [SerializeField]
+    private DialogueID[] entryDialogue;
+    [SerializeField]
+    private DialogueID[] playerAttackDialogue;
+    [SerializeField]
+    private DialogueID[] playerPotionDialogue;
+    [SerializeField]
+    private DialogueID[] enemieAttackDialogue;
+    [SerializeField]
+    private DialogueID[] playerVictoryDialogue;
+    [SerializeField]
+    private DialogueID[] enemieVictoryDialogue;
+
+    private string playerAttackName, enemieAttackName;
+    public string PlayerAttackName { get => playerAttackName;}
+    public string EnemieAttackName { get => enemieAttackName;}
+
+    #endregion
+
+
     public delegate void combatDelegate();
     public Dictionary<CombatState, combatDelegate> combatDictionaire = new Dictionary<CombatState, combatDelegate>();
     private List<CombatState> combatStates = new List<CombatState>();
@@ -85,6 +107,7 @@ public class CombatManager : MonoBehaviour
     public Image dresseurImage;
     public List<Sprite> dresseurSprite = new List<Sprite>();
     private int dresseurID;
+    private Transform playerSpawn;
     #endregion
 
     void Awake()
@@ -144,6 +167,14 @@ public class CombatManager : MonoBehaviour
         
         playerPoke = new Pokemon(playerPokes.pokes[0].CopyPokeData(), true); //copie cheum du playerpoke
         
+        if (SaveSystemManager.Instance != null)
+        {
+            if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+            {
+                playerSpawn.position = SaveSystemManager.Instance.LastPosPlayer;
+            }
+        }
+
     }
 
     private void Update()
@@ -174,15 +205,17 @@ public class CombatManager : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("PokemonSauvage");
         }
 
-        yield return new WaitForSeconds(0.5f);
+        enemiePoke = new Pokemon(wild, false);
 
         combatWindow.SetActive(true);
         blackBackground.SetActive(true);
 
         isInHerbeHautes = isInHH;
         dresseurID = qui;
-        enemiePoke = new Pokemon(wild, false);
-        chatText.text = wild.name + " est apparu !!!";
+
+        //ICI
+        DialogueManager.Instance.InitDialogue(GameManager.Instance, entryDialogue);
+        //ICI
 
         foreach (var poke in dictPokeData)
         {
@@ -192,6 +225,7 @@ public class CombatManager : MonoBehaviour
             enemiePokemonHP.value = enemiePoke.data.hp;
         }
 
+        yield return new WaitForSeconds(0.5f);
         //Play anim enemie/player spawn
         #region SetupUICombat
 
@@ -232,8 +266,6 @@ public class CombatManager : MonoBehaviour
                 dresseurImage.sprite = dresseurSprite[4];
                 break;
         }*/
-
-
 
         if (combatAnimator != null)
         {
@@ -277,6 +309,7 @@ public class CombatManager : MonoBehaviour
 
     public void CallButton()
     {
+        DialogueManager.Instance.DisplayNextSentence();
         attackWindow.SetActive(false);
         objectWindow.SetActive(false);
     }
@@ -304,6 +337,9 @@ public class CombatManager : MonoBehaviour
         if (combatWindow.activeSelf)
         {
             combatAnimator.SetTrigger("UsePotion");// JM
+
+            DialogueManager.Instance.InitDialogue(this, playerVictoryDialogue);
+
             if (FindObjectOfType<AudioManager>() != null)
             {
                 FindObjectOfType<AudioManager>().Play("Heal");
@@ -455,7 +491,9 @@ public class CombatManager : MonoBehaviour
     private void PlayerLoose()
     {
         combatAnimator.SetTrigger("PlayerPokeDeath");// JM
-        chatText.text = playerPokemonName.text + " n'as plus de force, tu dois retourner au centre pokémon le plus proche";
+        DialogueManager.Instance.InitDialogue(GameManager.Instance, enemieVictoryDialogue);
+        PlayerMovement.Instance.transform.position = playerSpawn.position;
+        playerPoke.data.hp = playerPoke.data.hpMax;
     }
     private void EnemyLoose()
     {
@@ -492,10 +530,10 @@ public class CombatManager : MonoBehaviour
         }
         if (SaveSystemManager.Instance != null)
         {
-            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation " + SaveSystemManager.Instance.GetNameSave();
+            DialogueManager.Instance.InitDialogue(GameManager.Instance, playerVictoryDialogue);
         }
         else
-            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation ";
+            DialogueManager.Instance.InitDialogue(GameManager.Instance, playerVictoryDialogue);
     }
 
     private void Damage(Pokemon attaquant, Pokemon defenseur)
@@ -510,6 +548,7 @@ public class CombatManager : MonoBehaviour
     public void PlayerAttack()
     {
         Damage(enemiePoke, playerPoke);
+        playerAttackName = DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name;
         if (enemiePoke.data.hp <= 0)
         {
             enemiePokemonHP.value = 0;
@@ -537,11 +576,14 @@ public class CombatManager : MonoBehaviour
             }
 
         }
-        chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
+        //ICI
+        DialogueManager.Instance.InitDialogue(this, playerAttackDialogue);
+        //chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
     }
     private void EnemyAttack()
     {
         Damage(playerPoke, enemiePoke);
+        enemieAttackName = DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name;
         if (playerPoke.data.hp <= 0)
         {
             playerPoke.data.hp = 0;
@@ -570,7 +612,8 @@ public class CombatManager : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("Attack");
             }
         }
-        chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
+        DialogueManager.Instance.InitDialogue(this, enemieAttackDialogue);
+        //chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
 
     public void QuitCombat()

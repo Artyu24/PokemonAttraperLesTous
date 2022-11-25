@@ -147,6 +147,10 @@ public class DialogueManager : MonoBehaviour
 
     private void FixText(ref string texte)
     {
-        texte = texte.Replace("PLAYER", playerName).Replace("POKEMON", "Pikachu").Replace("VILLE", "Bourgeon");
+        Debug.Log(CombatManager.Instance.playerPoke.data.name);
+        Debug.Log(CombatManager.Instance.enemiePoke.data.name);
+        Debug.Log(CombatManager.Instance.PlayerAttackName);
+        Debug.Log(CombatManager.Instance.EnemieAttackName);
+        texte = texte.Replace("PLAYER", playerName).Replace("POKEPLAYER", CombatManager.Instance.playerPoke.data.name).Replace("POKEENEMIE", CombatManager.Instance.enemiePoke.data.name).Replace("ATTACKPLAYER", CombatManager.Instance.PlayerAttackName).Replace("ATTACKENEMIE", CombatManager.Instance.EnemieAttackName);
     }
 }
