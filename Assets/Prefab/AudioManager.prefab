@@ -55,7 +55,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MainTheme
     clip: {fileID: 8300000, guid: 6048f4df6fcc51341a617766be19345a, type: 3}
-    volume: 0.266
+    volume: 0.214
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
@@ -64,6 +64,14 @@ MonoBehaviour:
   - name: RouteMusic
     clip: {fileID: 8300000, guid: 15821368c5c7a2342ae77086ee6cf049, type: 3}
     volume: 0.303
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Maison
+    clip: {fileID: 8300000, guid: ad413eeda32e7c64893a970c5270259d, type: 3}
+    volume: 1
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
@@ -79,7 +87,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: PokemonSauvage
     clip: {fileID: 8300000, guid: c06fe18b43f738740a79f16f1dc0f256, type: 3}
-    volume: 0.659
+    volume: 0.37
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
