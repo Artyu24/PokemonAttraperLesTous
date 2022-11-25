@@ -18,8 +18,17 @@ public enum PlayerState
     InMovement,
     InFight,
     Teleportation,
+    Interaction,
     WaterInteraction
 }
+
+public enum PNJState
+{
+    Idle,
+    InMovement,
+    Interaction
+}
+
 public enum CombatState
 {
     Init,
@@ -41,7 +50,11 @@ public enum PotentialDirection
     BAS,
     GAUCHE,
     DROITE,
-    RIEN
+    RIEN,
+    SEE_HAUT,
+    SEE_BAS,
+    SEE_GAUCHE,
+    SEE_DROITE
 }
 
 [Serializable]

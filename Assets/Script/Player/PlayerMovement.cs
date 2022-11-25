@@ -30,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 endPos;
     private Vector2 inputDir;
     private BoxCenter boxCenter;
-    private Dictionary<PotentialDirection, DirectionData> dictDirection = new Dictionary<PotentialDirection, DirectionData>();
 
     [Header("Interaction")]
     public LayerMask wallLayer;
@@ -71,16 +70,6 @@ public class PlayerMovement : MonoBehaviour
         }
         endPos = boxCenter.CenterObject();
 
-        #region Init Direction Dictionnary
-
-        dictDirection.Add(PotentialDirection.HAUT, new DirectionData(PotentialDirection.HAUT, "up", new Vector3(0, GameManager.Instance.GetMoveDistance, 0), transform.up));
-        dictDirection.Add(PotentialDirection.BAS, new DirectionData(PotentialDirection.BAS, "bottom", new Vector3(0, -GameManager.Instance.GetMoveDistance, 0), -transform.up));
-        dictDirection.Add(PotentialDirection.GAUCHE, new DirectionData(PotentialDirection.GAUCHE, "left", new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0), -transform.right));
-        dictDirection.Add(PotentialDirection.DROITE, new DirectionData(PotentialDirection.DROITE, "right", new Vector3(GameManager.Instance.GetMoveDistance, 0, 0), transform.right));
-        dictDirection.Add(PotentialDirection.RIEN, new DirectionData(PotentialDirection.RIEN, "Idl"));
-
-        #endregion
-
         actualInteractionDelegate = LaunchInteraction;
     }
 
@@ -103,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             else if (inputDir.x > 0)
                 dirEnum = PotentialDirection.DROITE;
 
-            DirectionData dirChoose = dictDirection[dirEnum];
+            DirectionData dirChoose = GameManager.Instance.DictDirection[dirEnum];
             AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
             if (dirEnum != PotentialDirection.RIEN)
@@ -199,7 +188,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (actualInteractionDelegate != null)
             {
-                DirectionData dirChoose = dictDirection[PotentialDirection.RIEN];
+                DirectionData dirChoose = GameManager.Instance.DictDirection[PotentialDirection.RIEN];
                 AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
                 actualInteractionDelegate();
@@ -278,8 +267,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void LaunchInteraction()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
-        Debug.DrawRay(transform.position, dictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
+        Debug.DrawRay(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
 
         if (hit.collider != null)
         {
@@ -361,7 +350,7 @@ public class PlayerMovement : MonoBehaviour
     private void TeleportPlayer()
     {
         transform.position = TP_Manager.Instance.DictHouseDoor[actualDoor].transform.position;
-        endPos = GetComponent<BoxCenter>().CenterObject() + dictDirection[lastDirEnum].mouv;
+        endPos = GetComponent<BoxCenter>().CenterObject() + GameManager.Instance.DictDirection[lastDirEnum].mouv;
         transform.position = GetComponent<BoxCenter>().CenterObject();
         GameManager.Instance.ActivateFade(false);
         GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
@@ -383,34 +372,6 @@ public class PlayerMovement : MonoBehaviour
     
     public DirectionData GetLastDirection()
     {
-        return dictDirection[lastDirEnum];
+        return GameManager.Instance.DictDirection[lastDirEnum];
     }
 }
-
-#region Direction Data Class
-
-public class DirectionData
-{
-    public PotentialDirection dirEnum;
-    public string animName;
-    public Vector3 mouv;
-    public Vector3 transformDir;
-
-    public DirectionData(PotentialDirection dirEnum, string animName, Vector3 mouv, Vector3 transformDir)
-    {
-        this.dirEnum = dirEnum;
-        this.animName = animName;
-        this.mouv = mouv;
-        this.transformDir = transformDir;
-    }
-
-    public DirectionData(PotentialDirection dirEnum, string animName)
-    {
-        this.dirEnum = dirEnum;
-        this.animName = animName;
-        mouv = Vector3.zero;
-        transformDir = Vector3.zero;
-    }
-}
-
-#endregion

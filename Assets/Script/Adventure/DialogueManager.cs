@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     private string actualSentence;
 
     private ReadGoogleSheet readGoogleSheet;
+    private PNJ actualPNJ;
 
     private void Awake()
     {
@@ -29,13 +30,18 @@ public class DialogueManager : MonoBehaviour
         readGoogleSheet = GetComponent<ReadGoogleSheet>();
     }
 
-    public void InitDialogue<T>(T type, DialogueID[] dialogue)
+    public void InitDialogue<T>(T type, DialogueID[] dialogue, PNJ pnj = null)
     {
         switch (type)
         {
             case WaterZone:
                 PlayerMovement.Instance.ActualInteractionDelegate = null;
                 actualDialogueDelegate = WaterZone.Instance.InitInteraction;
+                break;
+            case PNJ:
+                actualPNJ = pnj;
+                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
+                actualDialogueDelegate = null;
                 break;
             default:
                 PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
@@ -81,7 +87,13 @@ public class DialogueManager : MonoBehaviour
                 WaterZone.Instance.ActivateEnterAnimation();
                 return;
             }
-            
+
+            if (actualPNJ != null)
+            {
+                actualPNJ.ActualPnjState = PNJState.Idle;
+                actualPNJ = null;
+            }
+
             GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             PlayerMovement.Instance.ResetInteractionFunction();
 
