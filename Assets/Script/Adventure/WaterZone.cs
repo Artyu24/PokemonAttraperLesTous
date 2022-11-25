@@ -9,6 +9,7 @@ public class WaterZone : MonoBehaviour, IInteractable
     public static WaterZone Instance;
 
     [SerializeField] private DialogueID[] dialogueEnter;
+    [SerializeField] private DialogueID[] dialogueCantEnter;
     [SerializeField] private DialogueID[] dialogueValidation;
     
     private GameObject waterBox;
@@ -39,9 +40,16 @@ public class WaterZone : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        GameManager.Instance.ActualPlayerState = PlayerState.WaterInteraction;
-        DialogueManager.Instance.InitDialogue(this, dialogueEnter);
-        isOpen = true;
+        if (PlayerMovement.Instance.CanWalkOnWater)
+        {
+            GameManager.Instance.ActualPlayerState = PlayerState.WaterInteraction;
+            DialogueManager.Instance.InitDialogue(this, dialogueEnter);
+            isOpen = true;
+        }
+        else
+        {
+            DialogueManager.Instance.InitDialogue(GameManager.Instance, dialogueCantEnter);
+        }
     }
 
     public void InitInteraction()

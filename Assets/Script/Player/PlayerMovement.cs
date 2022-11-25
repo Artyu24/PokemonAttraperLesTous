@@ -18,8 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private bool fightDresseur = false;
     private HerbesHautes herbesHautes;
     private Dresseur dresseur;
+    private bool canWalkOnWater;
     private bool walkOnWater = false;
     public GameObject WaterPokemon => waterPokemon;
+    public bool CanWalkOnWater { get => canWalkOnWater; set => canWalkOnWater = value; }
     public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
 
     [Header("Teleportation")]
@@ -275,21 +277,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void LaunchInteraction()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
-        Debug.DrawRay(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
-
-        if (hit.collider != null)
+        if (GameManager.Instance.ActualPlayerState == PlayerState.Idle)
         {
-            if (hit.collider.GetComponent<IInteractable>() != null)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir, raycastDistance, interactLayer);
+            Debug.DrawRay(transform.position, GameManager.Instance.DictDirection[lastDirEnum].transformDir * raycastDistance, Color.red, 2f);
+
+            if (hit.collider != null)
             {
-                if (walkOnWater && hit.collider.gameObject.layer == 4)
-                    return;
+                if (hit.collider.GetComponent<IInteractable>() != null)
+                {
+                    if (walkOnWater && hit.collider.gameObject.layer == 4)
+                        return;
 
-                hit.collider.GetComponent<IInteractable>().Interact();
+                    hit.collider.GetComponent<IInteractable>().Interact();
 
-                
+                    
 
-                //SON TICK DE DIALOGUE
+                    //SON TICK DE DIALOGUE
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     private ReadGoogleSheet readGoogleSheet;
     private PNJ actualPNJ;
+    private bool onlyShowText;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class DialogueManager : MonoBehaviour
             playerName = "PLAYER";
     }
 
-    public void InitDialogue<T>(T type, DialogueID[] dialogue, PNJ pnj = null)
+    public void InitDialogue<T>(T type, DialogueID[] dialogue)
     {
         switch (type)
         {
@@ -48,8 +49,13 @@ public class DialogueManager : MonoBehaviour
                 actualDialogueDelegate = WaterZone.Instance.InitInteraction;
                 break;
             case PNJ:
-                actualPNJ = pnj;
+                actualPNJ = type as PNJ;
                 PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
+                actualDialogueDelegate = null;
+                break;
+            case CombatManager:
+                onlyShowText = true;
+                PlayerMovement.Instance.ActualInteractionDelegate = null;
                 actualDialogueDelegate = null;
                 break;
             default:
@@ -103,11 +109,16 @@ public class DialogueManager : MonoBehaviour
                 actualPNJ = null;
             }
 
-            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+            if (GameManager.Instance.ActualGameState != GameState.Fight)
+                GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+            
             PlayerMovement.Instance.ResetInteractionFunction();
 
             return;
         }
+
+        PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
+        interactionImage.SetActive(false);
 
         actualSentence = sentences.Dequeue();
         FixText(ref actualSentence);
@@ -127,7 +138,7 @@ public class DialogueManager : MonoBehaviour
 
         if (actualDialogueDelegate != null)
             actualDialogueDelegate();
-        else
+        else if (!onlyShowText)
         {
             PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
             interactionImage.SetActive(true);

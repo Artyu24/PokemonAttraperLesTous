@@ -161,7 +161,7 @@ public class PNJ : MonoBehaviour, IInteractable
 
             GameManager.Instance.ActualPlayerState = PlayerState.Interaction;
             PlayerMovement.Instance.ActualInteractionDelegate = null;
-            DialogueManager.Instance.InitDialogue(this, dialogues, this);
+            DialogueManager.Instance.InitDialogue(this, dialogues);
         }
     }
 
