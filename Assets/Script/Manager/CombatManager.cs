@@ -194,11 +194,11 @@ public class CombatManager : MonoBehaviour
 
         #endregion
 
-        switch (dresseurID)
+        /*switch (dresseurID)
         {
             case 0:
                 dresseurImage.sprite = dresseurSprite[0];
-                Debug.Log("tnhsoihbos");
+                Debug.Log(dresseurImage.sprite.name);
                 break;
             case 1:
                 dresseurImage.sprite = dresseurSprite[1];
@@ -212,7 +212,7 @@ public class CombatManager : MonoBehaviour
             case 4:
                 dresseurImage.sprite = dresseurSprite[4];
                 break;
-        }
+        }*/
 
 
 
