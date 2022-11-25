@@ -16,7 +16,9 @@ public class AudioManager : MonoBehaviour
 
     bool resetSound = false;
 
-    private string currentSound;
+
+    [SerializeField] private string currentSound;
+    public string CurrentSound { get => currentSound; private set => currentSound = value; }
 
     private void Start()
     {
