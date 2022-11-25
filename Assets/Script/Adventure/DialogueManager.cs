@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     private ReadGoogleSheet readGoogleSheet;
     private PNJ actualPNJ;
+    private BlockPlayerPNJ blockPNJ;
     private bool onlyShowText;
 
     private void Awake()
@@ -50,6 +51,11 @@ public class DialogueManager : MonoBehaviour
                 break;
             case PNJ:
                 actualPNJ = type as PNJ;
+                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
+                actualDialogueDelegate = null;
+                break;
+            case BlockPlayerPNJ:
+                blockPNJ = type as BlockPlayerPNJ;
                 PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
                 actualDialogueDelegate = null;
                 break;
@@ -109,6 +115,12 @@ public class DialogueManager : MonoBehaviour
                 actualPNJ = null;
             }
 
+            if (blockPNJ != null)
+            {
+                blockPNJ.ResetPos();
+                return;
+            }
+
             if (GameManager.Instance.ActualGameState != GameState.Fight)
                 GameManager.Instance.ActualPlayerState = PlayerState.Idle;
             
@@ -147,10 +159,6 @@ public class DialogueManager : MonoBehaviour
 
     private void FixText(ref string texte)
     {
-        Debug.Log(CombatManager.Instance.playerPoke.data.name);
-        Debug.Log(CombatManager.Instance.enemiePoke.data.name);
-        Debug.Log(CombatManager.Instance.PlayerAttackName);
-        Debug.Log(CombatManager.Instance.EnemieAttackName);
-        texte = texte.Replace("PLAYER", playerName).Replace("POKEPLAYER", CombatManager.Instance.playerPoke.data.name).Replace("POKEENEMIE", CombatManager.Instance.enemiePoke.data.name).Replace("ATTACKPLAYER", CombatManager.Instance.PlayerAttackName).Replace("ATTACKENEMIE", CombatManager.Instance.EnemieAttackName);
+        texte = texte.Replace("PLAYER", playerName).Replace("POKEPL", CombatManager.Instance.playerPoke.data.name).Replace("POKEEN", CombatManager.Instance.enemiePoke.data.name).Replace("ATKPL", CombatManager.Instance.PlayerAttackName).Replace("ATKEN", CombatManager.Instance.EnemieAttackName);
     }
 }

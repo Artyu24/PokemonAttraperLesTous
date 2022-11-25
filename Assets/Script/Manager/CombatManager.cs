@@ -107,7 +107,7 @@ public class CombatManager : MonoBehaviour
     public Image dresseurImage;
     public List<Sprite> dresseurSprite = new List<Sprite>();
     private int dresseurID;
-    private Transform playerSpawn;
+    private Vector3 playerSpawn = Vector3.zero;
     #endregion
 
     void Awake()
@@ -171,10 +171,9 @@ public class CombatManager : MonoBehaviour
         {
             if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
             {
-                playerSpawn.position = SaveSystemManager.Instance.LastPosPlayer;
+                playerSpawn = SaveSystemManager.Instance.LastPosPlayer;
             }
         }
-
     }
 
     private void Update()
@@ -492,7 +491,7 @@ public class CombatManager : MonoBehaviour
     {
         combatAnimator.SetTrigger("PlayerPokeDeath");// JM
         DialogueManager.Instance.InitDialogue(GameManager.Instance, enemieVictoryDialogue);
-        PlayerMovement.Instance.transform.position = playerSpawn.position;
+        PlayerMovement.Instance.transform.position = playerSpawn;
         playerPoke.data.hp = playerPoke.data.hpMax;
     }
     private void EnemyLoose()

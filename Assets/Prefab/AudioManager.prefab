@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: MusicMenu
     clip: {fileID: 8300000, guid: 956bc3ebe0fc5ea44a90ee59cf70f742, type: 3}
-    volume: 1
+    volume: 0
     pitch: 1
     loop: 1
     audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
@@ -171,6 +171,70 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioMixer: {fileID: -1505400366495320181, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: RouteVictoire
+    clip: {fileID: 8300000, guid: 773e4bb0f4b2a1e4d9910cf44c7decb8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: PlageRoom
+    clip: {fileID: 8300000, guid: 54e6415c8af312c4fa3c75e9ef0e0c38, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: SnowRoom
+    clip: {fileID: 8300000, guid: f003ad49278235242b10da0f8e7447d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Discotheque
+    clip: {fileID: 8300000, guid: 5fc44782716dcdf4c8d320c5bd94bfa2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: BossLeague
+    clip: {fileID: 8300000, guid: 01641424a7bf94e43bd9dd545ef5e725, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: Laboratoire
+    clip: {fileID: 8300000, guid: d7d4d52160f04d14286a2560336e4afd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: JungleRoom
+    clip: {fileID: 8300000, guid: bd75b17fd87afeb4a9582ce8765d0620, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
+      type: 2}
+    source: {fileID: 0}
+  - name: BiblioRoom
+    clip: {fileID: 8300000, guid: 2a4fc246dba65964d8d37adfd0b9804e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: -5131186024914124508, guid: 17f1cd0e4551e14489becc567a676407,
       type: 2}
     source: {fileID: 0}
   currentSound: 
