@@ -17,35 +17,35 @@ MonoBehaviour:
     ID: 0
     desc: "La foudre tombe sur l'ennemi pour lui infliger des d\xE9g\xE2ts."
     TYPE: 4
-    dmg: 110
+    dmg: 10
     pp: 10
     isRange: 1
   - name: Tranche Herbe
     ID: 1
     desc: "Des feuilles aiguis\xE9es comme des rasoirs entaillent l'ennemi."
     TYPE: 10
-    dmg: 55
+    dmg: 10
     pp: 25
     isRange: 1
   - name: Bulle d'O
     ID: 2
     desc: "Des bulles d'eau sont envoy\xE9es avec puissance sur l'ennemi."
     TYPE: 3
-    dmg: 65
+    dmg: 10
     pp: 20
     isRange: 1
   - name: "Draco M\xE9t\xE9or"
     ID: 3
     desc: "Le lanceur invoque des com\xE8tes."
     TYPE: 2
-    dmg: 130
+    dmg: 10
     pp: 5
     isRange: 1
   - name: Tete de fer
     ID: 4
     desc: "Le lanceur heurte l'ennemi avec sa t\xEAte dure comme de l'acier."
     TYPE: 0
-    dmg: 80
+    dmg: 10
     pp: 15
     isRange: 0
   - name: Seisme
@@ -53,69 +53,69 @@ MonoBehaviour:
     desc: "Le lanceur provoque un tremblement de terre touchant tous les Pok\xE9mon
       autour de lui."
     TYPE: 14
-    dmg: 100
+    dmg: 10
     pp: 10
     isRange: 0
   - name: "M\xE9t\xE9ore"
     ID: 6
     desc: "Le pok\xE9mon lance des petites \xE9toiles"
     TYPE: 9
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 1
   - name: Queue de Fer
     ID: 7
     desc: "Le pok\xE9mon dur\xE7it sa queue avant de donner un puissant coup avec"
     TYPE: 0
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 0
   - name: Tonnerre
     ID: 8
     desc: "Lance des \xE9claires"
     TYPE: 4
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 1
   - name: Hydrocanon
     ID: 9
     desc: Puissant jet d'eau
     TYPE: 3
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 1
   - name: Surf
     ID: 10
     desc: "Cr\xE9er une \xE9norme vague"
     TYPE: 3
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 0
   - name: Coup d'Boule
     ID: 11
     desc: Zizou 2006
     TYPE: 1
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 1
   - name: Croc Feu
     ID: 12
     desc: "Morsure enflamm\xE9e"
     TYPE: 6
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 0
   - name: Draco Rage
     ID: 13
     desc: Rage draconique
     TYPE: 2
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 0
   - name: Lance Flamme
     ID: 14
     desc: Hanz get the Flammenwerfer
     TYPE: 6
-    dmg: 50
+    dmg: 10
     pp: 10
     isRange: 0
