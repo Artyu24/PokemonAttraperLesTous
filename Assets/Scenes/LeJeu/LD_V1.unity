@@ -122483,16 +122483,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJ
       objectReference: {fileID: 0}
-    - target: {fileID: 5456904029944998357, guid: 5a1fd3b52e53d91419c928d0b49742a2,
-        type: 3}
-      propertyPath: fixMouvement
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5456904029944998357, guid: 5a1fd3b52e53d91419c928d0b49742a2,
-        type: 3}
-      propertyPath: colliderNextMove
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5456904029944998359, guid: 5a1fd3b52e53d91419c928d0b49742a2,
         type: 3}
       propertyPath: m_RootOrder

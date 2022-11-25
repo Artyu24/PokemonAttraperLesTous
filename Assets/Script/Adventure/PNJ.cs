@@ -12,6 +12,7 @@ public class PNJ : MonoBehaviour, IInteractable
     [Header("Movement")]
     public int moveSpeed = 20;
     private Vector3 endPos;
+    private Vector3 startPos;
     private BoxCenter boxCenter;
     [SerializeField] private float fixMouvement; 
     [SerializeField] private List<PotentialDirection> pnjDir = new List<PotentialDirection>();
@@ -19,6 +20,7 @@ public class PNJ : MonoBehaviour, IInteractable
     private PNJState actualPnjState = PNJState.Idle;
     public PNJState ActualPnjState { get => actualPnjState; set => actualPnjState = value; }
     private bool canStart = true;
+    private BoxCollider2D collider;
 
     [Header("Interaction")]
     public LayerMask playerLayer;
@@ -33,6 +35,7 @@ public class PNJ : MonoBehaviour, IInteractable
     {
         boxCenter = GetComponent<BoxCenter>();
         endPos = boxCenter.CenterObject();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -71,7 +74,26 @@ public class PNJ : MonoBehaviour, IInteractable
 
         if (GameManager.Instance.ActualGameState != GameState.Paused && actualPnjState == PNJState.InMovement)
         {
+            #region PNJ Reset Pos if player move on the same place
+
+            int lastIndex = pnjIndex - 1;
+            if (lastIndex < 0)
+                lastIndex = pnjDir.Count - 1;
+
+            DirectionData dirChoose = GameManager.Instance.DictDirection[pnjDir[lastIndex]];
+
+            if (Check(dirChoose.transformDir))
+            {
+                transform.position = startPos;
+                endPos = startPos;
+                actualPnjState = PNJState.Idle;
+                pnjIndex = lastIndex;
+                NextMove(PotentialDirection.RIEN);
+            }
+
+            #endregion
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
+            collider.offset = endPos - transform.position;
         }
 
         #endregion
@@ -91,7 +113,9 @@ public class PNJ : MonoBehaviour, IInteractable
             if (!Check(dirChoose.transformDir))
             {
                 endPos = transform.position + dirChoose.mouv;
+                startPos = transform.position;
                 actualPnjState = PNJState.InMovement;
+                collider.offset = endPos - transform.position;
             }
         }
     }
