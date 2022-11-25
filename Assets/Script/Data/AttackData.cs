@@ -9,6 +9,7 @@ namespace Object.Data
         [Header("Stats")]
         public int dmg;
         public int pp;
+        public bool isRange;
 
         public AttackData(string name, int id = 0, string caption = "", PokeType pokeType = PokeType.NORMALE) : base(name, id, caption, pokeType)
         {
