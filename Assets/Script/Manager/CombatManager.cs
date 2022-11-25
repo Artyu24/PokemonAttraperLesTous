@@ -515,10 +515,22 @@ public class CombatManager : MonoBehaviour
             enemiePoke.data.hp -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
             enemiePokemonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
         }
-        combatAnimator.SetTrigger("PlayerAttackRange");// JM
-        if (FindObjectOfType<AudioManager>() != null)
+        if (DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].isRange)
         {
-            FindObjectOfType<AudioManager>().Play("Attack");
+            combatAnimator.SetTrigger("PlayerAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("PlayerAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+
         }
         chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
     }
@@ -537,10 +549,21 @@ public class CombatManager : MonoBehaviour
             playerPokemonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
             playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
         }
-        combatAnimator.SetTrigger("EnemieAttackCac");// JM
-        if (FindObjectOfType<AudioManager>() != null)
+        if (DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].isRange)
         {
-            FindObjectOfType<AudioManager>().Play("Attack");
+            combatAnimator.SetTrigger("EnemieAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("EnemieAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
         }
         chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }

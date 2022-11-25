@@ -19,30 +19,35 @@ MonoBehaviour:
     TYPE: 4
     dmg: 110
     pp: 10
+    isRange: 1
   - name: Tranche Herbe
     ID: 1
     desc: "Des feuilles aiguis\xE9es comme des rasoirs entaillent l'ennemi."
     TYPE: 10
     dmg: 55
     pp: 25
+    isRange: 1
   - name: Bulle d'O
     ID: 2
     desc: "Des bulles d'eau sont envoy\xE9es avec puissance sur l'ennemi."
     TYPE: 3
     dmg: 65
     pp: 20
+    isRange: 1
   - name: "Draco M\xE9t\xE9or"
     ID: 3
     desc: "Le lanceur invoque des com\xE8tes."
     TYPE: 2
     dmg: 130
     pp: 5
+    isRange: 1
   - name: Tete de fer
     ID: 4
     desc: "Le lanceur heurte l'ennemi avec sa t\xEAte dure comme de l'acier."
     TYPE: 0
     dmg: 80
     pp: 15
+    isRange: 0
   - name: Seisme
     ID: 5
     desc: "Le lanceur provoque un tremblement de terre touchant tous les Pok\xE9mon
@@ -50,3 +55,4 @@ MonoBehaviour:
     TYPE: 14
     dmg: 100
     pp: 10
+    isRange: 0
