@@ -34,9 +34,9 @@ namespace Object.Data
             Debug.Log("azertyu");
         }
 
-        public delegate void EffectDelegate();
+        public delegate void EffectDelegate<T>(T cible);
 
-        public EffectDelegate OnEffect;
+        public EffectDelegate<PokeData> OnEffect;
 
         public void ApplyEffect()
         {
@@ -53,23 +53,33 @@ namespace Object.Data
                case Categorie.BOOST:
                    OnEffect = BoostEffect;
                    break;
-               case Categorie.CAPTURE:
-                   OnEffect = CaptureEffect;
-                   break;
+               //case Categorie.CAPTURE:
+               //    OnEffect = CaptureEffect;
+               //    break;
            }
         }
 
-       void RestoreEffect()
-       {
-           switch (subCategorie)
-           {
-               case SubCategorie.PV : Debug.Log("JE TE HEAL DE : " + value); break;
-               case SubCategorie.PP: Debug.Log("JE TE RAJOUTE DES PP : " + value); break;
-           }
-            
-       }
+        void RestoreEffect(PokeData pokeCible)
+        {
+            switch (subCategorie)
+            {
+                case SubCategorie.PV : 
+                     _ = (pokeCible.hp + value) < pokeCible.hpMax ? pokeCible.hp += value : pokeCible.hp = pokeCible.hpMax; break;
+            }             
+        }
+        void RestoreEffect(PokeData pokeCible, int ID)
+        {
+            switch (subCategorie)
+            {
+                case SubCategorie.PP: 
+                    Debug.Log($"l'attaque {pokeCible.attackIDlist[ID]} regagne {value} PP"); 
+                    break;
 
-       void BoostEffect()
+            }
+        }
+
+
+       void BoostEffect(PokeData pokeCible)
        {
            switch (subCategorie)
            {
@@ -80,7 +90,7 @@ namespace Object.Data
 
        }
 
-       void CaptureEffect()
+       void CaptureEffect(PokeData pokeCible)
        {
            switch (subCategorie)
            {

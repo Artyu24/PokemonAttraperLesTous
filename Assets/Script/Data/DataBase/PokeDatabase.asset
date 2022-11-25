@@ -18,11 +18,12 @@ MonoBehaviour:
     desc: BulbiBulbi Bulbizar
     TYPE: 10
     dmg: 65
-    hp: -65
-    hpMax: 150
+    hp: 30
+    hpMax: 30
     def: 65
     speed: 45
     sprite: {fileID: 21300000, guid: c6ed7247df9d98240a60f283e9918b72, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 00000000000000000000000000000000
   - name: Dracolosse
@@ -35,6 +36,7 @@ MonoBehaviour:
     def: 100
     speed: 80
     sprite: {fileID: 21300000, guid: 8da3ef8a9254d3e4bb2d0027f744f07d, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 01000000010000000100000001000000
   - name: Metalosse
@@ -47,6 +49,7 @@ MonoBehaviour:
     def: 130
     speed: 70
     sprite: {fileID: 21300000, guid: 5c56269b24a7d154e82a73e0d1e73f07, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 02000000020000000200000002000000
   - name: Tortank
@@ -59,6 +62,7 @@ MonoBehaviour:
     def: 105
     speed: 78
     sprite: {fileID: 21300000, guid: 82185fef8050b8f4fa6af5c6fef85ae3, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 03000000030000000300000003000000
   - name: Elekable
@@ -71,6 +75,7 @@ MonoBehaviour:
     def: 85
     speed: 95
     sprite: {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 00000000010000000200000003000000
   - name: Carchacrok
@@ -85,5 +90,6 @@ MonoBehaviour:
     def: 95
     speed: 102
     sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 05000000030000000400000005000000
