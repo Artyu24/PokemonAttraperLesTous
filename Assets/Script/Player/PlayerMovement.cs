@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isTP = false;
     private Collider2D actualDoor;
     private PotentialDirection lastDirEnum = PotentialDirection.BAS;
+    public PotentialDirection LastDirEnum => lastDirEnum;
 
     [Header("Movement")]
     public int moveSpeed = 20;

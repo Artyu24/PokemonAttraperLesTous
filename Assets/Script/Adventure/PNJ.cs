@@ -150,6 +150,8 @@ public class PNJ : MonoBehaviour, IInteractable
         {
             actualPnjState = PNJState.Interaction;
 
+            //pour savoir dans quel direction tourner le pnj, tu as la dernière direction du joueur
+
             GameManager.Instance.ActualPlayerState = PlayerState.Interaction;
             PlayerMovement.Instance.ActualInteractionDelegate = null;
             DialogueManager.Instance.InitDialogue(this, dialogues, this);
