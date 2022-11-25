@@ -120944,7 +120944,18 @@ MonoBehaviour:
   gameCamera: {fileID: 421406457}
   mapCamera: {fileID: 1613942613}
   playerName: {fileID: 1907484454}
-  saveDialogue: []
+  healDialogue:
+  - lineId: 4
+    columnId: 1
+  personalDialogue:
+  - lineId: 6
+    columnId: 1
+  saveDialogue:
+  - lineId: 3
+    columnId: 1
+  nothingDialogue:
+  - lineId: 5
+    columnId: 1
 --- !u!114 &1748761798
 MonoBehaviour:
   m_ObjectHideFlags: 0
