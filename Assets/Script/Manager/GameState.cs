@@ -20,6 +20,7 @@ public enum PlayerState
     Teleportation,
     Interaction,
     Inventory,
+    ForcedMove,
     Map,
     WaterInteraction
 }
@@ -48,15 +49,16 @@ public enum CombatState
 
 public enum PotentialDirection
 {
-    HAUT,
-    BAS,
-    GAUCHE,
-    DROITE,
-    RIEN,
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    IDLE,
     SEE_HAUT,
     SEE_BAS,
     SEE_GAUCHE,
-    SEE_DROITE
+    SEE_DROITE,
+    NOTHING
 }
 
 [Serializable]

@@ -41,11 +41,11 @@ public class GameManager : MonoBehaviour
 
         #region Init Direction Dictionnary
 
-        dictDirection.Add(PotentialDirection.HAUT, new DirectionData(PotentialDirection.HAUT, "up", new Vector3(0, GameManager.Instance.GetMoveDistance, 0), transform.up));
-        dictDirection.Add(PotentialDirection.BAS, new DirectionData(PotentialDirection.BAS, "bottom", new Vector3(0, -GameManager.Instance.GetMoveDistance, 0), -transform.up));
-        dictDirection.Add(PotentialDirection.GAUCHE, new DirectionData(PotentialDirection.GAUCHE, "left", new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0), -transform.right));
-        dictDirection.Add(PotentialDirection.DROITE, new DirectionData(PotentialDirection.DROITE, "right", new Vector3(GameManager.Instance.GetMoveDistance, 0, 0), transform.right));
-        dictDirection.Add(PotentialDirection.RIEN, new DirectionData(PotentialDirection.RIEN, "Idl"));
+        dictDirection.Add(PotentialDirection.UP, new DirectionData(PotentialDirection.UP, "up", new Vector3(0, GameManager.Instance.GetMoveDistance, 0), transform.up));
+        dictDirection.Add(PotentialDirection.DOWN, new DirectionData(PotentialDirection.DOWN, "bottom", new Vector3(0, -GameManager.Instance.GetMoveDistance, 0), -transform.up));
+        dictDirection.Add(PotentialDirection.LEFT, new DirectionData(PotentialDirection.LEFT, "left", new Vector3(-GameManager.Instance.GetMoveDistance, 0, 0), -transform.right));
+        dictDirection.Add(PotentialDirection.RIGHT, new DirectionData(PotentialDirection.RIGHT, "right", new Vector3(GameManager.Instance.GetMoveDistance, 0, 0), transform.right));
+        dictDirection.Add(PotentialDirection.IDLE, new DirectionData(PotentialDirection.IDLE, "Idl"));
         dictDirection.Add(PotentialDirection.SEE_HAUT, new DirectionData(PotentialDirection.SEE_HAUT, "Idl_up"));
         dictDirection.Add(PotentialDirection.SEE_BAS, new DirectionData(PotentialDirection.SEE_BAS, "Idl_bottom"));
         dictDirection.Add(PotentialDirection.SEE_GAUCHE, new DirectionData(PotentialDirection.SEE_GAUCHE, "Idl_left"));

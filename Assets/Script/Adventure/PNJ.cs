@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class PNJ : MonoBehaviour, IInteractable
 {
-    //private PotentialDirection lastDirEnum = PotentialDirection.BAS;
+    //private PotentialDirection lastDirEnum = PotentialDirection.DOWN;
 
     [Header("Movement")]
     public int moveSpeed = 20;
@@ -29,7 +29,7 @@ public class PNJ : MonoBehaviour, IInteractable
 
     [Header("Animation")]
     public Animator anim;
-    private PotentialDirection lastAnim = PotentialDirection.RIEN;
+    private PotentialDirection lastAnim = PotentialDirection.IDLE;
 
     private void Start()
     {
@@ -65,7 +65,7 @@ public class PNJ : MonoBehaviour, IInteractable
             endPos = boxCenter.CenterObject();
             transform.position = endPos;
             actualPnjState = PNJState.Idle;
-            NextMove(PotentialDirection.RIEN);
+            NextMove(PotentialDirection.IDLE);
         }
 
         #endregion
@@ -88,7 +88,7 @@ public class PNJ : MonoBehaviour, IInteractable
                 endPos = startPos;
                 actualPnjState = PNJState.Idle;
                 pnjIndex = lastIndex;
-                NextMove(PotentialDirection.RIEN);
+                NextMove(PotentialDirection.IDLE);
             }
 
             #endregion
@@ -108,7 +108,7 @@ public class PNJ : MonoBehaviour, IInteractable
         DirectionData dirChoose = GameManager.Instance.DictDirection[dirEnum];
         AnimPNJ(dirChoose.dirEnum, dirChoose.animName);
 
-        if (dirEnum == PotentialDirection.HAUT || dirEnum == PotentialDirection.BAS || dirEnum == PotentialDirection.DROITE || dirEnum == PotentialDirection.GAUCHE)
+        if (dirEnum == PotentialDirection.UP || dirEnum == PotentialDirection.DOWN || dirEnum == PotentialDirection.RIGHT || dirEnum == PotentialDirection.LEFT)
         {
             if (!Check(dirChoose.transformDir))
             {
@@ -191,20 +191,20 @@ public class PNJ : MonoBehaviour, IInteractable
 
     private PotentialDirection GetOppositePosition(PotentialDirection playerDir)
     {
-        PotentialDirection pnjDirection = PotentialDirection.RIEN;
+        PotentialDirection pnjDirection = PotentialDirection.IDLE;
         
         switch (playerDir)
         {
-            case PotentialDirection.HAUT:
+            case PotentialDirection.UP:
                 pnjDirection = PotentialDirection.SEE_BAS;
                 break;
-            case PotentialDirection.BAS:
+            case PotentialDirection.DOWN:
                 pnjDirection = PotentialDirection.SEE_HAUT;
                 break;
-            case PotentialDirection.GAUCHE:
+            case PotentialDirection.LEFT:
                 pnjDirection = PotentialDirection.SEE_DROITE;
                 break;
-            case PotentialDirection.DROITE:
+            case PotentialDirection.RIGHT:
                 pnjDirection = PotentialDirection.SEE_GAUCHE;
                 break;
         }
