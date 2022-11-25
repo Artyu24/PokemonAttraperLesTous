@@ -161,15 +161,29 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(PokeData wild, bool isInHH, int qui)
     {
+        StartCoroutine(StartCombatAnim(wild, isInHH, qui));
+    }
+
+    private IEnumerator StartCombatAnim(PokeData wild, bool isInHH, int qui)
+    {
+        GameManager.Instance.ActivateFade(0);
+
+        if (FindObjectOfType<AudioManager>() != null)
+        {
+            FindObjectOfType<AudioManager>().Stop();
+            FindObjectOfType<AudioManager>().Play("PokemonSauvage");
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        combatWindow.SetActive(true);
+        blackBackground.SetActive(true);
+
         isInHerbeHautes = isInHH;
         dresseurID = qui;
         enemiePoke = new Pokemon(wild, false);
         chatText.text = wild.name + " est apparu !!!";
 
-        if (FindObjectOfType<AudioManager>() != null)
-        {
-            FindObjectOfType<AudioManager>().PlayFade("PokemonSauvage");
-        }
         foreach (var poke in dictPokeData)
         {
             int i = 0;
@@ -188,7 +202,7 @@ public class CombatManager : MonoBehaviour
         playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
         playerPokemonHP.maxValue = playerPoke.data.hpMax;
         playerPokemonHP.value = playerPoke.data.hpMax;
-        
+
         playerPokemonSprite.sprite = playerPoke.data.BackSprite;
         enemiePokemonSprite.sprite = enemiePoke.data.sprite;
 
@@ -240,11 +254,11 @@ public class CombatManager : MonoBehaviour
                     case 1:
                         combatAnimator.SetInteger("Dresseurs", 1);
                         //Antoine
-                        break; 
+                        break;
                     case 2:
                         combatAnimator.SetInteger("Dresseurs", 2);
                         //Arthur
-                        break; 
+                        break;
                     case 3:
                         combatAnimator.SetInteger("Dresseurs", 3);
                         //JM
@@ -542,7 +556,7 @@ public class CombatManager : MonoBehaviour
 
     private IEnumerator QuitAnim()
     {
-        GameManager.Instance.ActivateFade(true);
+        GameManager.Instance.ActivateFade(1);
         yield return new WaitForSeconds(2.5f);
         combatAnimator.SetTrigger("FinFight");// JM
         if (FindObjectOfType<AudioManager>() != null)
@@ -553,7 +567,7 @@ public class CombatManager : MonoBehaviour
         combatWindow.SetActive(false);
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         GameManager.Instance.ActualGameState = GameState.Adventure;
-        GameManager.Instance.ActivateFade(false);
+        GameManager.Instance.ActivateFade(2);
     }
 
     public void Return()

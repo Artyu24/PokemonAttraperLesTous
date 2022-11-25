@@ -22,7 +22,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("MusicMenu");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            FindObjectOfType<AudioManager>().Play("MusicMenu");
+            currentSound = "MusicMenu";
+        }
     }
     void Awake()
     {
@@ -51,7 +55,7 @@ public class AudioManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            FindObjectOfType<AudioManager>().Stop("MainTheme");
+            FindObjectOfType<AudioManager>().Stop();
 
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -83,12 +87,12 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeIn(s));
         currentSound = name;
     }
-    public void Stop(string name)
+    public void Stop()
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == currentSound);
         if (s == null)
         {
-            Debug.LogWarning("Sound: " + name + " not found (surement mal ecrit entre le script et sur Unity)");
+            Debug.LogWarning("Sound: " + currentSound + " not found (surement mal ecrit entre le script et sur Unity)");
             return;
         }
         s.source.Stop();

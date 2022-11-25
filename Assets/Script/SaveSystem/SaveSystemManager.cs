@@ -57,8 +57,8 @@ public class SaveSystemManager : MonoBehaviour
 
     private void LaunchGameScene()
     {
-        FindObjectOfType<AudioManager>().Stop("MusicMenu");
-        FindObjectOfType<AudioManager>().Play("MainTheme");
+        FindObjectOfType<AudioManager>().Stop();
+        FindObjectOfType<AudioManager>().PlayFade("MainTheme");
         SceneManager.LoadScene(sceneToLoad);
     }
 }

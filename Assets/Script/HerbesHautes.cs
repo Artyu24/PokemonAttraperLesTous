@@ -10,8 +10,6 @@ public class HerbesHautes : MonoBehaviour
     [SerializeField]
     private int maxSpawnRate;
 
-    public GameObject combatWindow;
-    public GameObject blackBackground;
     public PokeData[] wildPokes = new PokeData[4];
     public PokeData wildPoke;
 
@@ -39,19 +37,10 @@ public class HerbesHautes : MonoBehaviour
             int temp = Random.Range(0, wildPokes.Length);
             wildPoke = wildPokes[temp].CopyPokeData();
 
-            combatWindow.SetActive(true);
-            blackBackground.SetActive(true);
-
-
             GameManager.Instance.ActualPlayerState = PlayerState.InFight;
             GameManager.Instance.ActualGameState = GameState.Fight;
             CombatManager.Instance.ActualCombatState = CombatState.Init;
             CombatManager.Instance.StartCombat(wildPoke, true, 5);
-        }
-        if (FindObjectOfType<AudioManager>() != null)
-        {
-            FindObjectOfType<AudioManager>().Stop("MainTheme");
-            FindObjectOfType<AudioManager>().Play("PokemonSauvage");
         }
     }
 }

@@ -300,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
             actualDoor = collision;
 
             GameManager.Instance.ActualPlayerState = PlayerState.Teleportation;
-            GameManager.Instance.ActivateFade(true);
+            GameManager.Instance.ActivateFade(1);
             
             anim.SetTrigger("Idl");
             lastAnim = PotentialDirection.RIEN;
@@ -354,7 +354,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = TP_Manager.Instance.DictHouseDoor[actualDoor].transform.position;
         endPos = GetComponent<BoxCenter>().CenterObject() + GameManager.Instance.DictDirection[lastDirEnum].mouv;
         transform.position = GetComponent<BoxCenter>().CenterObject();
-        GameManager.Instance.ActivateFade(false);
+        GameManager.Instance.ActivateFade(2);
         GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
     }
 

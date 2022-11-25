@@ -54,12 +54,15 @@ public class GameManager : MonoBehaviour
         #endregion
     }
 
-    public void ActivateFade(bool trigger)
+    public void ActivateFade(int i)
     {
-        if (trigger)
+        if (i == 1)
             fadeAnim.SetTrigger("In");
-        else
+        else if (i == 2)
             fadeAnim.SetTrigger("Out");
+        else
+            fadeAnim.SetTrigger("All");
+        
     }
 }
 

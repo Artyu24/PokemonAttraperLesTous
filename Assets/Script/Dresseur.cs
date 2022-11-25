@@ -51,10 +51,5 @@ public class Dresseur : MonoBehaviour
             CombatManager.Instance.ActualCombatState = CombatState.Init;
             CombatManager.Instance.StartCombat(wildPoke, false, dresseur) ;
         }
-        if (FindObjectOfType<AudioManager>() != null)
-        {
-            FindObjectOfType<AudioManager>().Stop("MainTheme");
-            FindObjectOfType<AudioManager>().Play("PokemonSauvage");//JM changer pour Dresseur
-        }
     }
 }
