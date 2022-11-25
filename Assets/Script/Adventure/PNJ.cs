@@ -83,7 +83,7 @@ public class PNJ : MonoBehaviour, IInteractable
     private void NextMove(PotentialDirection dirEnum)
     {
         DirectionData dirChoose = GameManager.Instance.DictDirection[dirEnum];
-        //AnimPNJ(dirChoose.dirEnum, dirChoose.animName);
+        AnimPNJ(dirChoose.dirEnum, dirChoose.animName);
 
         if (dirEnum == PotentialDirection.HAUT || dirEnum == PotentialDirection.BAS || dirEnum == PotentialDirection.DROITE || dirEnum == PotentialDirection.GAUCHE)
         {
@@ -97,7 +97,7 @@ public class PNJ : MonoBehaviour, IInteractable
 
     private IEnumerator PNJMouv()
     {
-        float random = Random.Range(2f, 12f);
+        float random = Random.Range(2f, 8f);
         yield return new WaitForSeconds(random);
 
         if (actualPnjState == PNJState.Idle)
@@ -150,11 +150,34 @@ public class PNJ : MonoBehaviour, IInteractable
         {
             actualPnjState = PNJState.Interaction;
 
-            //pour savoir dans quel direction tourner le pnj, tu as la dernière direction du joueur
+            NextMove(GetOppositePosition(PlayerMovement.Instance.LastDirEnum));
 
             GameManager.Instance.ActualPlayerState = PlayerState.Interaction;
             PlayerMovement.Instance.ActualInteractionDelegate = null;
             DialogueManager.Instance.InitDialogue(this, dialogues, this);
         }
+    }
+
+    private PotentialDirection GetOppositePosition(PotentialDirection playerDir)
+    {
+        PotentialDirection pnjDirection = PotentialDirection.RIEN;
+        
+        switch (playerDir)
+        {
+            case PotentialDirection.HAUT:
+                pnjDirection = PotentialDirection.SEE_BAS;
+                break;
+            case PotentialDirection.BAS:
+                pnjDirection = PotentialDirection.SEE_HAUT;
+                break;
+            case PotentialDirection.GAUCHE:
+                pnjDirection = PotentialDirection.SEE_DROITE;
+                break;
+            case PotentialDirection.DROITE:
+                pnjDirection = PotentialDirection.SEE_GAUCHE;
+                break;
+        }
+
+        return pnjDirection;
     }
 }

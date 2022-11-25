@@ -928,10 +928,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 52.235245, y: 7.954708}
+    - - {x: 48.75, y: 7.954708}
       - {x: 22.059877, y: 8.227739}
       - {x: 22.076937, y: -14.610066}
-      - {x: 52.4702, y: -13.97978}
+      - {x: 49.2, y: -13.97978}
 --- !u!4 &89209016
 Transform:
   m_ObjectHideFlags: 0
@@ -48741,6 +48741,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505139395}
   - component: {fileID: 505139396}
+  - component: {fileID: 505139397}
   m_Layer: 28
   m_Name: PNJ_Sprite
   m_TagString: Untagged
@@ -48815,6 +48816,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &505139397
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505139394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b744b89eeb35082458a0242140c2d720, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &558600912
 GameObject:
   m_ObjectHideFlags: 0
