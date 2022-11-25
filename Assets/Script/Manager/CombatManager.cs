@@ -455,7 +455,7 @@ public class CombatManager : MonoBehaviour
     private void PlayerLoose()
     {
         combatAnimator.SetTrigger("PlayerPokeDeath");// JM
-        chatText.text = playerPokemonName.text + " n'as plus de force, tu dois retourner au centre pok�mon le plus proche";
+        chatText.text = playerPokemonName.text + " n'as plus de force, tu dois retourner au centre pokémon le plus proche";
     }
     private void EnemyLoose()
     {
@@ -469,7 +469,7 @@ public class CombatManager : MonoBehaviour
             {
                 case 0:
                     combatAnimator.SetTrigger("TeoDeath");
-                    //T�o
+                    //Téo
                     break;
                 case 1:
                     combatAnimator.SetTrigger("AntoineDeath");
@@ -490,7 +490,12 @@ public class CombatManager : MonoBehaviour
             }
             //combatAnimator.SetInteger("DresseurDeath", 5);
         }
-        chatText.text = enemiePokemonName.text + " a �t� vaincu. F�licitation :";
+        if (SaveSystemManager.Instance != null)
+        {
+            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation " + SaveSystemManager.Instance.GetNameSave();
+        }
+        else
+            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation ";
     }
 
     private void Damage(Pokemon attaquant, Pokemon defenseur)
@@ -515,10 +520,22 @@ public class CombatManager : MonoBehaviour
             enemiePoke.data.hp -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
             enemiePokemonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
         }
-        combatAnimator.SetTrigger("PlayerAttackRange");// JM
-        if (FindObjectOfType<AudioManager>() != null)
+        if (DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].isRange)
         {
-            FindObjectOfType<AudioManager>().Play("Attack");
+            combatAnimator.SetTrigger("PlayerAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("PlayerAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+
         }
         chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
     }
@@ -537,10 +554,21 @@ public class CombatManager : MonoBehaviour
             playerPokemonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
             playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
         }
-        combatAnimator.SetTrigger("EnemieAttackCac");// JM
-        if (FindObjectOfType<AudioManager>() != null)
+        if (DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].isRange)
         {
-            FindObjectOfType<AudioManager>().Play("Attack");
+            combatAnimator.SetTrigger("EnemieAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("EnemieAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
         }
         chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }

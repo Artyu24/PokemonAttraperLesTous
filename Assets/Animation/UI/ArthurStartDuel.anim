@@ -238,13 +238,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 5501e58dc858e714b96af8d10b0434a9, type: 3}
+      value: {fileID: 21300000, guid: 604bd9281db60e747ac9396ca9e1a88f, type: 3}
     - time: 0.6666667
-      value: {fileID: 21300000, guid: 895b79eb30068404abce45f86cd9452f, type: 3}
+      value: {fileID: 21300000, guid: 717852da89ceacc40970bce6049cc49f, type: 3}
     - time: 1
-      value: {fileID: 21300000, guid: 8a54d31d3069dc1438725ed6860e8f46, type: 3}
+      value: {fileID: 21300000, guid: b00ac0da3cea7524595156f52a886c18, type: 3}
     - time: 1.3333334
-      value: {fileID: 21300000, guid: 5501e58dc858e714b96af8d10b0434a9, type: 3}
+      value: {fileID: 21300000, guid: 604bd9281db60e747ac9396ca9e1a88f, type: 3}
     attribute: m_Sprite
     path: DresseurEnemieSprite
     classID: 114
@@ -320,10 +320,10 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 5501e58dc858e714b96af8d10b0434a9, type: 3}
-    - {fileID: 21300000, guid: 895b79eb30068404abce45f86cd9452f, type: 3}
-    - {fileID: 21300000, guid: 8a54d31d3069dc1438725ed6860e8f46, type: 3}
-    - {fileID: 21300000, guid: 5501e58dc858e714b96af8d10b0434a9, type: 3}
+    - {fileID: 21300000, guid: 604bd9281db60e747ac9396ca9e1a88f, type: 3}
+    - {fileID: 21300000, guid: 717852da89ceacc40970bce6049cc49f, type: 3}
+    - {fileID: 21300000, guid: b00ac0da3cea7524595156f52a886c18, type: 3}
+    - {fileID: 21300000, guid: 604bd9281db60e747ac9396ca9e1a88f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

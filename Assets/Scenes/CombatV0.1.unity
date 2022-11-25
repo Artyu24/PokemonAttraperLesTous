@@ -26573,6 +26573,16 @@ PrefabInstance:
       objectReference: {fileID: 1498708109}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
+      propertyPath: enemiePokemonHP
+      value: 
+      objectReference: {fileID: 434790703}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonHP
+      value: 
+      objectReference: {fileID: 434790706}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
       propertyPath: "enemiePok\xE9monHP"
       value: 
       objectReference: {fileID: 434790703}
@@ -26583,6 +26593,16 @@ PrefabInstance:
       objectReference: {fileID: 434790706}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
+      propertyPath: enemiePokemonName
+      value: 
+      objectReference: {fileID: 434790704}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonName
+      value: 
+      objectReference: {fileID: 434790708}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
       propertyPath: "enemiePok\xE9monName"
       value: 
       objectReference: {fileID: 434790704}
@@ -26591,6 +26611,21 @@ PrefabInstance:
       propertyPath: "playerPok\xE9monName"
       value: 
       objectReference: {fileID: 434790708}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: enemiePokemonSprite
+      value: 
+      objectReference: {fileID: 434790702}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonHPText
+      value: 
+      objectReference: {fileID: 434790707}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonSprite
+      value: 
+      objectReference: {fileID: 434790705}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
       propertyPath: "enemiePok\xE9monSprite"
