@@ -750,6 +750,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5691858638951115660, guid: a570596afe3949d459a01cae7bd55f76,
         type: 3}
+      propertyPath: PokeDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5,
+        type: 2}
+    - target: {fileID: 5691858638951115660, guid: a570596afe3949d459a01cae7bd55f76,
+        type: 3}
       propertyPath: pokeDataBase
       value: 
       objectReference: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5,
@@ -8824,6 +8830,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -20
       objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_Duration
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_AmplitudeGain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_FrequencyGain
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241478387735836089, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_ReactionSettings.m_SecondaryNoise
+      value: 
+      objectReference: {fileID: 11400000, guid: 20a705aea2d80e0478fb89b6f43d8530,
+        type: 2}
     - target: {fileID: 2268882985629867431, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8862,6 +8889,11 @@ PrefabInstance:
     - target: {fileID: 3295880292285146207, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3674953268461266292, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3778875152320271406, guid: bf3323137239afd40bc9d68d19d00e74,
@@ -8944,6 +8976,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 556516436}
+    - target: {fileID: 3778875153181369189, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 3778875153239332438, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9169,6 +9206,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525940719272285564, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 343.8354
+      objectReference: {fileID: 0}
     - target: {fileID: 5939215690742735547, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_Color.b
@@ -9183,6 +9240,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7082114433246787955, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf3323137239afd40bc9d68d19d00e74, type: 3}

@@ -36,7 +36,7 @@ public class HerbesHautes : MonoBehaviour
         if (random <= spawnRate)
         {
             int temp = Random.Range(0, wildPokes.Length);
-            wildPoke = wildPokes[temp];
+            wildPoke = wildPokes[temp].CopyPokeData();
 
             combatWindow.SetActive(true);
             

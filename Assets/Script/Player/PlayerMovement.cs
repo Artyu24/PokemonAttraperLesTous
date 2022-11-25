@@ -55,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
         boxCenter = GetComponent<BoxCenter>();
         if(waterPokemon != null)
             animPokeWater = waterPokemon.GetComponent<Animator>();
+
+        if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+        {
+            transform.position = SaveSystemManager.Instance.LastPosPlayer;
+        }
         endPos = boxCenter.CenterObject();
 
         #region Init Direction Dictionnary
@@ -127,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
             isTP = false;
             if (herbesHautes != null)
             {
+                Debug.Log("Appel combat");
                 herbesHautes.SpawnPokemon();
             }
         }
@@ -153,10 +159,19 @@ public class PlayerMovement : MonoBehaviour
     {
         inputDir = ctx.ReadValue<Vector2>();
 
-        if (GameManager.Instance.ActualPlayerState == PlayerState.WaterInteraction && ctx.started)
+        if (ctx.started)
         {
-            if(Math.Abs(inputDir.y) > 0)
-                WaterZone.Instance.SwitchText();
+            if (GameManager.Instance.ActualPlayerState == PlayerState.WaterInteraction && GameManager.Instance.ActualGameState == GameState.Adventure)
+            {
+                if(Math.Abs(inputDir.y) > 0)
+                    WaterZone.Instance.SwitchText();
+            }
+
+            if (GameManager.Instance.ActualGameState == GameState.Paused)
+            {
+                if (Math.Abs(inputDir.y) > 0)
+                    PauseMenu.Instance.SwitchPauseSelection(inputDir.y);
+            }
         }
     }
 
@@ -178,6 +193,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public void OnPause(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            if (GameManager.Instance.ActualGameState == GameState.Adventure || GameManager.Instance.ActualGameState == GameState.Paused)
+            {
+                PauseMenu.Instance.OpenPauseMenu();
+            }
+        }
+    }
+
     #endregion
 
     #region Animation
