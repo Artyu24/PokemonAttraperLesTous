@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Different Area")] 
     [SerializeField] private GameObject waterPokemon;
     private bool inGrass = false;
+    private bool fightDresseur = false;
     private HerbesHautes herbesHautes;
+    private Dresseur dresseur;
     private bool walkOnWater = false;
     public GameObject WaterPokemon => waterPokemon;
     public bool WalkOnWater { get => walkOnWater; set => walkOnWater = value; }
@@ -43,11 +46,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     private Animator animPokeWater;
     private PotentialDirection lastAnim = PotentialDirection.RIEN;
+    private PlayerSmokeStep smokeStep;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        smokeStep = GetComponent<PlayerSmokeStep>();
     }
 
     private void Start()
@@ -56,9 +62,12 @@ public class PlayerMovement : MonoBehaviour
         if(waterPokemon != null)
             animPokeWater = waterPokemon.GetComponent<Animator>();
 
-        if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+        if (SaveSystemManager.Instance != null)
         {
-            transform.position = SaveSystemManager.Instance.LastPosPlayer;
+            if (SaveSystemManager.Instance.LastPosPlayer != Vector3.zero)
+            {
+                transform.position = SaveSystemManager.Instance.LastPosPlayer;
+            }
         }
         endPos = boxCenter.CenterObject();
 
@@ -97,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
             DirectionData dirChoose = dictDirection[dirEnum];
             AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
+            
+
             if (dirEnum != PotentialDirection.RIEN)
             {
                 lastDirEnum = dirEnum;
@@ -106,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
                     endPos = transform.position + dirChoose.mouv;
 
                     GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
+
                 }
                 else
                 {
@@ -135,6 +147,11 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Appel combat");
                 herbesHautes.SpawnPokemon();
             }
+            if (dresseur != null)
+            {
+                Debug.Log("Appel combat");
+                dresseur.SpawnPokemon();
+            }
         }
 
         #endregion
@@ -157,7 +174,9 @@ public class PlayerMovement : MonoBehaviour
     #region Input Action
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        inputDir = ctx.ReadValue<Vector2>();
+        inputDir = ctx.ReadValue<Vector2>();        
+        if (smokeStep != null)
+            smokeStep.UpdateWalkingState(ctx.performed);
 
         if (ctx.started)
         {
@@ -165,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(Math.Abs(inputDir.y) > 0)
                     WaterZone.Instance.SwitchText();
-            }
+            }            
 
             if (GameManager.Instance.ActualGameState == GameState.Paused)
             {
@@ -313,6 +332,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 inGrass = false;
                 herbesHautes = null;
+            }
+        }
+        if (collision.transform.gameObject.layer == LayerMask.NameToLayer("Dresseur"))
+        {
+            if (!fightDresseur)
+            {
+                fightDresseur = true;
+                dresseur = collision.GetComponent<Dresseur>();
+            }
+            else
+            {
+                fightDresseur = false;
+                dresseur = null;
             }
         }
     }

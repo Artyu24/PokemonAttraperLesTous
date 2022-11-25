@@ -2,6 +2,7 @@ using SimpleJSON;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -10,19 +11,14 @@ using static System.Net.WebRequestMethods;
 
 public class ReadGoogleSheet : MonoBehaviour
 {
-    public Text outputArea;
-    [SerializeField] private int firstNumber;
-    [SerializeField] private int secondNumber;
-    private void Start()
+    [Obsolete]
+    public void GetTextString(DialogueID[] dialogueId)
     {
-        StartCoroutine(ObtainSheetData());
+        StartCoroutine(ObtainSheetData(dialogueId));
     }
 
-    private void Update()
-    {
-
-    }
-    IEnumerator ObtainSheetData()
+    [Obsolete]
+    IEnumerator ObtainSheetData(DialogueID[] dialogueId)
     {
         string link = "https://sheets.googleapis.com/v4/spreadsheets/11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY/values/Feuille%201?key=AIzaSyBLAdauLnxGZsp9wHva5rStJJZzq6cdUls";
         UnityWebRequest www = UnityWebRequest.Get(link);
@@ -33,20 +29,15 @@ public class ReadGoogleSheet : MonoBehaviour
         }
         else
         {
-            string updateText = "";
             string json = www.downloadHandler.text;
             var o = JSON.Parse(json);
 
-            foreach (var item in o["values"][firstNumber])
+            string[] sentence = new string[dialogueId.Length];
+            for (int i = 0; i < dialogueId.Length; i++)
             {
-                var itemo = JSON.Parse(item.ToString());
-
-                //foreach (var i in itemo)
-                //    Debug.Log(JSON.Parse(i.ToString()));
-
-                updateText = JSON.Parse(itemo[secondNumber].ToString());
+                sentence[i] = JSON.Parse(o["values"][dialogueId[i].lineId][dialogueId[i].columnId].ToString());
             }
-            outputArea.text = updateText;
+            DialogueManager.Instance.StartDialogue(sentence);
         }
     }
 }

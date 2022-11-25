@@ -8,8 +8,8 @@ public class WaterZone : MonoBehaviour, IInteractable
 {
     public static WaterZone Instance;
 
-    [SerializeField, TextArea(3, 10)] private string[] dialogueEnter;
-    [SerializeField, TextArea(3, 10)] private string[] dialogueValidation;
+    [SerializeField] private DialogueID[] dialogueEnter;
+    [SerializeField] private DialogueID[] dialogueValidation;
     
     private GameObject waterBox;
     private GameObject waterAnimation;

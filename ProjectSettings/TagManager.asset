@@ -17,6 +17,7 @@ TagManager:
   - Decor
   - Door
   - Grass
+  - Dresseur
   - 
   - 
   - 
@@ -35,8 +36,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Map
   - 
   m_SortingLayers:
   - name: Default

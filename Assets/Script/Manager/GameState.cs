@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,7 @@ public enum CombatState
     Init,
     CallButton,
     PlayerChoose,
+    UsePotion,
     EnemyChoose,
     PlayerAttack,
     EnemyAttack,
@@ -40,4 +42,11 @@ public enum PotentialDirection
     GAUCHE,
     DROITE,
     RIEN
+}
+
+[Serializable]
+public struct DialogueID
+{
+    public int lineId;
+    public int columnId;
 }

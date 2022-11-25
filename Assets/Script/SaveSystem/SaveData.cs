@@ -15,7 +15,7 @@ public class SaveData
 
         public GameData(string name, int profilCount)
         {
-            string newName = string.IsNullOrEmpty(name) ? "New Game Name" : name;
+            string newName = string.IsNullOrEmpty(name) ? "New_Game" : name;
 
             gameName = newName;
             profilCountTotal = profilCount;

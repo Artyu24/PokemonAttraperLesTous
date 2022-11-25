@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4675516419326271149}
   - component: {fileID: 3170272843035815003}
+  - component: {fileID: 1729520104322117245}
   m_Layer: 0
   m_Name: ---CombatManager---
   m_TagString: Untagged
@@ -46,8 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPokes: {fileID: 0}
   attackDatabase: {fileID: 11400000, guid: 78d3640d6589776438c2da3b80df37d9, type: 2}
-  pokeDataBase: {fileID: 11400000, guid: b57e5d5ace9fdfd4cbb58b3f17c828ae, type: 2}
+  pokeDataBase: {fileID: 11400000, guid: fec5456a78b625f4c9492c5f6a9600d5, type: 2}
+  objectsDataBase: {fileID: 11400000, guid: 7bb9a5fa1debafe41ac42eb4bb6db0ed, type: 2}
   combatWindow: {fileID: 0}
+  blackBackground: {fileID: 0}
+  chatText: {fileID: 0}
   "playerPok\xE9monName": {fileID: 0}
   "playerPok\xE9monHP": {fileID: 0}
   "playerPok\xE9monHPText": {fileID: 0}
@@ -55,12 +59,6 @@ MonoBehaviour:
   "enemiePok\xE9monName": {fileID: 0}
   "enemiePok\xE9monHP": {fileID: 0}
   "enemiePok\xE9monSprite": {fileID: 0}
-  chatText: {fileID: 0}
-  attackWindow: {fileID: 0}
-  attackButton1: {fileID: 0}
-  attackButton2: {fileID: 0}
-  attackButton3: {fileID: 0}
-  attackButton4: {fileID: 0}
   pokemonWindow: {fileID: 0}
   pokemonButton1: {fileID: 0}
   pokemonButton2: {fileID: 0}
@@ -68,30 +66,35 @@ MonoBehaviour:
   pokemonButton4: {fileID: 0}
   pokemonButton5: {fileID: 0}
   pokemonButton6: {fileID: 0}
-  aQuiLeTour: 0
-  playerPoke:
-    name: 
-    ID: 0
-    desc: 
-    TYPE: 0
-    dmg: 0
-    hp: 0
-    hpMax: 0
-    def: 0
-    speed: 0
-    sprite: {fileID: 0}
-    animator: {fileID: 0}
-    attackIDlist: 
-  enemiePoke:
-    name: 
-    ID: 0
-    desc: 
-    TYPE: 0
-    dmg: 0
-    hp: 0
-    hpMax: 0
-    def: 0
-    speed: 0
-    sprite: {fileID: 0}
-    animator: {fileID: 0}
-    attackIDlist: 
+  isInHerbeHautes: 0
+  combatAnimator: {fileID: 0}
+  attackWindow: {fileID: 0}
+  objectWindow: {fileID: 0}
+  actionTime: 2
+  attackButtons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dresseurImage: {fileID: 0}
+  dresseurSprite:
+  - {fileID: 21300000, guid: 82185fef8050b8f4fa6af5c6fef85ae3, type: 3}
+  - {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
+  - {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
+  - {fileID: 21300000, guid: 8da3ef8a9254d3e4bb2d0027f744f07d, type: 3}
+  - {fileID: 21300000, guid: 43928c81679ea384f9332c8ba96c8688, type: 3}
+--- !u!114 &1729520104322117245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264434484074525228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e355e83415da643b16c02e491f93f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplyer: 0
+  firstNumber: 0
+  secondNumber: 0
