@@ -47838,6 +47838,36 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FlyFight
       objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 460
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875152412466329, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 3778875152471196083, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -47977,6 +48007,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -155
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875153986288520, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17289054fb9d7f242a30364f13ada9ad,
+        type: 3}
+    - target: {fileID: 3778875153986288520, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875153986288520, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778875153986288520, guid: bf3323137239afd40bc9d68d19d00e74,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3778875153986288526, guid: bf3323137239afd40bc9d68d19d00e74,
         type: 3}
@@ -54897,6 +54948,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472166046930743770, guid: 30e9a78eea14e9549a0378767911c07e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17289054fb9d7f242a30364f13ada9ad,
+        type: 3}
+    - target: {fileID: 1472166046930743770, guid: 30e9a78eea14e9549a0378767911c07e,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472166046930743770, guid: 30e9a78eea14e9549a0378767911c07e,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472166046930743770, guid: 30e9a78eea14e9549a0378767911c07e,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1472166046930743771, guid: 30e9a78eea14e9549a0378767911c07e,
         type: 3}
@@ -120176,6 +120248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---CombatManager---
       objectReference: {fileID: 0}
+    - target: {fileID: 2264434484074525228, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
       propertyPath: chatText
@@ -120279,10 +120356,20 @@ PrefabInstance:
       objectReference: {fileID: 1051761409}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
+      propertyPath: enemiePokemonHP
+      value: 
+      objectReference: {fileID: 434790703}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
       propertyPath: objectsDataBase
       value: 
       objectReference: {fileID: 11400000, guid: 7bb9a5fa1debafe41ac42eb4bb6db0ed,
         type: 2}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonHP
+      value: 
+      objectReference: {fileID: 434790706}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
       propertyPath: "enemiePok\xE9monHP"
@@ -120295,6 +120382,16 @@ PrefabInstance:
       objectReference: {fileID: 434790706}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
+      propertyPath: enemiePokemonName
+      value: 
+      objectReference: {fileID: 434790704}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonName
+      value: 
+      objectReference: {fileID: 434790708}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
       propertyPath: "enemiePok\xE9monName"
       value: 
       objectReference: {fileID: 434790704}
@@ -120303,6 +120400,21 @@ PrefabInstance:
       propertyPath: "playerPok\xE9monName"
       value: 
       objectReference: {fileID: 434790708}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: enemiePokemonSprite
+      value: 
+      objectReference: {fileID: 434790702}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonHPText
+      value: 
+      objectReference: {fileID: 434790707}
+    - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
+        type: 3}
+      propertyPath: playerPokemonSprite
+      value: 
+      objectReference: {fileID: 434790705}
     - target: {fileID: 3170272843035815003, guid: 056b5626dd77d0b4eaf49fdea8edd85d,
         type: 3}
       propertyPath: "enemiePok\xE9monSprite"
