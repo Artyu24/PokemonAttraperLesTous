@@ -18,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     //Cree une liste ranger dans l ordre d apparition les objets present
     public Queue<string> sentences = new Queue<string>();
     private string actualSentence;
+    private string playerName;
 
     private ReadGoogleSheet readGoogleSheet;
     private PNJ actualPNJ;
@@ -28,6 +29,14 @@ public class DialogueManager : MonoBehaviour
             Instance = this;
 
         readGoogleSheet = GetComponent<ReadGoogleSheet>();
+    }
+
+    private void Start()
+    {
+        if (SaveSystemManager.Instance != null)
+            playerName = SaveSystemManager.Instance.GetNameSave();
+        else
+            playerName = "PLAYER";
     }
 
     public void InitDialogue<T>(T type, DialogueID[] dialogue, PNJ pnj = null)
@@ -127,6 +136,6 @@ public class DialogueManager : MonoBehaviour
 
     private void FixText(ref string texte)
     {
-        texte = texte.Replace("PLAYER", "Franck'o").Replace("POKEMON", "Pikachu").Replace("VILLE", "Bourgeon");
+        texte = texte.Replace("PLAYER", playerName).Replace("POKEMON", "Pikachu").Replace("VILLE", "Bourgeon");
     }
 }
