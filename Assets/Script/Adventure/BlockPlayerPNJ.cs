@@ -126,7 +126,7 @@ public class BlockPlayerPNJ : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.CompareTag("Player") && !canPass)
         {
             endPos = new Vector3(transform.position.x, col.transform.position.y);
 
