@@ -107,7 +107,7 @@ public class CombatManager : MonoBehaviour
     public Image dresseurImage;
     public List<Sprite> dresseurSprite = new List<Sprite>();
     private int dresseurID;
-    private Vector3 playerSpawn = Vector3.zero;
+    private Vector3 playerSpawn = new Vector3(4.5f, -12, 0);
     #endregion
 
     void Awake()
