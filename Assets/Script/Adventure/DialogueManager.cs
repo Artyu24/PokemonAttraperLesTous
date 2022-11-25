@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     private ReadGoogleSheet readGoogleSheet;
     private PNJ actualPNJ;
+    private BlockPlayerPNJ blockPNJ;
     private bool onlyShowText;
 
     private void Awake()
@@ -50,6 +51,11 @@ public class DialogueManager : MonoBehaviour
                 break;
             case PNJ:
                 actualPNJ = type as PNJ;
+                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
+                actualDialogueDelegate = null;
+                break;
+            case BlockPlayerPNJ:
+                blockPNJ = type as BlockPlayerPNJ;
                 PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
                 actualDialogueDelegate = null;
                 break;
@@ -107,6 +113,12 @@ public class DialogueManager : MonoBehaviour
             {
                 actualPNJ.ActualPnjState = PNJState.Idle;
                 actualPNJ = null;
+            }
+
+            if (blockPNJ != null)
+            {
+                blockPNJ.ResetPos();
+                return;
             }
 
             if (GameManager.Instance.ActualGameState != GameState.Fight)

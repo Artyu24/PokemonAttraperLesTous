@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Teleportation")]
     private bool isTP = false;
     private Collider2D actualDoor;
-    private PotentialDirection lastDirEnum = PotentialDirection.BAS;
+    private PotentialDirection lastDirEnum = PotentialDirection.DOWN;
     public PotentialDirection LastDirEnum => lastDirEnum;
 
     [Header("Movement")]
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animation")]
     public Animator anim;
     private Animator animPokeWater;
-    private PotentialDirection lastAnim = PotentialDirection.RIEN;
+    private PotentialDirection lastAnim = PotentialDirection.IDLE;
     private PlayerSmokeStep smokeStep;
 
     private void Awake()
@@ -87,53 +87,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.Idle)
         {
-            PotentialDirection dirEnum = PotentialDirection.RIEN;
-            if (inputDir.y > 0)
-                dirEnum = PotentialDirection.HAUT;
-            else if (inputDir.y < 0)
-                dirEnum = PotentialDirection.BAS;
-            else if (inputDir.x < 0)
-                dirEnum = PotentialDirection.GAUCHE;
-            else if (inputDir.x > 0)
-                dirEnum = PotentialDirection.DROITE;
-
-            DirectionData dirChoose = GameManager.Instance.DictDirection[dirEnum];
-            AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
-
-            
-
-            if (dirEnum != PotentialDirection.RIEN)
-            {
-                lastDirEnum = dirEnum;
-                
-                if (!Check(dirChoose.transformDir))
-                {
-                    endPos = transform.position + dirChoose.mouv;
-
-                    GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
-
-                }
-                else
-                {
-                    //BONK
-                    if (FindObjectOfType<AudioManager>() != null)
-                    {
-                        FindObjectOfType<AudioManager>().Play("BlockSound");
-                    }
-                }
-            }
+            MakeAMove();
         }
 
         #endregion
 
         #region End Movement
 
-        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
+        if (transform.position == endPos && GameManager.Instance.ActualGameState == GameState.Adventure && (GameManager.Instance.ActualPlayerState == PlayerState.InMovement || GameManager.Instance.ActualPlayerState == PlayerState.ForcedMove))
         {
             endPos = boxCenter.CenterObject();
             transform.position = endPos;
 
-            GameManager.Instance.ActualPlayerState = PlayerState.Idle;
+            if(GameManager.Instance.ActualPlayerState != PlayerState.ForcedMove)
+                GameManager.Instance.ActualPlayerState = PlayerState.Idle;
 
             isTP = false;
             if (herbesHautes != null)
@@ -152,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
         #region In Movement
 
-        if (GameManager.Instance.ActualGameState != GameState.Paused && GameManager.Instance.ActualPlayerState == PlayerState.InMovement)
+        if (GameManager.Instance.ActualGameState != GameState.Paused && (GameManager.Instance.ActualPlayerState == PlayerState.InMovement || GameManager.Instance.ActualPlayerState == PlayerState.ForcedMove))
         {
             transform.position = Vector3.MoveTowards(transform.position, endPos, moveSpeed * Time.deltaTime);
             if(waterPokemon != null)
@@ -168,6 +135,53 @@ public class PlayerMovement : MonoBehaviour
 
         #endregion
     }
+
+    #region Done a Mouvement
+
+    public void MakeAMove(PotentialDirection enumForced = PotentialDirection.NOTHING)
+    {
+        PotentialDirection dirEnum = PotentialDirection.IDLE;
+
+        if (enumForced == PotentialDirection.NOTHING)
+        {
+            if (inputDir.y > 0)
+                dirEnum = PotentialDirection.UP;
+            else if (inputDir.y < 0)
+                dirEnum = PotentialDirection.DOWN;
+            else if (inputDir.x < 0)
+                dirEnum = PotentialDirection.LEFT;
+            else if (inputDir.x > 0)
+                dirEnum = PotentialDirection.RIGHT;
+        }
+        else
+            dirEnum = enumForced;
+
+        DirectionData dirChoose = GameManager.Instance.DictDirection[dirEnum];
+        AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
+
+        if (dirEnum != PotentialDirection.IDLE)
+        {
+            lastDirEnum = dirEnum;
+
+            if (!Check(dirChoose.transformDir))
+            {
+                endPos = transform.position + dirChoose.mouv;
+
+                if (enumForced == PotentialDirection.NOTHING)
+                    GameManager.Instance.ActualPlayerState = PlayerState.InMovement;
+            }
+            else
+            {
+                //BONK
+                if (FindObjectOfType<AudioManager>() != null)
+                {
+                    FindObjectOfType<AudioManager>().Play("BlockSound");
+                }
+            }
+        }
+    }
+
+    #endregion
 
     #region Input Action
     public void OnMove(InputAction.CallbackContext ctx)
@@ -198,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (actualInteractionDelegate != null)
             {
-                DirectionData dirChoose = GameManager.Instance.DictDirection[PotentialDirection.RIEN];
+                DirectionData dirChoose = GameManager.Instance.DictDirection[PotentialDirection.IDLE];
                 AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
                 actualInteractionDelegate();
@@ -316,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.ActivateFade(1);
             
             anim.SetTrigger("Idl");
-            lastAnim = PotentialDirection.RIEN;
+            lastAnim = PotentialDirection.IDLE;
 
             if (FindObjectOfType<AudioManager>() != null)
                 FindObjectOfType<AudioManager>().Play("DoorSound");
