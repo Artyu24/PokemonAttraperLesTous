@@ -4513,8 +4513,8 @@ MonoBehaviour:
   m_UseLocalSpace: 1
   m_ReactionSettings:
     m_SecondaryNoise: {fileID: 11400000, guid: 20a705aea2d80e0478fb89b6f43d8530, type: 2}
-    m_AmplitudeGain: 10
-    m_FrequencyGain: 10
+    m_AmplitudeGain: 15
+    m_FrequencyGain: 20
     m_Duration: 0.6
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &6510775578591829846

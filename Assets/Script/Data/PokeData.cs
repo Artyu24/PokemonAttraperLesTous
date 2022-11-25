@@ -8,8 +8,8 @@ namespace Object.Data
         // editor pour modifier 
         [Header("Stats")] 
         public int dmg;
-        public int hp;
-        public int hpMax;
+        public float hp;
+        public float hpMax;
         public int def;
         public int speed;
 

@@ -11,12 +11,13 @@ using static System.Net.WebRequestMethods;
 
 public class ReadGoogleSheet : MonoBehaviour
 {
+    [Obsolete]
     public void GetTextString(DialogueID[] dialogueId)
     {
         StartCoroutine(ObtainSheetData(dialogueId));
     }
 
-    
+    [Obsolete]
     IEnumerator ObtainSheetData(DialogueID[] dialogueId)
     {
         string link = "https://sheets.googleapis.com/v4/spreadsheets/11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY/values/Feuille%201?key=AIzaSyBLAdauLnxGZsp9wHva5rStJJZzq6cdUls";
