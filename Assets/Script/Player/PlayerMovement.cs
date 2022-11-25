@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Different Area")] 
     [SerializeField] private GameObject waterPokemon;
+    [SerializeField] private GameObject mapIcone;
+    private bool insideBuilding = false;
     private bool inGrass = false;
     private bool fightDresseur = false;
     private HerbesHautes herbesHautes;
@@ -154,6 +156,10 @@ public class PlayerMovement : MonoBehaviour
             if(waterPokemon != null)
                 if(waterPokemon.activeInHierarchy && walkOnWater)
                     waterPokemon.transform.position = transform.position;
+
+            if(mapIcone != null)
+                if(!insideBuilding)
+                    mapIcone.transform.position = transform.position;
         }
 
         #endregion
@@ -176,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
                     WaterZone.Instance.SwitchText();
             }            
 
-            if (GameManager.Instance.ActualGameState == GameState.Paused)
+            if (GameManager.Instance.ActualPlayerState == PlayerState.Inventory && GameManager.Instance.ActualGameState == GameState.Adventure)
             {
                 if (Math.Abs(inputDir.y) > 0)
                     PauseMenu.Instance.SwitchPauseSelection(inputDir.y);
@@ -207,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ctx.started)
         {
-            if (GameManager.Instance.ActualGameState == GameState.Adventure || GameManager.Instance.ActualGameState == GameState.Paused)
+            if (GameManager.Instance.ActualPlayerState == PlayerState.Idle && GameManager.Instance.ActualGameState == GameState.Adventure)
             {
                 PauseMenu.Instance.OpenPauseMenu();
             }
@@ -298,6 +304,8 @@ public class PlayerMovement : MonoBehaviour
         {
             isTP = true;
             actualDoor = collision;
+
+            insideBuilding = !insideBuilding;
 
             GameManager.Instance.ActualPlayerState = PlayerState.Teleportation;
             GameManager.Instance.ActivateFade(1);

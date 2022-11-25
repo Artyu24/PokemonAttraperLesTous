@@ -19,6 +19,8 @@ public enum PlayerState
     InFight,
     Teleportation,
     Interaction,
+    Inventory,
+    Map,
     WaterInteraction
 }
 
