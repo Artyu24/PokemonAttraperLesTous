@@ -455,7 +455,7 @@ public class CombatManager : MonoBehaviour
     private void PlayerLoose()
     {
         combatAnimator.SetTrigger("PlayerPokeDeath");// JM
-        chatText.text = playerPokemonName.text + " n'as plus de force, tu dois retourner au centre pok�mon le plus proche";
+        chatText.text = playerPokemonName.text + " n'as plus de force, tu dois retourner au centre pokémon le plus proche";
     }
     private void EnemyLoose()
     {
@@ -469,7 +469,7 @@ public class CombatManager : MonoBehaviour
             {
                 case 0:
                     combatAnimator.SetTrigger("TeoDeath");
-                    //T�o
+                    //Téo
                     break;
                 case 1:
                     combatAnimator.SetTrigger("AntoineDeath");
@@ -490,7 +490,12 @@ public class CombatManager : MonoBehaviour
             }
             //combatAnimator.SetInteger("DresseurDeath", 5);
         }
-        chatText.text = enemiePokemonName.text + " a �t� vaincu. F�licitation :";
+        if (SaveSystemManager.Instance != null)
+        {
+            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation " + SaveSystemManager.Instance.GetNameSave();
+        }
+        else
+            chatText.text = enemiePokemonName.text + " a été vaincu. Félicitation ";
     }
 
     private void Damage(Pokemon attaquant, Pokemon defenseur)
