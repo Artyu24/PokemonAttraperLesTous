@@ -56,3 +56,66 @@ MonoBehaviour:
     dmg: 100
     pp: 10
     isRange: 0
+  - name: "M\xE9t\xE9ore"
+    ID: 6
+    desc: "Le pok\xE9mon lance des petites \xE9toiles"
+    TYPE: 9
+    dmg: 50
+    pp: 10
+    isRange: 1
+  - name: Queue de Fer
+    ID: 7
+    desc: "Le pok\xE9mon dur\xE7it sa queue avant de donner un puissant coup avec"
+    TYPE: 0
+    dmg: 50
+    pp: 10
+    isRange: 0
+  - name: Tonnerre
+    ID: 8
+    desc: "Lance des \xE9claires"
+    TYPE: 4
+    dmg: 50
+    pp: 10
+    isRange: 1
+  - name: Hydrocanon
+    ID: 9
+    desc: Puissant jet d'eau
+    TYPE: 3
+    dmg: 50
+    pp: 10
+    isRange: 1
+  - name: Surf
+    ID: 10
+    desc: "Cr\xE9er une \xE9norme vague"
+    TYPE: 3
+    dmg: 50
+    pp: 10
+    isRange: 0
+  - name: Coup d'Boule
+    ID: 11
+    desc: Zizou 2006
+    TYPE: 1
+    dmg: 50
+    pp: 10
+    isRange: 1
+  - name: Croc Feu
+    ID: 12
+    desc: "Morsure enflamm\xE9e"
+    TYPE: 6
+    dmg: 50
+    pp: 10
+    isRange: 0
+  - name: Draco Rage
+    ID: 13
+    desc: Rage draconique
+    TYPE: 2
+    dmg: 50
+    pp: 10
+    isRange: 0
+  - name: Lance Flamme
+    ID: 14
+    desc: Hanz get the Flammenwerfer
+    TYPE: 6
+    dmg: 50
+    pp: 10
+    isRange: 0
