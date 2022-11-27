@@ -12,7 +12,6 @@ public class BlockPlayerPNJ : MonoBehaviour, IInteractable
     private Vector3 endPos;
     private Vector3 startPos;
     private bool canPass;
-    public bool CanPass { get => canPass; set => canPass = value; }
     private bool isTrigger;
     private BoxCenter boxCenter;
     private PNJState actualPnjState = PNJState.Idle;
@@ -21,6 +20,7 @@ public class BlockPlayerPNJ : MonoBehaviour, IInteractable
     [Header("Interaction")]
     [SerializeField] private DialogueID[] canPassDialogue;
     [SerializeField] private DialogueID[] cantPassDialogue;
+    [SerializeField] private BoxCollider2D detectionCollider, pnjCollider;
 
     [Header("Animation")]
     public Animator anim;
@@ -122,6 +122,14 @@ public class BlockPlayerPNJ : MonoBehaviour, IInteractable
 
         DirectionData dirChoose = GameManager.Instance.DictDirection[PotentialDirection.DOWN];
         AnimPNJ(dirChoose.dirEnum, dirChoose.animName);
+    }
+
+    public void CanPassNow()
+    {
+        canPass = true;
+        detectionCollider.enabled = false;
+        pnjCollider.enabled = true;
+        gameObject.layer = 28;
     }
 
     private void OnTriggerEnter2D(Collider2D col)

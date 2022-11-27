@@ -8,7 +8,7 @@ public class Professor : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        BlockPlayerPNJ.Instance.CanPass = true;
+        BlockPlayerPNJ.Instance.CanPassNow();
         DialogueManager.Instance.InitDialogue(this, dialogue);
     }
 }
