@@ -16,6 +16,7 @@ public class ReadPokeTypes : MonoBehaviour
     public static ReadPokeTypes instance;
     [SerializeField] private int firstNumber;
     [SerializeField] private int secondNumber;
+    string json;
 
     private void Awake()
     {
@@ -24,9 +25,9 @@ public class ReadPokeTypes : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ObtainSheetData(firstNumber, secondNumber));
+        StartCoroutine(ObtainSheetData());
     }
-    public IEnumerator ObtainSheetData(int liste, int emplacement)
+    public IEnumerator ObtainSheetData()
     {
         string link = "https://sheets.googleapis.com/v4/spreadsheets/11HeIxoXTcmEcJ2bSRSySPyQMftcyPENFiX6AVqqaDWY/values/Feuille%202?key=AIzaSyBLAdauLnxGZsp9wHva5rStJJZzq6cdUls";
         UnityWebRequest www = UnityWebRequest.Get(link);
@@ -37,16 +38,21 @@ public class ReadPokeTypes : MonoBehaviour
         }
         else
         {
-            string updateText = "";
-            string json = www.downloadHandler.text;
-            var o = JSON.Parse(json);
-
-            updateText = JSON.Parse(o["values"][liste][emplacement].ToString());
-
-            if (updateText != null)
-            {
-                multiplyer = float.Parse(updateText);
-            }
+            json = www.downloadHandler.text;
         }
+    }
+
+    public float Test(int liste, int emplacement)
+    {
+        string updateText = "";
+        var o = JSON.Parse(json);
+        updateText = JSON.Parse(o["values"][liste][emplacement].ToString());
+
+        if (updateText != null)
+        {
+            multiplyer = float.Parse(updateText);
+            return multiplyer;
+        }
+        return -1;
     }
 }

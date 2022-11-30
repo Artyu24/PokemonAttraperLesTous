@@ -25,12 +25,13 @@ public class HerbesHautes : MonoBehaviour
 
         for (int i = 0; i < wildPokes.Length; i++)
         { 
-            wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(0, 6)];
+            wildPokes[i] = CombatManager.Instance.DictPokeData[Random.Range(1, 6)];
         }
     }
     
     public void SpawnPokemon()
     {
+        wildPoke = null;
         int random = Random.Range(0, maxSpawnRate);
         if (random <= spawnRate)
         {

@@ -14,8 +14,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject mapIcone;
     private bool insideBuilding = false;
     private bool inGrass = false;
+    public bool InGrass { get => inGrass; set => inGrass = value; }
     private bool fightDresseur = false;
     private HerbesHautes herbesHautes;
+    public HerbesHautes Herbeshautes { get => herbesHautes; set => herbesHautes = value; }
     private Dresseur dresseur;
     private bool canWalkOnWater;
     private bool walkOnWater = false;
@@ -104,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
             isTP = false;
             if (herbesHautes != null)
             {
-                Debug.Log("Appel combat");
+                //Debug.Log("Appel combat");
                 herbesHautes.SpawnPokemon();
             }
             if (dresseur != null)

@@ -290,7 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 15
   maxSpawnRate: 100
-  combatWindow: {fileID: 0}
   wildPokes:
   - name: 
     ID: 0
@@ -302,6 +301,46 @@ MonoBehaviour:
     def: 0
     speed: 0
     sprite: {fileID: 0}
+    BackSprite: {fileID: 0}
+    animator: {fileID: 0}
+    attackIDlist: 
+  - name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    BackSprite: {fileID: 0}
+    animator: {fileID: 0}
+    attackIDlist: 
+  - name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    BackSprite: {fileID: 0}
+    animator: {fileID: 0}
+    attackIDlist: 
+  - name: 
+    ID: 0
+    desc: 
+    TYPE: 0
+    dmg: 0
+    hp: 0
+    hpMax: 0
+    def: 0
+    speed: 0
+    sprite: {fileID: 0}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 
   wildPoke:
@@ -315,6 +354,7 @@ MonoBehaviour:
     def: 0
     speed: 0
     sprite: {fileID: 0}
+    BackSprite: {fileID: 0}
     animator: {fileID: 0}
     attackIDlist: 
 --- !u!19719996 &2560844607759078164

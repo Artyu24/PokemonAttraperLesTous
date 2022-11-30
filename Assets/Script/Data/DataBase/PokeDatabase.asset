@@ -31,8 +31,8 @@ MonoBehaviour:
     desc: Juste un gros dragon
     TYPE: 2
     dmg: 134
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 100
     speed: 80
     sprite: {fileID: 21300000, guid: 8da3ef8a9254d3e4bb2d0027f744f07d, type: 3}
@@ -44,8 +44,8 @@ MonoBehaviour:
     desc: Le quadriped en acier
     TYPE: 0
     dmg: 135
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 130
     speed: 70
     sprite: {fileID: 21300000, guid: 5c56269b24a7d154e82a73e0d1e73f07, type: 3}
@@ -57,8 +57,8 @@ MonoBehaviour:
     desc: un dos tah tibo in shape
     TYPE: 3
     dmg: 85
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 105
     speed: 78
     sprite: {fileID: 21300000, guid: 82185fef8050b8f4fa6af5c6fef85ae3, type: 3}
@@ -70,8 +70,8 @@ MonoBehaviour:
     desc: "hop plus de p\xE9nurie d'\xE9l\xE9ctricit\xE9"
     TYPE: 4
     dmg: 123
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 85
     speed: 95
     sprite: {fileID: 21300000, guid: fc85d923b3330444d805903c38f9c65d, type: 3}
@@ -85,8 +85,8 @@ MonoBehaviour:
       d'une seule bouch\xE9e."
     TYPE: 14
     dmg: 130
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 95
     speed: 102
     sprite: {fileID: 21300000, guid: f3080bc46dd9cd7428e5747210392729, type: 3}
@@ -98,8 +98,8 @@ MonoBehaviour:
     desc: "Le plus beau des pok\xE9mons"
     TYPE: 4
     dmg: 10
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 5
     speed: 1
     sprite: {fileID: 21300000, guid: 41c5ac0a3f8e86848ae6012b700df537, type: 3}
@@ -111,8 +111,8 @@ MonoBehaviour:
     desc: 
     TYPE: 6
     dmg: 10
-    hp: 50
-    hpMax: 50
+    hp: 30
+    hpMax: 30
     def: 5
     speed: 1
     sprite: {fileID: 21300000, guid: a8850c5fd17a16d4daef0654078a58ae, type: 3}

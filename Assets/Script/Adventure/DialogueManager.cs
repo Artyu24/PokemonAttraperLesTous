@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance;
 
     [SerializeField] private GameObject dialogueBox;
+    public GameObject DialogueBox => dialogueBox;
     [SerializeField] private GameObject interactionImage;
     [SerializeField] private Text dialogueText;
 

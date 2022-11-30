@@ -64,8 +64,7 @@ public class CombatManager : MonoBehaviour
     #endregion
 
     #region BoucleCombat
-    [Header("Boucle")] 
-    [Tooltip("false : tour de l'ordi, true : tour du joueur")]
+    [Header("Boucle")]
     public Pokemon playerPoke;
     public Pokemon enemiePoke = new Pokemon(new PokeData(""), false);
     private int playerAttackNbr;
@@ -308,7 +307,8 @@ public class CombatManager : MonoBehaviour
 
     public void CallButton()
     {
-        DialogueManager.Instance.DisplayNextSentence();
+        //DialogueManager.Instance.DisplayNextSentence();
+        DialogueManager.Instance.DialogueBox.SetActive(false);
         attackWindow.SetActive(false);
         objectWindow.SetActive(false);
     }
@@ -377,7 +377,7 @@ public class CombatManager : MonoBehaviour
             combatStates.Add(CombatState.UsePotion);
         }
 
-        if (playerPoke.data.speed > enemiePoke.data.speed)
+        if (playerPoke.data.speed >= enemiePoke.data.speed)
         {
             fastestPoke = playerPoke;
             slowestPoke = enemiePoke;
@@ -394,8 +394,8 @@ public class CombatManager : MonoBehaviour
         }
 
         bool isDead = false;
-        if(!isUsingPotion && fastestPoke != playerPoke)
-            if (IsDead(slowestPoke.data.hp, DictAttackData[fastestPoke.data.attackIDlist[playerAttackNbr]].dmg))
+        if(!isUsingPotion)
+            if (IsDead(slowestPoke, fastestPoke))
                 isDead = true;
 
         if(fastestPoke.isPlayer)
@@ -424,14 +424,13 @@ public class CombatManager : MonoBehaviour
                     combatStates.Add(CombatState.PlayerAttack);
                 }
             }
-            
         }
 
         if (combatStates[combatStates.Count - 1] != CombatState.EnemyDeath && combatStates[combatStates.Count - 1] != CombatState.PlayerDeath)
         {
             isDead = false;
-            if (!isUsingPotion && slowestPoke != enemiePoke)
-                if (IsDead(fastestPoke.data.hp, DictAttackData[slowestPoke.data.attackIDlist[playerAttackNbr]].dmg))
+            if (!isUsingPotion)
+                if (IsDead(fastestPoke, slowestPoke))
                     isDead = true;
 
             if (slowestPoke.isPlayer)
@@ -460,11 +459,23 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(PlayRound());
     }
 
-    private bool IsDead(float pokeLife, float attackDmg)
+    /*private bool IsDead(float pokeLife, float attackDmg,)
     {
         if (pokeLife <= attackDmg)
             return true;
         return false;
+    }*/
+    private bool IsDead(Pokemon pokeLife, Pokemon attackDmg)
+    {
+        float multipliyer = ReadPokeTypes.instance.Test(pokeLife.data.TYPE.GetHashCode()+1, attackDmg.data.TYPE.GetHashCode())+1;
+        if (pokeLife.data.hp <= (DictAttackData[attackDmg.data.attackIDlist[playerAttackNbr]].dmg * multipliyer))
+            return true;
+        return false;
+    }
+    private void Damage(Pokemon attaquant, Pokemon defenseur)
+    {
+        float multipliyer = ReadPokeTypes.instance.Test(defenseur.data.TYPE.GetHashCode() + 1, attaquant.data.TYPE.GetHashCode() + 1); 
+        defenseur.data.hp -= attaquant.data.dmg * multipliyer;
     }
 
     private IEnumerator PlayRound()
@@ -535,14 +546,6 @@ public class CombatManager : MonoBehaviour
             DialogueManager.Instance.InitDialogue(GameManager.Instance, playerVictoryDialogue);
     }
 
-    private void Damage(Pokemon attaquant, Pokemon defenseur)
-    {
-        ReadPokeTypes.instance.ObtainSheetData(defenseur.data.TYPE.GetHashCode(), attaquant.data.TYPE.GetHashCode());
-        float multipliyer = ReadPokeTypes.instance.multiplyer;
-        defenseur.data.hp -= attaquant.data.dmg * multipliyer;
-
-        //attaquant.data.attackIDlist[enemiePoke.attackId].
-    }
 
     public void PlayerAttack()
     {
@@ -612,6 +615,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         DialogueManager.Instance.InitDialogue(this, enemieAttackDialogue);
+
         //chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
 
@@ -633,8 +637,11 @@ public class CombatManager : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().PlayFade("RouteMusic");
         }
+        DialogueManager.Instance.DialogueBox.SetActive(false);
         blackBackground.SetActive(false);
         combatWindow.SetActive(false);
+        PlayerMovement.Instance.InGrass = false;
+        PlayerMovement.Instance.Herbeshautes = null;
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         GameManager.Instance.ActualGameState = GameState.Adventure;
         GameManager.Instance.ActivateFade(2);
@@ -643,7 +650,7 @@ public class CombatManager : MonoBehaviour
     public void Return()
     {
         attackWindow.SetActive(false);
-        pokemonWindow.SetActive(false);
+        objectWindow.SetActive(false);
     }
 }
 

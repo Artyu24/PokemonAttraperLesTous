@@ -280,12 +280,12 @@ PrefabInstance:
     - target: {fileID: 4239796836495773274, guid: 4ceabc5fb6ae4d94f959cbcf09d263e0,
         type: 3}
       propertyPath: firstNumber
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4239796836495773274, guid: 4ceabc5fb6ae4d94f959cbcf09d263e0,
         type: 3}
       propertyPath: secondNumber
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4239796836495773275, guid: 4ceabc5fb6ae4d94f959cbcf09d263e0,
         type: 3}
