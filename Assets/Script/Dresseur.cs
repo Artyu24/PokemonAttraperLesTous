@@ -9,7 +9,7 @@ public class Dresseur : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        SpawnPokemon();
+        DialogueManager.Instance.InitDialogue(this, dialogue);
     }
 
     [SerializeField]
