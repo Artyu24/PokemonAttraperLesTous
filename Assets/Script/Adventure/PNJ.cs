@@ -184,7 +184,6 @@ public class PNJ : MonoBehaviour, IInteractable
             NextMove(GetOppositePosition(PlayerMovement.Instance.LastDirEnum));
 
             GameManager.Instance.ActualPlayerState = PlayerState.Interaction;
-            PlayerMovement.Instance.ActualInteractionDelegate = null;
             DialogueManager.Instance.InitDialogue(this, dialogues);
         }
     }

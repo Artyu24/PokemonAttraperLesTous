@@ -61,6 +61,14 @@ public enum PotentialDirection
     NOTHING
 }
 
+public enum DialogueState
+{
+    INTERACTION,
+    INTERACTION_ACTION,
+    DRAW,
+    DRAW_ACTION
+}
+
 [Serializable]
 public struct DialogueID
 {

@@ -20,10 +20,12 @@ public class DialogueManager : MonoBehaviour
     private string actualSentence;
     private string playerName;
 
+    private DialogueState actualDialogueState;
+    [SerializeField] private float cdAction, cdDialogue;
+
     private ReadGoogleSheet readGoogleSheet;
     private PNJ actualPNJ;
     private BlockPlayerPNJ blockPNJ;
-    private bool onlyShowText;
 
     private void Awake()
     {
@@ -43,30 +45,27 @@ public class DialogueManager : MonoBehaviour
 
     public void InitDialogue<T>(T type, DialogueID[] dialogue)
     {
+        PlayerMovement.Instance.ActualInteractionDelegate = null;
+        
         switch (type)
         {
             case WaterZone:
-                PlayerMovement.Instance.ActualInteractionDelegate = null;
+                actualDialogueState = DialogueState.DRAW_ACTION;
                 actualDialogueDelegate = WaterZone.Instance.InitInteraction;
                 break;
             case PNJ:
+                actualDialogueState = DialogueState.INTERACTION;
                 actualPNJ = type as PNJ;
-                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
-                actualDialogueDelegate = null;
                 break;
             case BlockPlayerPNJ:
                 blockPNJ = type as BlockPlayerPNJ;
-                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
-                actualDialogueDelegate = null;
+                actualDialogueState = DialogueState.INTERACTION;
                 break;
             case CombatManager:
-                onlyShowText = true;
-                PlayerMovement.Instance.ActualInteractionDelegate = null;
-                actualDialogueDelegate = null;
+                actualDialogueState = DialogueState.DRAW;
                 break;
             default:
-                PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
-                actualDialogueDelegate = null;
+                actualDialogueState = DialogueState.INTERACTION;
                 break;
         }
 
@@ -87,50 +86,81 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayTextInstant()
-    {
-        StopAllCoroutines();
-        dialogueText.text = actualSentence;
-        interactionImage.SetActive(true);
-        PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
-    }
-
     public void DisplayNextSentence()
     {
+        interactionImage.SetActive(false);
+        
         if(sentences.Count == 0)
         {
-            dialogueBox.SetActive(false);
-            interactionImage.SetActive(false);
-
-            if (WaterZone.Instance.IsOpen)
+            switch (actualDialogueState)
             {
-                PlayerMovement.Instance.ActualInteractionDelegate = null;
-                WaterZone.Instance.ActivateEnterAnimation();
-                return;
-            }
+                #region Draw
+                case DialogueState.DRAW:
 
-            if (actualPNJ != null)
-            {
-                actualPNJ.ActualPnjState = PNJState.Idle;
-                actualPNJ = null;
-            }
+                    break;
+                #endregion
 
-            if (blockPNJ != null)
-            {
-                blockPNJ.ResetPos();
-                return;
+                #region Draw & Action
+                case DialogueState.DRAW_ACTION:
+
+                    if (actualDialogueDelegate != null)
+                    {
+                        actualDialogueDelegate();
+                        actualDialogueDelegate = null;
+                    }
+
+                    break;
+                #endregion
+
+                #region Interaction
+                case DialogueState.INTERACTION:
+                    dialogueBox.SetActive(false);
+
+                    if (WaterZone.Instance.IsOpen)
+                    {
+                        PlayerMovement.Instance.ActualInteractionDelegate = null;
+                        WaterZone.Instance.ActivateEnterAnimation();
+                        return;
+                    }
+
+                    if (blockPNJ != null)
+                    {
+                        blockPNJ.ResetPos();
+                        return;
+                    }
+
+                    if (actualPNJ != null)
+                    {
+                        actualPNJ.ActualPnjState = PNJState.Idle;
+                        actualPNJ = null;
+                    }
+
+                    PlayerMovement.Instance.ResetInteractionFunction();
+                    break;
+                #endregion
+
+                #region Interaction & Action
+                case DialogueState.INTERACTION_ACTION:
+
+                    if (actualDialogueDelegate != null)
+                    {
+                        actualDialogueDelegate();
+                        actualDialogueDelegate = null;
+                    }
+
+                    dialogueBox.SetActive(false);
+                    break;
+                #endregion
             }
 
             if (GameManager.Instance.ActualGameState != GameState.Fight)
                 GameManager.Instance.ActualPlayerState = PlayerState.Idle;
-            
-            PlayerMovement.Instance.ResetInteractionFunction();
 
             return;
         }
 
-        PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
-        interactionImage.SetActive(false);
+        if(actualDialogueState == DialogueState.INTERACTION || actualDialogueState == DialogueState.INTERACTION_ACTION)
+            PlayerMovement.Instance.ActualInteractionDelegate = DisplayTextInstant;
 
         actualSentence = sentences.Dequeue();
         FixText(ref actualSentence);
@@ -148,12 +178,35 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
 
-        if (actualDialogueDelegate != null)
-            actualDialogueDelegate();
-        else if (!onlyShowText)
+        //TEXTE FINIS D ETRE ECRIS
+
+        if (actualDialogueState == DialogueState.INTERACTION || actualDialogueState == DialogueState.INTERACTION_ACTION)
         {
             PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
             interactionImage.SetActive(true);
+        }
+        else
+            StartCoroutine(CoolDownNextSentence());
+    }
+
+    private IEnumerator CoolDownNextSentence()
+    {
+        if (sentences.Count == 0 && actualDialogueState == DialogueState.DRAW_ACTION)
+            yield return new WaitForSeconds(cdAction);
+        else
+            yield return new WaitForSeconds(cdDialogue);
+
+        DisplayNextSentence();
+    }
+
+    public void DisplayTextInstant()
+    {
+        if (actualDialogueState == DialogueState.INTERACTION || actualDialogueState == DialogueState.INTERACTION_ACTION)
+        {
+            StopAllCoroutines();
+            dialogueText.text = actualSentence;
+            interactionImage.SetActive(true);
+            PlayerMovement.Instance.ActualInteractionDelegate = DisplayNextSentence;
         }
     }
 
