@@ -65,6 +65,11 @@ public class DialogueManager : MonoBehaviour
             case CombatManager:
                 actualDialogueState = DialogueState.DRAW;
                 break;
+            case Dresseur:
+                Dresseur dresseur = type as Dresseur;
+                actualDialogueState = DialogueState.INTERACTION_ACTION;
+                actualDialogueDelegate = dresseur.SpawnPokemon;
+                break;
             default:
                 actualDialogueState = DialogueState.INTERACTION;
                 break;
@@ -142,14 +147,15 @@ public class DialogueManager : MonoBehaviour
 
                 #region Interaction & Action
                 case DialogueState.INTERACTION_ACTION:
+                    dialogueBox.SetActive(false);
+
+                    PlayerMovement.Instance.ActualInteractionDelegate = null;
 
                     if (actualDialogueDelegate != null)
                     {
                         actualDialogueDelegate();
                         actualDialogueDelegate = null;
                     }
-
-                    dialogueBox.SetActive(false);
                     break;
                 #endregion
             }
