@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -216,11 +215,6 @@ public class PlayerMovement : MonoBehaviour
                 AnimPlayer(dirChoose.dirEnum, dirChoose.animName);
 
                 actualInteractionDelegate();
-
-                if (FindObjectOfType<AudioManager>() != null)
-                {
-                    FindObjectOfType<AudioManager>().Play("SFXMenuClick");
-                }
             }
         }
     }
@@ -305,9 +299,10 @@ public class PlayerMovement : MonoBehaviour
 
                     hit.collider.GetComponent<IInteractable>().Interact();
 
-                    
-
-                    //SON TICK DE DIALOGUE
+                    if (FindObjectOfType<AudioManager>() != null)
+                    {
+                        FindObjectOfType<AudioManager>().Play("SFXMenuClick");
+                    }
                 }
             }
         }
