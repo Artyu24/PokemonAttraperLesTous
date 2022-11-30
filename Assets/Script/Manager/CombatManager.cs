@@ -199,21 +199,18 @@ public class CombatManager : MonoBehaviour
 
         if (FindObjectOfType<AudioManager>() != null)
         {
-            FindObjectOfType<AudioManager>().Stop();
-            FindObjectOfType<AudioManager>().Play("PokemonSauvage");
+            FindObjectOfType<AudioManager>().PlayFade("PokemonSauvage");
         }
 
         enemiePoke = new Pokemon(wild, false);
 
+        yield return new WaitForSeconds(0.5f);
+        DialogueManager.Instance.InitDialogue(GameManager.Instance, entryDialogue);
         combatWindow.SetActive(true);
         blackBackground.SetActive(true);
 
         isInHerbeHautes = isInHH;
         dresseurID = qui;
-
-        //ICI
-        DialogueManager.Instance.InitDialogue(GameManager.Instance, entryDialogue);
-        //ICI
 
         foreach (var poke in dictPokeData)
         {
@@ -223,7 +220,6 @@ public class CombatManager : MonoBehaviour
             enemiePokemonHP.value = enemiePoke.data.hp;
         }
 
-        yield return new WaitForSeconds(0.5f);
         //Play anim enemie/player spawn
         #region SetupUICombat
 
