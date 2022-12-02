@@ -210,14 +210,13 @@ public class CombatManager : MonoBehaviour
         blackBackground.SetActive(true);
 
         isInHerbeHautes = isInHH;
+
         dresseurID = qui;
 
         foreach (var poke in dictPokeData)
         {
             int i = 0;
             dictPokeData[i].hp = dictPokeData[i].hpMax;
-            playerPokemonHP.value = playerPoke.data.hp;
-            enemiePokemonHP.value = enemiePoke.data.hp;
         }
 
         //Play anim enemie/player spawn
@@ -229,7 +228,7 @@ public class CombatManager : MonoBehaviour
         playerPokemonName.text = playerPoke.data.name;
         playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
         playerPokemonHP.maxValue = playerPoke.data.hpMax;
-        playerPokemonHP.value = playerPoke.data.hpMax;
+        playerPokemonHP.value = playerPoke.data.hp;
 
         playerPokemonSprite.sprite = playerPoke.data.BackSprite;
         enemiePokemonSprite.sprite = enemiePoke.data.sprite;
@@ -401,6 +400,8 @@ public class CombatManager : MonoBehaviour
                 combatStates.Add(CombatState.Victory);
                 combatStates.Add(CombatState.EnemyDeath);
                 combatStates.Add(CombatState.End);
+                StartCoroutine(PlayRound());
+                return;
             }
             else
                 combatStates.Add(CombatState.EnemyAttack);
@@ -425,7 +426,7 @@ public class CombatManager : MonoBehaviour
         if (combatStates[combatStates.Count - 1] != CombatState.EnemyDeath && combatStates[combatStates.Count - 1] != CombatState.PlayerDeath)
         {
             isDead = false;
-            if (!isUsingPotion)
+            //if (!isUsingPotion)
                 if (IsDead(fastestPoke, slowestPoke))
                     isDead = true;
 
@@ -463,14 +464,18 @@ public class CombatManager : MonoBehaviour
     }*/
     private bool IsDead(Pokemon pokeLife, Pokemon attackDmg)
     {
-        float multipliyer = ReadPokeTypes.instance.Test(pokeLife.data.TYPE.GetHashCode()+1, attackDmg.data.TYPE.GetHashCode())+1;
+        float multipliyer = ReadPokeTypes.instance.Test(pokeLife.data.TYPE.GetHashCode(), attackDmg.data.TYPE.GetHashCode());
         if (pokeLife.data.hp <= (DictAttackData[attackDmg.data.attackIDlist[playerAttackNbr]].dmg * multipliyer))
             return true;
         return false;
     }
     private void Damage(Pokemon attaquant, Pokemon defenseur)
     {
-        float multipliyer = ReadPokeTypes.instance.Test(defenseur.data.TYPE.GetHashCode() + 1, attaquant.data.TYPE.GetHashCode() + 1); 
+        //Debug.Log("defenseur.data.hp : " + defenseur.data.hp);
+        //Debug.Log("attaquant.data.dmg : " + attaquant.data.dmg);
+        float multipliyer = ReadPokeTypes.instance.Test(defenseur.data.TYPE.GetHashCode(), attaquant.data.TYPE.GetHashCode());
+        //Debug.Log("multipliyer : " + multipliyer);
+        //Debug.Log("attaquant.data.dmg * multipliyer : " + attaquant.data.dmg * multipliyer);
         defenseur.data.hp -= attaquant.data.dmg * multipliyer;
     }
 
@@ -482,6 +487,77 @@ public class CombatManager : MonoBehaviour
             combatDictionaire[combatState](); //Appel des fonctions dans l'ordre defini par PreShotRound
             yield return new WaitForSeconds(actionTime);
         }
+    }
+    public void PlayerAttack()
+    {
+        Damage(playerPoke, enemiePoke);
+
+        playerAttackName = DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name;
+
+        if (enemiePoke.data.hp <= 0)
+        {
+            enemiePokemonHP.value = 0;
+            enemiePoke.data.hp = 0;
+        }
+        else
+        {
+            enemiePokemonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
+        }
+        if (DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].isRange)
+        {
+            combatAnimator.SetTrigger("PlayerAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("PlayerAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+
+        }
+        //ICI
+        DialogueManager.Instance.InitDialogue(this, playerAttackDialogue);
+        //chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
+    }
+    private void EnemyAttack()
+    {
+        Damage(enemiePoke, playerPoke);
+        enemieAttackName = DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name;
+        if (playerPoke.data.hp <= 0)
+        {
+            playerPoke.data.hp = 0;
+            playerPokemonHP.value = 0;
+            playerPokemonHPText.text = 0 + "/" + playerPoke.data.hpMax;
+        }
+        else
+        {
+            playerPokemonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
+            playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
+        }
+        if (DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].isRange)
+        {
+            combatAnimator.SetTrigger("EnemieAttackRange");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        else
+        {
+            combatAnimator.SetTrigger("EnemieAttackCac");// JM
+            if (FindObjectOfType<AudioManager>() != null)
+            {
+                FindObjectOfType<AudioManager>().Play("Attack");
+            }
+        }
+        DialogueManager.Instance.InitDialogue(this, enemieAttackDialogue);
+
+        //chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
     }
 
     private void Victory()
@@ -500,6 +576,8 @@ public class CombatManager : MonoBehaviour
         DialogueManager.Instance.InitDialogue(GameManager.Instance, enemieVictoryDialogue);
         PlayerMovement.Instance.transform.position = playerSpawn;
         playerPoke.data.hp = playerPoke.data.hpMax;
+        PlayerMovement.Instance.Herbeshautes = null;
+        PlayerMovement.Instance.InGrass = false;
     }
     private void EnemyLoose()
     {
@@ -543,78 +621,6 @@ public class CombatManager : MonoBehaviour
     }
 
 
-    public void PlayerAttack()
-    {
-        Damage(enemiePoke, playerPoke);
-        playerAttackName = DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name;
-        if (enemiePoke.data.hp <= 0)
-        {
-            enemiePokemonHP.value = 0;
-            enemiePoke.data.hp = 0;
-        }
-        else
-        {
-            enemiePoke.data.hp -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
-            enemiePokemonHP.value -= DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].dmg;
-        }
-        if (DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].isRange)
-        {
-            combatAnimator.SetTrigger("PlayerAttackRange");// JM
-            if (FindObjectOfType<AudioManager>() != null)
-            {
-                FindObjectOfType<AudioManager>().Play("Attack");
-            }
-        }
-        else
-        {
-            combatAnimator.SetTrigger("PlayerAttackCac");// JM
-            if (FindObjectOfType<AudioManager>() != null)
-            {
-                FindObjectOfType<AudioManager>().Play("Attack");
-            }
-
-        }
-        //ICI
-        DialogueManager.Instance.InitDialogue(this, playerAttackDialogue);
-        //chatText.text = playerPokemonName.text + " utilise " + DictAttackData[playerPoke.data.attackIDlist[playerPoke.attackId]].name + " !";
-    }
-    private void EnemyAttack()
-    {
-        Damage(playerPoke, enemiePoke);
-        enemieAttackName = DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name;
-        if (playerPoke.data.hp <= 0)
-        {
-            playerPoke.data.hp = 0;
-            playerPokemonHP.value = 0;
-            playerPokemonHPText.text = 0 + "/" + playerPoke.data.hpMax;
-        }
-        else
-        {
-            playerPoke.data.hp -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
-            playerPokemonHP.value -= DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].dmg;
-            playerPokemonHPText.text = playerPoke.data.hp + "/" + playerPoke.data.hpMax;
-        }
-        if (DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].isRange)
-        {
-            combatAnimator.SetTrigger("EnemieAttackRange");// JM
-            if (FindObjectOfType<AudioManager>() != null)
-            {
-                FindObjectOfType<AudioManager>().Play("Attack");
-            }
-        }
-        else
-        {
-            combatAnimator.SetTrigger("EnemieAttackCac");// JM
-            if (FindObjectOfType<AudioManager>() != null)
-            {
-                FindObjectOfType<AudioManager>().Play("Attack");
-            }
-        }
-        DialogueManager.Instance.InitDialogue(this, enemieAttackDialogue);
-
-        //chatText.text = enemiePokemonName.text + " utilise " + DictAttackData[enemiePoke.data.attackIDlist[enemiePoke.attackId]].name + " !";
-    }
-
     public void QuitCombat()
     {
         StartCoroutine(QuitAnim());
@@ -636,8 +642,6 @@ public class CombatManager : MonoBehaviour
         DialogueManager.Instance.DialogueBox.SetActive(false);
         blackBackground.SetActive(false);
         combatWindow.SetActive(false);
-        PlayerMovement.Instance.InGrass = false;
-        PlayerMovement.Instance.Herbeshautes = null;
         GameManager.Instance.ActualPlayerState = PlayerState.Idle;
         GameManager.Instance.ActualGameState = GameState.Adventure;
         GameManager.Instance.ActivateFade(2);
